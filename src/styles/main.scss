@@ -1,8 +1,16 @@
 .full-width {
-    width: 100vw;
+    width: 100%;
 }
 
 .full-height {
+    height: 100%;
+}
+
+.full-view-width {
+    width: 100vw;
+}
+
+.full-view-height{
     height: 100vh;
 }
 
@@ -12,4 +20,26 @@
 
 .relative-container {
     position: relative;
+}
+
+.center-position{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.row{
+    
+    display: flex;
+    flex-flow: row wrap;
+}
+
+body {
+    background-color: #EBEBEB;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
