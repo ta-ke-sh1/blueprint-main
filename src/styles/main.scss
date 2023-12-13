@@ -10,7 +10,7 @@
     width: 100vw;
 }
 
-.full-view-height{
+.full-view-height {
     height: 100vh;
 }
 
@@ -22,14 +22,18 @@
     position: relative;
 }
 
-.center-position{
+.center-position {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.row{
-    
+a {
+    color: inherit;
+}
+
+.row {
+
     display: flex;
     flex-flow: row wrap;
 }
@@ -38,8 +42,19 @@ body {
     background-color: #EBEBEB;
     margin: 0;
     box-sizing: border-box;
-  }
+}
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
+}
+
+.user-select-none {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }

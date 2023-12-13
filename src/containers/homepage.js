@@ -39,7 +39,7 @@ export default function Homepage(props) {
         }}
       >
         <div
-          className="row"
+          className="row user-select-none"
           style={{
             justifyContent: "space-between",
           }}
@@ -60,18 +60,23 @@ export default function Homepage(props) {
         <Box sx={{ width: "100%", padding: "0 2vw" }}>
           <Grid container spacing={4}>
             <Grid item xs={4}>
-              <Typography className="semi-bold">Writing spaghetti code.</Typography>
-              <Typography className="semi-bold">Currently playing Baldur's Gate 3.</Typography>
+              <Typography>
+                <span className="semi-bold">Writing spaghetti code.</span>
+
+              </Typography>
+              <Typography>
+                <span className="semi-bold">Currently playing Baldur's Gate 3.</span>
+
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography className="semi-bold">Currently based in Hanoi.</Typography>
-              <Typography className="semi-bold">12:44 PM - GMT+7</Typography>
+              <Typography> <span className="semi-bold">Currently based in Hanoi.</span></Typography>
+              <Typography> <span className="semi-bold">12:44 PM - GMT+7</span></Typography>
             </Grid>
             <Grid item xs={4}>
               <Box display="flex" justifyContent="flex-end">
-                <Typography className="semi-bold">
-                  <br />
-                  2024
+                <Typography>
+                  <br /><span className="semi-bold">©2024</span>
                 </Typography>
               </Box>
             </Grid>
