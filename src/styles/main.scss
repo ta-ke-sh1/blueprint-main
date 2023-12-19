@@ -1,60 +1,63 @@
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .full-height {
-    height: 100%;
+  height: 100%;
 }
 
 .full-view-width {
-    width: 100vw;
+  width: 100vw;
 }
 
 .full-view-height {
-    height: 100vh;
+  height: 100vh;
 }
 
 .absolute-container {
-    position: absolute;
+  position: absolute;
 }
 
 .relative-container {
-    position: relative;
+  position: relative;
 }
 
 .center-position {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 .row {
+  display: flex;
+  flex-flow: row wrap;
+}
 
-    display: flex;
-    flex-flow: row wrap;
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
 }
 
 body {
-    background-color: #EBEBEB;
-    margin: 0;
-    box-sizing: border-box;
+  background-color: #ebebeb;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .user-select-none {
-    -webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }

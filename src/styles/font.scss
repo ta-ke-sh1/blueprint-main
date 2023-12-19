@@ -18,6 +18,16 @@
 	src: url("./fonts/Inter-SemiBold.ttf");
 }
 
+@font-face {
+	font-family: "Display-Roman";
+	src: url("./fonts/HaasGrotDisp55Roman.otf");
+}
+
+@font-face {
+	font-family: "Display-Medium";
+	src: url("./fonts/HaasGrotDisp65Medium.otf");
+}
+
 .regular{
     font-family: "Regular";
 }
@@ -34,6 +44,14 @@
     font-family: "Medium";
 }
 
+.display-roman {
+    font-family: "Display-Roman";
+}
+
+.display-medium {
+    font-family: "Display-Medium";
+}
+
 .s-24{
     font-size: 24px;
 }
@@ -48,4 +66,8 @@
 
 .s-100{
     font-size: 100px;
+}
+
+.s-120{
+    font-size: 120px;
 }

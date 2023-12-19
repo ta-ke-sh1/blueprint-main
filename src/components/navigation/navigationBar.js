@@ -3,14 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { BurgerToggle } from "./burger";
 import { useDimensions } from "../../hooks/useDimensions";
-import { Grid, Divider } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
-
+import NavigationContent from "./navContent";
+import { useColorTheme } from "../../hooks/useColorTheme";
 
 export default function NavigationBar() {
   const { isShowing, toggle } = useToggle();
+  const { changeColor } = useColorTheme();
+
   const navigate = useNavigate();
   const preloader = usePreloader();
 
@@ -109,14 +112,12 @@ export default function NavigationBar() {
                   </div>
                 </Link>
               </Grid>
-              <Grid item xs={12} sm={2}>
-                {/* <Link style={{ textDecoration: "none" }} to={"/about"} className="nav-link">
-                  <div className="nav-item med" style={{ zIndex: 10, color: "black" }}>
-                    [ About ]
-                  </div>
-                </Link> */}
-              </Grid>
               <Grid item xs={12} sm={2}></Grid>
+              <Grid item xs={12} sm={2}>
+                <div className="nav-item med nav-btn regular" onClick={changeColor} style={{ zIndex: 10 }}>
+                  + Shift color mode
+                </div>
+              </Grid>
               <Grid item xs={12} sm={2}></Grid>
               <Grid item xs={12} sm={2}></Grid>
             </Grid>
@@ -134,62 +135,3 @@ export default function NavigationBar() {
     </>
   );
 }
-
-const NavigationContent = () => {
-  return (
-    <div className="content-container">
-      <h1 className="regular s-64">Adios</h1>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={6}>
-          <p>Hanoi</p>
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <p>
-            {new Date().toLocaleString("en-US", {
-              timeZone: "Asia/Bangkok",
-            })}
-          </p>
-        </Grid>
-      </Grid>
-      <br />
-      <Divider
-        sx={{
-          border: "0.5px solid #d6ff0a",
-          marginBottom: "20px",
-        }}
-      />
-      <h1 className="display-font s-64">Contact</h1>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={6}>
-          <p>ha.the.trung.1698@gmail.com</p>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={3}>
-          <p>(+84) 818 16 1998</p>
-        </Grid>
-      </Grid>
-      <br />
-      <Divider
-        sx={{
-          border: "0.5px solid #d6ff0a",
-          marginBottom: "20px",
-        }}
-      />
-      <h1 className="display-font s-64">Social</h1>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={3}>
-          <p>Facebook</p>
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <p>GitHub</p>
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <p>LinkedIn</p>
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <p>Behance</p>
-        </Grid>
-      </Grid>
-    </div>
-  );
-};

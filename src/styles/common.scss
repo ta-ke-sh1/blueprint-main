@@ -1,23 +1,23 @@
 .chip {
-    width: fit-content;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 40px;
-    margin: 0 2vw;
+  width: fit-content;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin: 0 2vw;
 
-    font-family: "Regular";
+  font-family: "Regular";
 
-    transition-duration: 0.3s;
+  transition-duration: 0.3s;
 
-    &:hover {
-        background-color: black;
-        color: white;
-    }
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 
-    -webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }
