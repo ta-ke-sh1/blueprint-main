@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import TwoColumnGrid from "../components/container/twoColumn";
+import { useColorTheme } from "../hooks/useColorTheme";
 
 export default function AboutMe() {
+  const { fetchSavedPallete } = useColorTheme();
+
+  useEffect(() => {
+    fetchSavedPallete();
+  }, [])
+
   return (
     <div
       style={{

@@ -54,15 +54,12 @@ export function PreloaderWrapper({ children }) {
         const onPageLoad = () => {
             console.log("page loaded");
             updateLoaded(true);
-            // do something else
             tl.play();
         };
-        // Check if the page has already loaded
         if (document.readyState === "complete") {
             onPageLoad();
         } else {
             window.addEventListener("load", onPageLoad, false);
-            // Remove the event listener when component unmounts
             return () => window.removeEventListener("load", onPageLoad);
         }
     }, [isLoaded]);
@@ -73,7 +70,7 @@ export function PreloaderWrapper({ children }) {
         <Preloader.Provider value={value}>
             <div
                 style={{
-                    opacity: 0,
+                    opacity: 1,
                 }}
             >
                 <div className="preloader" id="first-slide" ref={preloader}></div>

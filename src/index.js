@@ -6,15 +6,19 @@ import "./styles/font.scss";
 import "./styles/common.scss";
 import "./styles/navigation.scss";
 import "./styles/homepage.scss";
+import "./styles/preloader.scss";
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./components/navigation/navigationBar";
+import { PreloaderWrapper } from "./hooks/usePreloader";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavigationBar />
-      <App />
+      <PreloaderWrapper value={false}>
+        <NavigationBar />
+        <App />
+      </PreloaderWrapper>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -6,6 +6,8 @@ import ProjectsSvg from "../components/svgs/projectsSvg";
 import SmileSvg from "../components/svgs/smileySvg";
 import HelloSvg from "../components/svgs/helloSvg";
 import gsap from "gsap/gsap-core";
+import { useColorTheme } from "../hooks/useColorTheme";
+import { usePreloader } from "../hooks/usePreloader";
 
 const text_title_style = {
   fontSize: "12.55vw",
@@ -50,7 +52,15 @@ const iconItems = [
 ];
 
 export default function Homepage(props) {
+  const { fetchSavedPallete } = useColorTheme();
+  const preloader = usePreloader();
+
   useEffect(() => {
+    setTimeout(() => {
+      preloader.tl.play();
+    }, 1500);
+
+    fetchSavedPallete();
     iconItems.forEach((_, index) => {
       const i = document.getElementById("icon-button-" + index);
       gsap.to(i, {
