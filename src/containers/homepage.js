@@ -20,8 +20,8 @@ const iconItems = [
   {
     title: "+ Folio",
     icon: <FaceSVG />,
-    original_icon_xPos: "-70px",
-    original_icon_yPos: "-50px",
+    original_icon_xPos: "-90px",
+    original_icon_yPos: "-40px",
     dest_icon_xPos: "70px",
     dest_icon_yPos: "20px",
   },

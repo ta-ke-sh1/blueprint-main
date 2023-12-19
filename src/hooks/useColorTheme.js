@@ -83,6 +83,10 @@ export function useColorTheme() {
         color: tertiary_color,
         duration: duration,
         delay: -duration,
+      }).to(".chip", {
+        ease: "power1",
+        backgroundColor: text_color,
+        duration: duration,
       });
 
     tl.play();
