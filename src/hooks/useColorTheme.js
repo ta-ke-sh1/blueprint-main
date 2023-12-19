@@ -12,9 +12,9 @@ const themeList = [
   },
   {
     name: "dark",
-    bg_color: "#1F1717",
-    text_color: "#FCF5ED",
-    primary_color: "#4F4A45",
+    bg_color: "#101010",
+    text_color: "#FFD600",
+    primary_color: "#212121",
     secondary_color: "",
     tertiary_color: "",
   },
