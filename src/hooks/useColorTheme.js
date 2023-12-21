@@ -47,7 +47,9 @@ export function useColorTheme() {
   }
 
   function fetchSavedPallete() {
-    const savedPallete = localStorage.getItem("theme")
+    const savedPallete = parseInt(localStorage.getItem("theme")) || 0;
+    console.log(savedPallete);
+
     setCurrent(savedPallete);
     const theme = themeList[savedPallete];
     shiftDocumentColor(0, theme.bg_color, theme.text_color, theme.primary_color, theme.secondary_color, theme.tertiary_color);
@@ -83,7 +85,8 @@ export function useColorTheme() {
         color: tertiary_color,
         duration: duration,
         delay: -duration,
-      }).to(".chip", {
+      })
+      .to(".chip", {
         ease: "power1",
         backgroundColor: text_color,
         duration: duration,
@@ -103,6 +106,6 @@ export function useColorTheme() {
 
   return {
     changeColor,
-    fetchSavedPallete
+    fetchSavedPallete,
   };
 }

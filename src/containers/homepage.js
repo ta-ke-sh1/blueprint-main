@@ -74,6 +74,14 @@ export default function Homepage(props) {
 
   function onMouseEnterNavItem(index) {
     const item = document.getElementById("icon-button-" + index);
+    const btn = document.getElementById("btn-" + index);
+    gsap.to(btn, {
+      borderRadius: "5px",
+      duration: 0.6,
+      delay: -0.6,
+      ease: "power1",
+    });
+
     gsap.to(item, {
       opacity: 1,
       duration: 0.3,
@@ -86,6 +94,13 @@ export default function Homepage(props) {
 
   function onMouseLeaveNavItem(index) {
     const item = document.getElementById("icon-button-" + index);
+    const btn = document.getElementById("btn-" + index);
+    gsap.to(btn, {
+      borderRadius: "40px",
+      duration: 0.6,
+      delay: -0.6,
+      ease: "power1",
+    });
     gsap.to(item, {
       opacity: 0,
       duration: 0.3,
@@ -124,7 +139,7 @@ export default function Homepage(props) {
                   }}
                 >
                   <div className="icon-title">
-                    <Chip onMouseEnter={() => onMouseEnterNavItem(index)} onMouseLeave={() => onMouseLeaveNavItem(index)}>
+                    <Chip id={"btn-" + index} onMouseEnter={() => onMouseEnterNavItem(index)} onMouseLeave={() => onMouseLeaveNavItem(index)}>
                       {item.title}
                     </Chip>
                   </div>
