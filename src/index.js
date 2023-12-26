@@ -7,15 +7,18 @@ import "./styles/common.scss";
 import "./styles/navigation.scss";
 import "./styles/homepage.scss";
 import "./styles/preloader.scss";
+import "./styles/cursor.scss"
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./components/navigation/navigationBar";
 import { PreloaderWrapper } from "./hooks/usePreloader";
+import CustomCursor from "./components/cursor/cursor";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <PreloaderWrapper value={false}>
+        <CustomCursor />
         <NavigationBar />
         <App />
       </PreloaderWrapper>

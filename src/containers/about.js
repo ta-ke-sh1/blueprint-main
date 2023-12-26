@@ -62,16 +62,16 @@ function LandingImage(props) {
 function Folio(props) {
   return (
     <TwoColumnGrid
-      sx={{ ...props.sx, marginBottom: "120px" }}
+      sx={{ ...props.sx, marginBottom: "118px" }}
       leftContent={<div className="s-120 display-medium">Folio</div>}
       rightContent={
         <>
           <Grid container spacing={4} style={{
             fontSize: '70px'
           }}>
-            <Grid item xs={9}>
-              <div className="medium" style={{ letterSpacing: '-3px' }}>
-                Hello, my name is Trung, <br /> a fresh developer based in Hanoi.
+            <Grid item xs={12}>
+              <div className="serif-light-italic">
+                Hello, my name is Trung, a fresh developer based in Hanoi.
               </div>
             </Grid>
           </Grid>
@@ -80,7 +80,7 @@ function Folio(props) {
             </Grid>
             <Grid item xs={6}>
               <div className="regular" style={{
-                fontSize: '20px'
+                fontSize: '18px'
               }}>
                 Currently working at Toshiba Software Development Vietnam as a virtualization and simulation back-end developer. However, my passion is to create mesmerizing and dope-ass products.
               </div>
@@ -100,7 +100,7 @@ function TechStack(props) {
     borderRadius: '5px'
   }
 
-  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "120px" }} leftContent={<div className="s-48 display-medium">Tech Stack</div>} rightContent={
+  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "118px" }} leftContent={<div className="s-48 display-medium">Tech Stack</div>} rightContent={
 
     <Grid container spacing={4}>
       <Grid item xs={3}>
@@ -132,12 +132,12 @@ function TechStack(props) {
 }
 
 function WorkExperiences(props) {
-  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "120px" }} leftContent={<div className="s-48 display-medium">Work<br />Experiences</div>}
+  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "118px" }} leftContent={<div className="s-48 display-medium">Work<br />Experiences</div>}
     rightContent={
       <>
         <p >
           <span className="semi-bold" style={{
-            fontSize: '20px',
+            fontSize: '18px',
             textAlign: 'justify'
           }}>
             Toshiba Software Development Vietnam
@@ -146,7 +146,7 @@ function WorkExperiences(props) {
         <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
           <Grid item xs={8}>
             <p className="regular" style={{
-              fontSize: '20px',
+              fontSize: '18px',
               textAlign: 'justify'
             }}>
               <span className="medium">
@@ -159,7 +159,7 @@ function WorkExperiences(props) {
           <Grid item xs={4}>
             <Box display="flex" justifyContent="flex-end">
               <p className="regular" style={{
-                fontSize: '20px'
+                fontSize: '18px'
               }}>
                 May 2023 - Now
               </p>
@@ -169,7 +169,7 @@ function WorkExperiences(props) {
         <Grid container spacing={4}>
           <Grid item xs={8}>
             <p className="regular" style={{
-              fontSize: '20px',
+              fontSize: '18px',
               textAlign: 'justify'
             }}>
               <span className="medium">
@@ -179,7 +179,7 @@ function WorkExperiences(props) {
               Work as an intern for my final defense thesis. Created a mobile application in Flutter to utilize deep learning model to predict and categorize human movements types using sensors’ readings of built-in sensors such as Accelerometer and Gyroscope.
             </p>
             <p className="regular" style={{
-              fontSize: '20px',
+              fontSize: '18px',
               textAlign: 'justify'
             }}>
               The model has achieved 95% prediction accuracy on 13 different holding positions. The result was further used in a pedometer module, which has achieved 91% overall accuracy in counting & differentiate walking, running and stairs climbing steps.
@@ -188,7 +188,7 @@ function WorkExperiences(props) {
           <Grid item xs={4}>
             <Box display="flex" justifyContent="flex-end">
               <p className="regular" style={{
-                fontSize: '20px'
+                fontSize: '18px'
               }}>
                 Nov 2022 - Apr 2023
               </p>
@@ -201,12 +201,12 @@ function WorkExperiences(props) {
 }
 
 function AcademicResults(props) {
-  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "120px" }} leftContent={<div className="s-48 display-medium">Academic<br />Results</div>} rightContent={
+  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "118px" }} leftContent={<div className="s-48 display-medium">Academic<br />Results</div>} rightContent={
     <>
       <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
         <Grid item xs={8}>
           <p className="regular" style={{
-            fontSize: '20px',
+            fontSize: '18px',
             textAlign: 'justify'
           }}>
             <span className="semi-bold">
@@ -221,7 +221,7 @@ function AcademicResults(props) {
         <Grid item xs={4}>
           <Box display="flex" justifyContent="flex-end">
             <p className="regular" style={{
-              fontSize: '20px'
+              fontSize: '18px'
             }}>
               2020-2023
             </p>
@@ -231,7 +231,7 @@ function AcademicResults(props) {
       <Grid container spacing={4}>
         <Grid item xs={8}>
           <p className="regular" style={{
-            fontSize: '20px',
+            fontSize: '18px',
             textAlign: 'justify'
           }}>
             <span className="semi-bold">
@@ -244,7 +244,7 @@ function AcademicResults(props) {
         <Grid item xs={4}>
           <Box display="flex" justifyContent="flex-end">
             <p className="regular" style={{
-              fontSize: '20px'
+              fontSize: '18px'
             }}>
               2016 - 2020
             </p>
@@ -257,12 +257,12 @@ function AcademicResults(props) {
 }
 
 function AcademicAchievements(props) {
-  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "120px" }} leftContent={<div className="s-48 display-medium">Academic<br />Achievements</div>} rightContent={
+  return <TwoColumnGrid sx={{ ...props.sx, marginBottom: "118px" }} leftContent={<div className="s-48 display-medium">Academic<br />Achievements</div>} rightContent={
     <>
       <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
         <Grid item xs={8}>
           <p className="regular" style={{
-            fontSize: '20px',
+            fontSize: '18px',
             textAlign: 'justify'
           }}>
             <span className="semi-bold">
@@ -275,7 +275,7 @@ function AcademicAchievements(props) {
         <Grid item xs={4}>
           <Box display="flex" justifyContent="flex-end" textAlign={"end"}>
             <p className="regular" style={{
-              fontSize: '20px'
+              fontSize: '18px'
             }}>
               Summer 2023 <br />
               Fall 2022 <br />

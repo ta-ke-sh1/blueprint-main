@@ -10,7 +10,7 @@
 
 @font-face {
 	font-family: "Regular";
-	src: url("./fonts/Inter-Regular.ttf");
+	src: url("./fonts/UbuntuMono-Regular.ttf");
 }
 
 @font-face {
@@ -28,46 +28,55 @@
 	src: url("./fonts/HaasGrotDisp65Medium.otf");
 }
 
-.regular{
-    font-family: "Regular";
+@font-face {
+	font-family: "Serif-Light-Italic";
+	src: url("./fonts/Newsreader_60pt-LightItalic.ttf")
 }
 
-.light{
-    font-family: "Light";
+.regular {
+	font-family: "Regular";
 }
 
-.semi-bold{
-    font-family: "SemiBold";
+.light {
+	font-family: "Light";
 }
 
-.medium{
-    font-family: "Medium";
+.semi-bold {
+	font-family: "SemiBold";
+}
+
+.medium {
+	font-family: "Medium";
 }
 
 .display-roman {
-    font-family: "Display-Roman";
+	font-family: "Display-Roman";
 }
 
 .display-medium {
-    font-family: "Display-Medium";
+	font-family: "Display-Medium";
 }
 
-.s-24{
-    font-size: 24px;
+.serif-light-italic {
+	font-family: "Serif-Light-Italic";
+}
+
+.s-24 {
+	font-size: 24px;
 }
 
 .s-48 {
-    font-size: 48px;
+	font-size: 48px;
 }
 
 .s-72 {
-    font-size: 72px;
+	font-size: 72px;
 }
 
-.s-100{
-    font-size: 100px;
+.s-100 {
+	font-size: 100px;
 }
 
-.s-120{
-    font-size: 120px;
+.s-120 {
+	font-size: 120px;
 }
