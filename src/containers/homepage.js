@@ -20,34 +20,18 @@ const iconItems = [
   {
     title: "+ Folio",
     icon: <FaceSVG />,
-    original_icon_xPos: "-90px",
-    original_icon_yPos: "-40px",
-    dest_icon_xPos: "70px",
-    dest_icon_yPos: "20px",
   },
   {
     title: "+ Projects",
     icon: <ProjectsSvg />,
-    original_icon_xPos: "-100px",
-    original_icon_yPos: "-50px",
-    dest_icon_xPos: "100px",
-    dest_icon_yPos: "-160px",
   },
   {
     title: "+ Playground",
     icon: <SmileSvg />,
-    original_icon_xPos: "-70px",
-    original_icon_yPos: "-80px",
-    dest_icon_xPos: "180px",
-    dest_icon_yPos: "20px",
   },
   {
     title: "+ Contact ",
     icon: <HelloSvg />,
-    original_icon_xPos: "-50px",
-    original_icon_yPos: "-160px",
-    dest_icon_xPos: "50px",
-    dest_icon_yPos: "-210px",
   },
 ];
 
@@ -66,27 +50,20 @@ export default function Homepage(props) {
       gsap.to(i, {
         opacity: 0,
         duration: 0,
-        left: iconItems[index].original_icon_xPos,
-        top: iconItems[index].original_icon_yPos,
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
       });
     });
   }, []);
 
   function onMouseEnterNavItem(index) {
     const item = document.getElementById("icon-button-" + index);
-    const btn = document.getElementById("btn-" + index);
-    gsap.to(btn, {
-      borderRadius: "5px",
-      duration: 0.6,
-      delay: -0.6,
-      ease: "power1",
-    });
 
     gsap.to(item, {
       opacity: 1,
       duration: 0.3,
       ease: "power1",
-      top: iconItems[index].dest_icon_yPos,
       rotate: 4,
       scale: 1.05,
     });
@@ -94,18 +71,10 @@ export default function Homepage(props) {
 
   function onMouseLeaveNavItem(index) {
     const item = document.getElementById("icon-button-" + index);
-    const btn = document.getElementById("btn-" + index);
-    gsap.to(btn, {
-      borderRadius: "40px",
-      duration: 0.6,
-      delay: -0.6,
-      ease: "power1",
-    });
     gsap.to(item, {
       opacity: 0,
       duration: 0.3,
       ease: "power1",
-      top: iconItems[index].original_icon_yPos,
       rotate: 0,
       scale: 1,
     });

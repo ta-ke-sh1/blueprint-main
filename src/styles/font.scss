@@ -1,82 +1,86 @@
 @font-face {
-	font-family: "Light";
-	src: url("./fonts/Inter-Light.ttf");
+  font-family: "Light";
+  src: url("./fonts/Inter-Light.ttf");
 }
 
 @font-face {
-	font-family: "Medium";
-	src: url("./fonts/Inter-Medium.ttf");
+  font-family: "Medium";
+  src: url("./fonts/Inter-Medium.ttf");
 }
 
 @font-face {
-	font-family: "Regular";
-	src: url("./fonts/UbuntuMono-Regular.ttf");
+  font-family: "Regular";
+  src: url("./fonts/IBMPlexMono-Regular.ttf");
 }
 
 @font-face {
-	font-family: "SemiBold";
-	src: url("./fonts/Inter-SemiBold.ttf");
+  font-family: "SemiBold";
+  src: url("./fonts/Inter-SemiBold.ttf");
 }
 
 @font-face {
-	font-family: "Display-Roman";
-	src: url("./fonts/HaasGrotDisp55Roman.otf");
+  font-family: "Display-Roman";
+  src: url("./fonts/HaasGrotDisp55Roman.otf");
 }
 
 @font-face {
-	font-family: "Display-Medium";
-	src: url("./fonts/HaasGrotDisp65Medium.otf");
+  font-family: "Display-Medium";
+  src: url("./fonts/HaasGrotDisp65Medium.otf");
 }
 
 @font-face {
-	font-family: "Serif-Light-Italic";
-	src: url("./fonts/Newsreader_60pt-LightItalic.ttf")
+  font-family: "Serif-Light-Italic";
+  src: url("./fonts/Newsreader_60pt-LightItalic.ttf");
 }
 
 .regular {
-	font-family: "Regular";
+  font-family: "Regular";
 }
 
 .light {
-	font-family: "Light";
+  font-family: "Light";
 }
 
 .semi-bold {
-	font-family: "SemiBold";
+  font-family: "SemiBold";
 }
 
 .medium {
-	font-family: "Medium";
+  font-family: "Medium";
 }
 
 .display-roman {
-	font-family: "Display-Roman";
+  font-family: "Display-Roman";
 }
 
 .display-medium {
-	font-family: "Display-Medium";
+  font-family: "Display-Medium";
 }
 
 .serif-light-italic {
-	font-family: "Serif-Light-Italic";
+  font-family: "Serif-Light-Italic";
 }
 
 .s-24 {
-	font-size: 24px;
+  font-size: 24px;
+}
+
+.s-40 {
+  font-size: 40px;
 }
 
 .s-48 {
-	font-size: 48px;
+  font-size: 48px;
 }
 
 .s-72 {
-	font-size: 72px;
+  font-size: 72px;
 }
 
 .s-100 {
-	font-size: 100px;
+  font-size: 100px;
 }
 
 .s-120 {
-	font-size: 120px;
+  font-size: 120px;
 }

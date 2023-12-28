@@ -9,6 +9,7 @@ import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
 import NavigationContent from "./navContent";
 import { useColorTheme } from "../../hooks/useColorTheme";
+import MarqueTrack from "../marquee/marquee";
 
 export default function NavigationBar() {
   const { isShowing, toggle } = useToggle();
@@ -105,7 +106,7 @@ export default function NavigationBar() {
         <div ref={containerRef}>
           <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
             <Grid container columns={12}>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={2}>
                 <Link style={{ textDecoration: "none" }} onClick={() => handlePageChange()} className="nav-link">
                   <div className="nav-item med nav-btn regular" style={{ zIndex: 10 }}>
                     + Space .01
@@ -113,13 +114,14 @@ export default function NavigationBar() {
                 </Link>
               </Grid>
               <Grid item xs={12} sm={2}></Grid>
+              <Grid item xs={12} sm={4}>
+                <MarqueTrack />
+              </Grid>
               <Grid item xs={12} sm={2}>
                 <div className="nav-item med nav-btn regular" onClick={changeColor} style={{ zIndex: 10 }}>
-                  + Shift color mode
+                  + Shift
                 </div>
               </Grid>
-              <Grid item xs={12} sm={2}></Grid>
-              <Grid item xs={12} sm={2}></Grid>
             </Grid>
 
             <div className={"nav-menu"} ref={navMenu}>

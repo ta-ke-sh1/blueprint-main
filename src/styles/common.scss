@@ -1,18 +1,12 @@
 .chip {
   width: fit-content;
   padding: 10px 20px;
-  border: 1px solid black;
   border-radius: 40px;
   margin: 0 2vw;
 
   font-family: "Regular";
 
   transition-duration: 0.3s;
-
-  &:hover {
-    background-color: black;
-    color: white;
-  }
 
   -webkit-user-select: none;
   /* Safari */
