@@ -113,10 +113,11 @@ export default function NavigationBar() {
                   </div>
                 </Link>
               </Grid>
-              <Grid item xs={12} sm={2}></Grid>
+
               <Grid item xs={12} sm={4}>
                 <MarqueTrack />
               </Grid>
+              <Grid item xs={12} sm={2}></Grid>
               <Grid item xs={12} sm={2}>
                 <div className="nav-item med nav-btn regular" onClick={changeColor} style={{ zIndex: 10 }}>
                   + Shift
