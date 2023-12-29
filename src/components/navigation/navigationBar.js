@@ -115,7 +115,7 @@ export default function NavigationBar() {
               </Grid>
 
               <Grid item xs={12} sm={4}>
-                <MarqueTrack />
+                {/* <MarqueTrack /> */}
               </Grid>
               <Grid item xs={12} sm={2}></Grid>
               <Grid item xs={12} sm={2}>

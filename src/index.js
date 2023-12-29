@@ -9,6 +9,9 @@ import "./styles/homepage.scss";
 import "./styles/preloader.scss";
 import "./styles/cursor.scss";
 import "./styles/marquee.scss";
+
+import "./styles/shortestPath/board.scss";
+
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./components/navigation/navigationBar";
 import { PreloaderWrapper } from "./hooks/usePreloader";

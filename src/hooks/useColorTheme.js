@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { gsap } from "gsap";
+import $ from "jquery";
 
 const themeList = [
   {
@@ -62,35 +63,53 @@ export function useColorTheme() {
 
   const shiftDocumentColor = (duration, bg_color, text_color, primary_color, secondary_color, tertiary_color) => {
     const tl = gsap.timeline();
+
     tl.to("body", {
       ease: "power1",
       backgroundColor: bg_color,
       color: text_color,
       duration: duration,
-    })
-      .to(".primary", {
+    });
+
+    const primary = document.querySelector(".primary");
+    if (primary) {
+      tl.to($(".primary"), {
         ease: "power1",
         color: primary_color,
         duration: duration,
         delay: -duration,
-      })
-      .to(".secondary", {
+      });
+    }
+
+    const secondary = document.querySelector(".secondary");
+    if (secondary) {
+      tl.to($(".secondary"), {
         ease: "power1",
         color: secondary_color,
         duration: duration,
         delay: -duration,
-      })
-      .to(".tertiary", {
+      });
+    }
+
+    const tertiary = document.querySelector(".tertiary");
+    if (tertiary) {
+      tl.to($(".tertiary"), {
         ease: "power1",
         color: tertiary_color,
         duration: duration,
         delay: -duration,
-      })
-      .to(".chip", {
+      });
+    }
+
+    const chip = document.querySelector(".chip");
+    if (chip) {
+      tl.to($(".chip"), {
         ease: "power1",
         backgroundColor: text_color,
         duration: duration,
+        delay: -duration,
       });
+    }
 
     tl.play();
   };
