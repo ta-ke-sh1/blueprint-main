@@ -11,44 +11,60 @@ export default function AboutMe(props) {
 
     return (
         <div
-            data-scroll-section
             style={{
                 ...props.sx,
                 padding: "0 1.5vw",
-                marginBottom: "60px",
             }}>
-            <Grid container data-scroll-container>
-                <Grid item xs={4} data-scroll-speed="-5">
+            <div
+                style={{
+                    position: "relative",
+                    minHeight: "100vh",
+                    display: "flex",
+                    width: "100vw",
+                }}>
+                <div
+                    className="fixed_target"
+                    id="fixed-target"
+                    style={{
+                        position: "absolute",
+                        left: 0,
+                        top: "45vh",
+                        right: 0,
+                        bottom: "-300vh",
+                    }}></div>
+                <div
+                    xs={4}
+                    data-scroll-target="#fixed-target"
+                    data-scroll-sticky
+                    data-scroll
+                    data-scroll-speed="0.05"
+                    style={{
+                        paddingTop: "50vh",
+                        width: "31vw",
+                        marginRight: "3vw",
+                    }}>
+                    <div className="s-120 display-medium">Folio</div>
                     <div
                         style={{
-                            height: "100%",
+                            height: "75vh",
                             width: "100%",
-                        }}>
-                        <div
-                            style={{
-                                marginTop: "58vh",
-                                position: "relative",
-                                height: "100%",
-                                width: "33.33vw",
-                            }}>
-                            <div className="s-120 display-medium">Folio</div>
-                            <div
-                                style={{
-                                    height: "35vh",
-                                    width: "30vw",
-                                    backgroundColor: "#D9D9D9",
-                                }}></div>
-                        </div>
-                    </div>
-                </Grid>
-                <Grid item xs={8} data-scroll-speed="5">
+                            backgroundColor: "#D9D9D9",
+                        }}></div>
+                </div>
+                <div
+                    style={{
+                        width: "62vw",
+                        paddingTop: "50vh",
+                    }}
+                    xs={8}
+                    data-scroll
+                    data-scroll-speed="0.3">
                     <Grid
                         container
                         spacing={4}
                         style={{
-                            marginTop: "20vh",
                             fontSize: "70px",
-                            marginBottom: "40px",
+                            marginBottom: "70px",
                         }}>
                         <Grid item xs={9}>
                             <div className="serif-light-italic">
@@ -111,14 +127,8 @@ export default function AboutMe(props) {
                             marginTop: "100px",
                         }}
                     />
-
-                    <div
-                        style={{
-                            marginTop: "20vh",
-                            height: "100px",
-                        }}></div>
-                </Grid>
-            </Grid>
+                </div>
+            </div>
         </div>
     );
 }
