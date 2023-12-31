@@ -4,19 +4,30 @@ import Homepage from "./containers/homepage";
 import AboutMe from "./containers/about";
 import Playground from "./containers/playground";
 import Projects from "./containers/projects";
-import WorkingStatusTrial from "./trial";
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import { useRef } from "react";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="*" element={<ErrorPage />} />
-      <Route path="/" element={<Homepage />} />
-      <Route path="/folio" element={<AboutMe />} />
-      <Route path="/playground" element={<Playground />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/trial" element={<WorkingStatusTrial />} />
-    </Routes>
-  );
+    const containerRef = useRef(null);
+
+    return (
+        <LocomotiveScrollProvider
+            options={{
+                smooth: true,
+            }}
+            watch={[]}
+            containerRef={containerRef}>
+            <main data-scroll-container ref={containerRef}>
+                <Routes>
+                    <Route path="*" element={<ErrorPage />} />
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/folio" element={<AboutMe />} />
+                    <Route path="/playground" element={<Playground />} />
+                    <Route path="/projects" element={<Projects />} />
+                </Routes>
+            </main>
+        </LocomotiveScrollProvider>
+    );
 }
 
 export default App;
