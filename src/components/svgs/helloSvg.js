@@ -1,6 +1,6 @@
-export default function HelloSvg() {
+export default function HelloSvg(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="192" height="241" viewBox="0 0 192 241" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="192" height="241" viewBox="0 0 192 241" fill="none" style={{ ...props.sx, ...props.style }}>
       <mask id="path-1-inside-1_16_13" fill="white">
         <path
           fill-rule="evenodd"

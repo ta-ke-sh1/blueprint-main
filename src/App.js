@@ -14,7 +14,7 @@ function App() {
         <LocomotiveScrollProvider
             options={{
                 smooth: true,
-                lerp: 0.075,
+                lerp: 0.05,
                 multiplier: 0.5,
             }}
             watch={[]}

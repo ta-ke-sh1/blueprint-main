@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { Grid, Box } from "@mui/material";
+import Contacts from "./contacts";
 
 export default function AboutMe(props) {
     const { fetchSavedPallete } = useColorTheme();
@@ -10,126 +11,130 @@ export default function AboutMe(props) {
     }, []);
 
     return (
-        <div
-            style={{
-                ...props.sx,
-                padding: "0 1.5vw",
-            }}>
+        <>
             <div
                 style={{
-                    position: "relative",
-                    minHeight: "100vh",
-                    display: "flex",
-                    width: "100vw",
+                    ...props.sx,
+                    padding: "0 1.5vw",
                 }}>
                 <div
-                    className="fixed_target"
-                    id="fixed-target"
                     style={{
-                        position: "absolute",
-                        left: 0,
-                        top: "45vh",
-                        right: 0,
-                        bottom: "-300vh",
-                    }}></div>
-                <div
-                    xs={4}
-                    data-scroll-target="#fixed-target"
-                    data-scroll-sticky
-                    data-scroll
-                    data-scroll-speed="0.05"
-                    style={{
-                        paddingTop: "50vh",
-                        width: "31vw",
-                        marginRight: "3vw",
+                        position: "relative",
+                        minHeight: "100vh",
+                        display: "flex",
+                        width: "100vw",
                     }}>
-                    <div className="s-120 display-medium">Folio</div>
+                    <div
+                        className="fixed_target"
+                        id="fixed-target"
+                        style={{
+                            position: "absolute",
+                            left: 0,
+                            top: "45vh",
+                            right: 0,
+                            bottom: "-200vh",
+                        }}></div>
+                    <div
+                        xs={4}
+                        data-scroll-target="#fixed-target"
+                        data-scroll-sticky
+                        data-scroll
+                        data-scroll-speed="0.05"
+                        style={{
+                            paddingTop: "50vh",
+                            width: "31vw",
+                            marginRight: "3vw",
+                        }}>
+                        <div className="s-120 display-medium">Folio</div>
+                        <div
+                            style={{
+                                height: "75vh",
+                                width: "100%",
+                                backgroundColor: "#D9D9D9",
+                            }}></div>
+                    </div>
                     <div
                         style={{
-                            height: "75vh",
-                            width: "100%",
-                            backgroundColor: "#D9D9D9",
-                        }}></div>
-                </div>
-                <div
-                    style={{
-                        width: "62vw",
-                        paddingTop: "50vh",
-                    }}
-                    xs={8}
-                    data-scroll
-                    data-scroll-speed="0.3">
-                    <Grid
-                        container
-                        spacing={4}
-                        style={{
-                            fontSize: "70px",
-                            marginBottom: "70px",
-                        }}>
-                        <Grid item xs={9}>
-                            <div className="serif-light-italic">
-                                Hello, my name is Trung, a fresh developer based
-                                in Hanoi.
-                            </div>
+                            width: "62vw",
+                            paddingTop: "50vh",
+                        }}
+                        xs={8}
+                        data-scroll
+                        data-scroll-speed="0.3">
+                        <Grid
+                            container
+                            spacing={4}
+                            style={{
+                                fontSize: "70px",
+                                marginBottom: "70px",
+                            }}>
+                            <Grid item xs={9}>
+                                <div className="serif-light-italic">
+                                    Hello, my name is Trung, a fresh developer based
+                                    in Hanoi.
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid container spacing={4}>
-                        <Grid item xs={6}></Grid>
-                        <Grid item xs={6}>
-                            <div
-                                className="regular"
-                                style={{
-                                    textAlign: "justify",
-                                    fontSize: "14px",
-                                    letterSpacing: "0px",
-                                    marginBottom: "20px",
-                                }}>
-                                FRESHLY GRADUATED IN 2023, CURRENTLY, I'M
-                                WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM
-                                AS A VIRTUALIZATION AND SIMULATION-FOCUSED
-                                BACK-END DEVELOPER.
-                            </div>
-                            <div
-                                className="regular"
-                                style={{
-                                    textAlign: "justify",
-                                    fontSize: "14px",
-                                    letterSpacing: "0px",
-                                }}>
-                                YET, I TAKE VISUAL DESIGNING AND FRONT-END
-                                DEVELOPMENT AS MY SIDE HOBBY AS EVER SINCE A
-                                KID, I HAVE ALWAYS LOVED CREATING MESMERIZING,
-                                EYE-CANDIED, AND DOPE-ASS PRODUCTS.
-                            </div>
+                        <Grid container spacing={4}>
+                            <Grid item xs={6}></Grid>
+                            <Grid item xs={6}>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        textAlign: "justify",
+                                        fontSize: "14px",
+                                        letterSpacing: "0px",
+                                        marginBottom: "20px",
+                                    }}>
+                                    FRESHLY GRADUATED IN 2023, CURRENTLY, I'M
+                                    WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM
+                                    AS A VIRTUALIZATION AND SIMULATION-FOCUSED
+                                    BACK-END DEVELOPER.
+                                </div>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        textAlign: "justify",
+                                        fontSize: "14px",
+                                        letterSpacing: "0px",
+                                    }}>
+                                    YET, I TAKE VISUAL DESIGNING AND FRONT-END
+                                    DEVELOPMENT AS MY SIDE HOBBY AS EVER SINCE A
+                                    KID, I HAVE ALWAYS LOVED CREATING MESMERIZING,
+                                    EYE-CANDIED, AND DOPE-ASS PRODUCTS.
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <TechStack
-                        sx={{
-                            marginTop: "100px",
-                        }}
-                    />
+                        <TechStack
+                            sx={{
+                                marginTop: "100px",
+                            }}
+                        />
 
-                    <WorkExperiences
-                        sx={{
-                            marginTop: "100px",
-                        }}
-                    />
+                        <WorkExperiences
+                            sx={{
+                                marginTop: "100px",
+                            }}
+                        />
 
-                    <AcademicResults
-                        sx={{
-                            marginTop: "100px",
-                        }}
-                    />
+                        <AcademicResults
+                            sx={{
+                                marginTop: "100px",
+                            }}
+                        />
 
-                    <AcademicAchievements
-                        sx={{
-                            marginTop: "100px",
-                        }}
-                    />
+                        <AcademicAchievements
+                            sx={{
+                                marginTop: "100px",
+                            }}
+                        />
+                    </div>
                 </div>
+
             </div>
-        </div>
+            <Contacts />
+        </>
     );
 }
 
