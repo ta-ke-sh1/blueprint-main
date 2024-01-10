@@ -8,6 +8,7 @@ import HelloSvg from "../components/svgs/helloSvg";
 import gsap from "gsap/gsap-core";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
+import { useNavigate } from "react-router-dom";
 
 const text_title_style = {
   fontSize: "12.55vw",
@@ -38,6 +39,8 @@ const iconItems = [
 export default function Homepage(props) {
   const { fetchSavedPallete } = useColorTheme();
   const preloader = usePreloader();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -101,6 +104,12 @@ export default function Homepage(props) {
             {iconItems.map((item, index) => {
               return (
                 <div
+                  onClick={() => {
+                    preloader.tl.reverse();
+                    setTimeout(() => {
+                      navigate("/folio");
+                    }, 1500);
+                  }}
                   className="icon-button"
                   key={"icon-button-" + index}
                   style={{

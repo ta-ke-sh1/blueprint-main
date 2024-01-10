@@ -50,7 +50,15 @@ export default function MarqueTrack(props) {
           zIndex: 100,
         }}
       >
-        <div className="svgs" style={{ position: "relative", left: "-" + baseWidth + "px" }} ref={svgContainer}>
+        <div
+          className="svgs "
+          style={{
+            position: "relative",
+            left: "-" + baseWidth + "px",
+            backgroundColor: "red",
+          }}
+          ref={svgContainer}
+        >
           {[...Array(svgCount)].map((_, index) => {
             return <Svg key={"marque-item-" + index} baseWidth={baseWidth} />;
           })}

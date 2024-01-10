@@ -75,6 +75,7 @@ export function useColorTheme() {
     if (primary) {
       tl.to($(".primary"), {
         ease: "power1",
+        backgroundColor: bg_color,
         color: primary_color,
         duration: duration,
         delay: -duration,
