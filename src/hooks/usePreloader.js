@@ -15,44 +15,12 @@ export function PreloaderWrapper({ children }) {
   const titleText = useRef(null);
   const [isLoaded, updateLoaded] = useState(false);
 
-  const delay = 2;
+  const [tl, setTl] = useState(gsap.timeline())
 
-  const tl = gsap
-    .timeline()
-    .to(preloader.current, {
-      delay: delay,
-      top: "-120vh",
-      duration: 1,
-      ease: "power2",
-    })
-    .to(preloader_2.current, {
-      delay: -0.8,
-      top: "-120vh",
-      duration: 1,
-      ease: "power2",
-    })
-    .to(preloader_3.current, {
-      delay: -0.8,
-      top: "-120vh",
-      duration: 1,
-      ease: "power2",
-    })
-    .to(preloader_4.current, {
-      delay: -0.8,
-      top: "-120vh",
-      duration: 1,
-      ease: "power2",
-    })
-    .to(titleText.current, {
-      delay: -2.2,
-      opacity: 0,
-      duration: 0.4,
-      ease: "power2",
-    });
+  const delay = 2;
 
   useEffect(() => {
     const onPageLoad = () => {
-      console.log("page loaded");
       updateLoaded(true);
       tl.play();
     };
@@ -64,6 +32,41 @@ export function PreloaderWrapper({ children }) {
         window.removeEventListener("load", onPageLoad);
       };
     }
+
+    setTl(gsap
+      .timeline()
+      .to(preloader.current, {
+        delay: delay,
+        top: "-120vh",
+        duration: 1,
+        ease: "power2",
+      })
+      .to(preloader_2.current, {
+        delay: -0.8,
+        top: "-120vh",
+        duration: 1,
+        ease: "power2",
+      })
+      .to(preloader_3.current, {
+        delay: -0.8,
+        top: "-120vh",
+        duration: 1,
+        ease: "power2",
+      })
+      .to(preloader_4.current, {
+        delay: -0.8,
+        top: "-120vh",
+        duration: 1,
+        ease: "power2",
+      })
+      .to(titleText.current, {
+        delay: -2.2,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2",
+      })
+    )
+
   }, [isLoaded]);
 
   let value = useMemo(() => ({ tl, isLoaded }), [tl, isLoaded]);

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { Grid, Box } from "@mui/material";
 import Contacts from "./contacts";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import locomotiveScroll from "locomotive-scroll";
 import { usePreloader } from "../hooks/usePreloader";
 
 export default function AboutMe(props) {
@@ -15,143 +15,143 @@ export default function AboutMe(props) {
       preloader.tl.play();
     }, 1500);
     fetchSavedPallete();
+
+    const scroll = new locomotiveScroll({
+      el: containerRef.current,
+      smooth: true,
+      lerp: 0.05,
+      multiplier: 0.4,
+    });
+
+    return function () {
+      scroll.destroy();
+    }
+
   }, []);
 
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          lerp: 0.05,
-          multiplier: 0.5,
-        }}
-        watch={[]}
-        containerRef={containerRef}
-      >
-        <main data-scroll-container ref={containerRef}>
+      <main data-scroll-container ref={containerRef}>
+        <div
+          style={{
+            ...props.sx,
+            padding: "0 1.5vw",
+          }}
+        >
           <div
             style={{
-              ...props.sx,
-              padding: "0 1.5vw",
+              position: "relative",
+              minHeight: "100vh",
+              display: "flex",
+              width: "100vw",
             }}
           >
             <div
+              className="fixed_target"
+              id="fixed-target"
               style={{
-                position: "relative",
-                minHeight: "100vh",
-                display: "flex",
-                width: "100vw",
+                position: "absolute",
+                left: 0,
+                top: "45vh",
+                right: 0,
+                bottom: "-180vh",
+              }}
+            ></div>
+            <div
+              xs={4}
+              data-scroll-target="#fixed-target"
+              data-scroll-sticky
+              data-scroll
+              data-scroll-speed="0.05"
+              style={{
+                paddingTop: "50vh",
+                width: "31vw",
+                marginRight: "3vw",
               }}
             >
+              <div className="s-120 display-medium">Folio</div>
               <div
-                className="fixed_target"
-                id="fixed-target"
                 style={{
-                  position: "absolute",
-                  left: 0,
-                  top: "45vh",
-                  right: 0,
-                  bottom: "-180vh",
+                  height: "75vh",
+                  width: "100%",
+                  backgroundColor: "#D9D9D9",
                 }}
               ></div>
-              <div
-                xs={4}
-                data-scroll-target="#fixed-target"
-                data-scroll-sticky
-                data-scroll
-                data-scroll-speed="0.05"
+            </div>
+            <div
+              style={{
+                width: "62vw",
+                paddingTop: "50vh",
+              }}
+              xs={8}
+              data-scroll
+              data-scroll-speed="0.3"
+            >
+              <Grid
+                container
+                spacing={4}
                 style={{
-                  paddingTop: "50vh",
-                  width: "31vw",
-                  marginRight: "3vw",
+                  fontSize: "70px",
+                  marginBottom: "70px",
                 }}
               >
-                <div className="s-120 display-medium">Folio</div>
-                <div
-                  style={{
-                    height: "75vh",
-                    width: "100%",
-                    backgroundColor: "#D9D9D9",
-                  }}
-                ></div>
-              </div>
-              <div
-                style={{
-                  width: "62vw",
-                  paddingTop: "50vh",
+                <Grid item xs={9}>
+                  <div className="serif-light-italic">Hello, my name is Trung, a fresh developer based in Hanoi.</div>
+                </Grid>
+              </Grid>
+              <Grid container spacing={4}>
+                <Grid item xs={6}></Grid>
+                <Grid item xs={6}>
+                  <div
+                    className="regular"
+                    style={{
+                      textAlign: "justify",
+                      fontSize: "14px",
+                      letterSpacing: "0px",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    FRESHLY GRADUATED IN 2023, CURRENTLY, I'M WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM AS A VIRTUALIZATION AND SIMULATION-FOCUSED BACK-END DEVELOPER.
+                  </div>
+                  <div
+                    className="regular"
+                    style={{
+                      textAlign: "justify",
+                      fontSize: "14px",
+                      letterSpacing: "0px",
+                    }}
+                  >
+                    YET, I TAKE VISUAL DESIGNING AND FRONT-END DEVELOPMENT AS MY SIDE HOBBY AS EVER SINCE A KID, I HAVE ALWAYS LOVED CREATING MESMERIZING, EYE-CANDIED, AND DOPE-ASS PRODUCTS.
+                  </div>
+                </Grid>
+              </Grid>
+              <TechStack
+                sx={{
+                  marginTop: "100px",
                 }}
-                xs={8}
-                data-scroll
-                data-scroll-speed="0.3"
-              >
-                <Grid
-                  container
-                  spacing={4}
-                  style={{
-                    fontSize: "70px",
-                    marginBottom: "70px",
-                  }}
-                >
-                  <Grid item xs={9}>
-                    <div className="serif-light-italic">Hello, my name is Trung, a fresh developer based in Hanoi.</div>
-                  </Grid>
-                </Grid>
-                <Grid container spacing={4}>
-                  <Grid item xs={6}></Grid>
-                  <Grid item xs={6}>
-                    <div
-                      className="regular"
-                      style={{
-                        textAlign: "justify",
-                        fontSize: "14px",
-                        letterSpacing: "0px",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      FRESHLY GRADUATED IN 2023, CURRENTLY, I'M WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM AS A VIRTUALIZATION AND SIMULATION-FOCUSED BACK-END DEVELOPER.
-                    </div>
-                    <div
-                      className="regular"
-                      style={{
-                        textAlign: "justify",
-                        fontSize: "14px",
-                        letterSpacing: "0px",
-                      }}
-                    >
-                      YET, I TAKE VISUAL DESIGNING AND FRONT-END DEVELOPMENT AS MY SIDE HOBBY AS EVER SINCE A KID, I HAVE ALWAYS LOVED CREATING MESMERIZING, EYE-CANDIED, AND DOPE-ASS PRODUCTS.
-                    </div>
-                  </Grid>
-                </Grid>
+              />
+              <WorkExperiences
+                sx={{
+                  marginTop: "100px",
+                }}
+              />
 
-                <TechStack
-                  sx={{
-                    marginTop: "100px",
-                  }}
-                />
+              <AcademicResults
+                sx={{
+                  marginTop: "100px",
+                }}
+              />
 
-                <WorkExperiences
-                  sx={{
-                    marginTop: "100px",
-                  }}
-                />
-
-                <AcademicResults
-                  sx={{
-                    marginTop: "100px",
-                  }}
-                />
-
-                <AcademicAchievements
-                  sx={{
-                    marginTop: "100px",
-                  }}
-                />
-              </div>
+              <AcademicAchievements
+                sx={{
+                  marginTop: "100px",
+                }}
+              />
             </div>
           </div>
-          <Contacts />
-        </main>
-      </LocomotiveScrollProvider>
+        </div>
+        <Contacts />
+      </main>
     </>
   );
 }
@@ -202,10 +202,10 @@ function WorkExperiences(props) {
   return (
     <div
       style={{
-        ...props.sx,
+        ...props.sx
       }}
     >
-      <div item xs={12} className="s-40 display-medium">
+      <div xs={12} className="s-40 display-medium">
         Work <br />
         Experiences
       </div>
@@ -258,7 +258,7 @@ function WorkExperiences(props) {
           >
             <span className="medium">Intern</span>
             <br />
-            Work as an intern for my final defense thesis. Created a mobile application in Flutter to utilize deep learning model to predict and categorize human movements types using sensorsâ€? readings of built-in sensors such as Accelerometer and Gyroscope.
+            Work as an intern for my final defense thesis. Created a mobile application in Flutter to utilize deep learning model to predict and categorize human movements types using sensorsï¿½? readings of built-in sensors such as Accelerometer and Gyroscope.
           </p>
           <p
             className="regular"
