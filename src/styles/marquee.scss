@@ -2,6 +2,12 @@
   width: fit-content;
   position: absolute;
   top: -50%;
+
+  path {
+    mix-blend-mode: difference;
+  }
+
+  z-index: 5;
 }
 
 .marquee-wrapper {

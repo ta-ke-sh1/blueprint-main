@@ -1,52 +1,51 @@
 .preloader {
-    position: fixed;
-    left: 0;
-    top: 0%;
+  position: fixed;
+  left: 0;
+  top: 0%;
 
-    color: white;
-    width: 100%;
-    height: 105vh
+  color: white;
+  width: 100%;
+  height: 120vh;
 }
 
 #first-slide {
-    background-color: #ebebeb;
-    z-index: 1000;
-    position: fixed;
+  background-color: #ebebeb;
+  z-index: 1000;
+  position: fixed;
 }
 
 #second-slide {
-    background-color: #0075FF;
-    z-index: 999;
-    position: fixed;
+  background-color: #0075ff;
+  z-index: 999;
+  position: fixed;
 }
 
-
 #third-slide {
-    background-color: #F12C2C;
-    z-index: 998;
-    position: fixed;
+  background-color: #f12c2c;
+  z-index: 998;
+  position: fixed;
 }
 
 #fourth-slide {
-    background-color: #FFCF66;
-    z-index: 997;
-    position: fixed;
+  background-color: #ffcf66;
+  z-index: 997;
+  position: fixed;
 }
 
 .text-loading {
-    position: absolute;
+  position: absolute;
 
-    font-size: 2.5rem;
-    z-index: 1001;
-    color: white;
+  font-size: 2.5rem;
+  z-index: 1001;
+  color: white;
 }
 
 .text-title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    z-index: 1001;
-    color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  z-index: 1001;
+  color: black;
 }
