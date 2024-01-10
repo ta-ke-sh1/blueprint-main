@@ -77,6 +77,7 @@ export function PreloaderWrapper({ children }) {
         style={{
           opacity: 1,
         }}
+        scroll="no"
       >
         <div className="preloader" id="first-slide" ref={preloader}></div>
         <div className="preloader" id="second-slide" ref={preloader_2}></div>

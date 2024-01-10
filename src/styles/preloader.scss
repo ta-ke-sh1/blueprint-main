@@ -1,7 +1,9 @@
 .preloader {
   position: fixed;
   left: 0;
-  top: 0%;
+  top: 0;
+
+  overflow-y: hidden;
 
   color: white;
   width: 100%;
@@ -18,22 +20,31 @@
   background-color: #0075ff;
   z-index: 999;
   position: fixed;
+
+  left: 0;
+  top: 0;
 }
 
 #third-slide {
   background-color: #f12c2c;
   z-index: 998;
   position: fixed;
+
+  left: 0;
+  top: 0;
 }
 
 #fourth-slide {
   background-color: #ffcf66;
   z-index: 997;
   position: fixed;
+
+  left: 0;
+  top: 0;
 }
 
 .text-loading {
-  position: absolute;
+  position: fixed;
 
   font-size: 2.5rem;
   z-index: 1001;
@@ -41,7 +52,7 @@
 }
 
 .text-title {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
