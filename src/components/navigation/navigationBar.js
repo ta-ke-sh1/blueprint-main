@@ -12,7 +12,7 @@ import { useColorTheme } from "../../hooks/useColorTheme";
 import MarqueTrack from "../marquee/marquee";
 
 export default function NavigationBar() {
-    const { isShowing, toggle } = useToggle();
+    const { toggle } = useToggle();
     const { changeColor } = useColorTheme();
 
     const navigate = useNavigate();
@@ -34,45 +34,47 @@ export default function NavigationBar() {
 
     const openNav = () => {
         gsap.to(navMenu.current, {
-            y: "0%",
+            y: 0,
+            x: 0,
             duration: 0,
             opacity: 1,
             ease: ease,
         });
 
         gsap.to(navBg.current, {
-            opacity: 0.7,
-            duration: 0.7,
+            opacity: 0.3,
+            duration: 0.4,
             ease: ease,
         });
 
         gsap.to(navContent.current, {
-            delay: 0.2,
-            y: "0%",
-            duration: 1,
+            delay: 0.3,
+            y: 0,
+            x: 0,
+            duration: 0.4,
             ease: ease,
         });
     };
 
     const closeNav = () => {
         gsap.to(navMenu.current, {
-            y: "-100%",
+            x: "100%",
             duration: 0,
             opacity: 0,
-            delay: 1,
+            delay: 0.4,
             ease: ease,
         });
 
         gsap.to(navBg.current, {
             opacity: 0,
-            duration: 1,
+            duration: 0.4,
             ease: ease,
         });
 
         gsap.to(navContent.current, {
-            y: "-100%",
+            x: "100%",
             delay: 0.1,
-            duration: 0.9,
+            duration: 0.4,
             ease: ease,
         });
     };
@@ -97,6 +99,7 @@ export default function NavigationBar() {
             // open
             openNav();
         }
+
         setOpen(!isOpen);
     };
 
@@ -111,9 +114,7 @@ export default function NavigationBar() {
                                     style={{ textDecoration: "none" }}
                                     onClick={() => handlePageChange()}
                                     className="nav-link">
-                                    <div
-                                        className="nav-item med nav-btn regular"
-                                        style={{ zIndex: 10 }}>
+                                    <div className="nav-item med nav-btn regular logo">
                                         + Space .01
                                     </div>
                                 </Link>
@@ -139,8 +140,7 @@ export default function NavigationBar() {
                             </div>
                             <div
                                 className="nav-background"
-                                ref={navBg}
-                                onClick={() => toggleOpen()}></div>
+                                ref={navBg}></div>
                         </div>
                         <BurgerToggle
                             onClick={toggle}
@@ -148,7 +148,7 @@ export default function NavigationBar() {
                         />
                     </m.div>
                 </div>
-            </m.nav>
+            </m.nav >
         </>
     );
 }

@@ -21,23 +21,27 @@ const iconItems = [
   {
     title: "+ Folio",
     icon: <FaceSVG />,
+    path: "/folio"
   },
   {
     title: "+ Projects",
     icon: <ProjectsSvg />,
+    path: "/projects"
   },
   {
     title: "+ Playground",
     icon: <SmileSvg />,
+    path: "/playground"
   },
   {
     title: "+ Contact ",
     icon: <HelloSvg />,
+    path: "/contact"
   },
 ];
 
 export default function Homepage(props) {
-  const { fetchSavedPallete } = useColorTheme();
+  const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
 
   const navigate = useNavigate();
@@ -47,7 +51,7 @@ export default function Homepage(props) {
       preloader.tl.play();
     }, 1500);
 
-    fetchSavedPallete();
+    fetchSavedPalette();
     iconItems.forEach((_, index) => {
       const i = document.getElementById("icon-button-" + index);
       gsap.to(i, {
@@ -107,7 +111,7 @@ export default function Homepage(props) {
                   onClick={() => {
                     preloader.tl.reverse();
                     setTimeout(() => {
-                      navigate("/folio");
+                      navigate(item.path);
                     }, 1500);
                   }}
                   className="icon-button"

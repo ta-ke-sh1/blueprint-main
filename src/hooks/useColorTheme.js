@@ -47,7 +47,7 @@ export function useColorTheme() {
     setCurrent(next);
   }
 
-  function fetchSavedPallete() {
+  function fetchSavedPalette() {
     const savedPallete = parseInt(localStorage.getItem("theme")) || 0;
     console.log(savedPallete);
 
@@ -126,6 +126,6 @@ export function useColorTheme() {
 
   return {
     changeColor,
-    fetchSavedPallete,
+    fetchSavedPalette,
   };
 }
