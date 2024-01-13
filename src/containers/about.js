@@ -1,37 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { Grid, Box } from "@mui/material";
 import Contacts from "./contacts";
-import locomotiveScroll from "locomotive-scroll";
 import { usePreloader } from "../hooks/usePreloader";
+import ScrollWrapper from "../hooks/useSmoothScroll";
 
 export default function AboutMe(props) {
-  const { fetchSavedPallete } = useColorTheme();
-  const containerRef = useRef(null);
+  const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
 
   useEffect(() => {
     setTimeout(() => {
       preloader.tl.play();
     }, 1500);
-    fetchSavedPallete();
-
-    const scroll = new locomotiveScroll({
-      el: containerRef.current,
-      smooth: true,
-      lerp: 0.05,
-      multiplier: 0.4,
-    });
-
-    return function () {
-      scroll.destroy();
-    }
-
+    fetchSavedPalette();
   }, []);
 
   return (
     <>
-      <main data-scroll-container ref={containerRef}>
+      <ScrollWrapper>
         <div
           style={{
             ...props.sx,
@@ -151,7 +138,7 @@ export default function AboutMe(props) {
           </div>
         </div>
         <Contacts />
-      </main>
+      </ScrollWrapper>
     </>
   );
 }
