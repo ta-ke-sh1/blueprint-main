@@ -5,7 +5,6 @@ import FaceSVG from "../components/svgs/faceSvg";
 import ProjectsSvg from "../components/svgs/projectsSvg";
 import SmileSvg from "../components/svgs/smileySvg";
 import HelloSvg from "../components/svgs/helloSvg";
-import gsap from "gsap/gsap-core";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
 import { useNavigate } from "react-router-dom";
@@ -20,27 +19,23 @@ const text_title_style = {
 const iconItems = [
   {
     title: "+ Folio",
-    icon: <FaceSVG />,
-    path: "/folio"
+    path: "/folio",
   },
   {
     title: "+ Projects",
-    icon: <ProjectsSvg />,
-    path: "/projects"
+    path: "/projects",
   },
   {
     title: "+ Playground",
-    icon: <SmileSvg />,
-    path: "/playground"
+    path: "/playground",
   },
   {
     title: "+ Contact ",
-    icon: <HelloSvg />,
-    path: "/contact"
+    path: "/contact",
   },
 ];
 
-export default function Homepage(props) {
+export default function Homepage() {
   const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
 
@@ -52,40 +47,11 @@ export default function Homepage(props) {
     }, 1500);
 
     fetchSavedPalette();
-    iconItems.forEach((_, index) => {
-      const i = document.getElementById("icon-button-" + index);
-      gsap.to(i, {
-        opacity: 0,
-        duration: 0,
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      });
-    });
   }, []);
 
-  function onMouseEnterNavItem(index) {
-    const item = document.getElementById("icon-button-" + index);
+  function onMouseEnterNavItem(index) { }
 
-    gsap.to(item, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "power1",
-      rotate: 4,
-      scale: 1.05,
-    });
-  }
-
-  function onMouseLeaveNavItem(index) {
-    const item = document.getElementById("icon-button-" + index);
-    gsap.to(item, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power1",
-      rotate: 0,
-      scale: 1,
-    });
-  }
+  function onMouseLeaveNavItem(index) { }
 
   return (
     <div
@@ -125,15 +91,25 @@ export default function Homepage(props) {
                       {item.title}
                     </Chip>
                   </div>
-                  <div id={"icon-button-" + index} className="icon-svg">
-                    {item.icon}
-                  </div>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
+
+      <div
+        className="poster-image absolute-container"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "400px",
+          height: "600px",
+          backgroundColor: "crimson",
+          zIndex: -1,
+        }}
+      ></div>
       <div
         className="absolute-container"
         style={{
@@ -165,7 +141,7 @@ export default function Homepage(props) {
         style={{
           maxWidth: "100vw",
           width: "100vw",
-          bottom: "2.5vw",
+          bottom: "45px",
         }}
       >
         <Box
@@ -181,29 +157,36 @@ export default function Homepage(props) {
           }}
         >
           <Grid container spacing={4}>
-            <Grid item md={4} xs={12}>
+            <Grid item md={3} xs={12}>
               <Typography>
-                <span className="semi-bold">Writing spaghetti code.</span>
+                <span className="regular s-12">Writing spaghetti code.</span>
               </Typography>
               <Typography>
-                <span className="semi-bold">Currently playing Baldur's Gate 3.</span>
-              </Typography>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Typography>
-                {" "}
-                <span className="semi-bold">Currently based in Hanoi.</span>
-              </Typography>
-              <Typography>
-                {" "}
-                <span className="semi-bold">12:44 PM - GMT+7</span>
+                <span className="regular s-12">Currently playing Baldur's Gate 3.</span>
               </Typography>
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={3} xs={12}>
+              <Typography>
+                <span className="regular s-12">Currently based in Hanoi.</span>
+              </Typography>
+              <Typography>
+                {" "}
+                <span className="regular s-12">12:44 PM - GMT+7</span>
+              </Typography>
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <Typography>
+                <span className="regular s-12">Revision</span>
+              </Typography>
+              <Typography>
+                <span className="regular s-12">Jan 2024</span>
+              </Typography>
+            </Grid>
+            <Grid item md={3} xs={12}>
               <Box display="flex" justifyContent="flex-end">
                 <Typography>
                   <br />
-                  <span className="semi-bold">©2024</span>
+                  <span className="regular s-12">©2024</span>
                 </Typography>
               </Box>
             </Grid>

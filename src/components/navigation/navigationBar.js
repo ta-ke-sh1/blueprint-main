@@ -114,7 +114,7 @@ export default function NavigationBar() {
                                     style={{ textDecoration: "none" }}
                                     onClick={() => handlePageChange()}
                                     className="nav-link">
-                                    <div className="nav-item med nav-btn regular logo">
+                                    <div className="nav-item med nav-btn regular logo s-12">
                                         + Space .01
                                     </div>
                                 </Link>
