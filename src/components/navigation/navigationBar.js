@@ -3,17 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { BurgerToggle } from "./burger";
 import { useDimensions } from "../../hooks/useDimensions";
-import { Grid, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
 import NavigationContent from "./navContent";
-import { useColorTheme } from "../../hooks/useColorTheme";
 import MarqueTrack from "../marquee/marquee";
 
 export default function NavigationBar() {
     const { toggle } = useToggle();
-    const { changeColor } = useColorTheme();
 
     const navigate = useNavigate();
     const preloader = usePreloader();
@@ -105,7 +103,11 @@ export default function NavigationBar() {
 
     return (
         <>
-            <m.nav className="custom-nav" initial={false} custom={height}>
+            <m.nav
+                className="custom-nav"
+                initial={false}
+                custom={height}
+                style={{ marginTop: "10px" }}>
                 <div ref={containerRef}>
                     <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
                         <Grid container columns={12}>
@@ -119,18 +121,9 @@ export default function NavigationBar() {
                                     </div>
                                 </Link>
                             </Grid>
-
+                            <Grid item xs={12} sm={2}></Grid>
                             <Grid item xs={12} sm={4}>
                                 <MarqueTrack />
-                            </Grid>
-                            <Grid item xs={12} sm={2}></Grid>
-                            <Grid item xs={12} sm={2}>
-                                <div
-                                    className="nav-item med nav-btn regular"
-                                    onClick={changeColor}
-                                    style={{ zIndex: 10 }}>
-                                    + Shift
-                                </div>
                             </Grid>
                         </Grid>
 
@@ -138,9 +131,7 @@ export default function NavigationBar() {
                             <div className="nav-content" ref={navContent}>
                                 <NavigationContent />
                             </div>
-                            <div
-                                className="nav-background"
-                                ref={navBg}></div>
+                            <div className="nav-background" ref={navBg}></div>
                         </div>
                         <BurgerToggle
                             onClick={toggle}
@@ -148,7 +139,7 @@ export default function NavigationBar() {
                         />
                     </m.div>
                 </div>
-            </m.nav >
+            </m.nav>
         </>
     );
 }
