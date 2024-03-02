@@ -2,9 +2,15 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 75px;
   z-index: 100;
   padding-bottom: 30px;
+
+  .nav-link {
+    position: absolute;
+    line-height: 6.5rem;
+    left: 1.5vw;
+    top: 20px;
+  }
 }
 
 .burger-btn {
@@ -13,8 +19,8 @@
   user-select: none;
   cursor: pointer;
   position: absolute;
-  top: 1.5rem;
-  right: 15px;
+  top: 20px;
+  right: 0.5vw;
   width: 50px;
   border-radius: 50%;
   background: transparent;
@@ -128,7 +134,5 @@
     height: 100%;
     padding: 0px 2vw;
     padding-bottom: 10px;
-
-
   }
 }

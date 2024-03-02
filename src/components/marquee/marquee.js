@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 export default function MarqueTrack(props) {
@@ -6,9 +6,17 @@ export default function MarqueTrack(props) {
   const svgCount = props.count ?? 10;
   const svgContainer = useRef(null);
 
-  useEffect(() => {
-    marqueeInit();
-  });
+  const marqueeRef = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      marqueeInit();
+    }, marqueeRef);
+
+    return function () {
+      ctx.revert();
+    };
+  }, []);
 
   const marqueeInit = () => {
     gsap.set(svgContainer.current.children, {
@@ -28,21 +36,18 @@ export default function MarqueTrack(props) {
 
   return (
     <div
+      ref={marqueeRef}
       className="marquee-wrapper"
       style={{
-        height: "40px",
+        width: "100%",
+        ...props.sx,
         borderLeft: "1px solid black",
         borderRight: "1px solid black",
-        top: "50%",
-        transform: "translateY(-50%)",
-        position: "absolute",
-        maxWidth: "inherit",
       }}
     >
       <div
         className="marque-track"
         style={{
-          ...props.style,
           height: "40px",
           overflow: "hidden",
           width: `${baseWidth * svgCount}px`,

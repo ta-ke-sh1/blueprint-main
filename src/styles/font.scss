@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "Medium";
-  src: url("./fonts/Inter-Medium.ttf");
+  src: url("./fonts/IBMPlexMono-Medium.ttf");
 }
 
 @font-face {
@@ -19,18 +19,12 @@
 }
 
 @font-face {
-  font-family: "Display-Roman";
-  src: url("./fonts/HaasGrotDisp55Roman.otf");
+  font-family: "Condensed";
+  src: url("./fonts/Koulen-Regular.ttf");
 }
 
-@font-face {
-  font-family: "Display-Medium";
-  src: url("./fonts/HaasGrotDisp65Medium.otf");
-}
-
-@font-face {
-  font-family: "Serif-Light-Italic";
-  src: url("./fonts/Newsreader_60pt-LightItalic.ttf");
+.condensed {
+  font-family: "Condensed";
 }
 
 .regular {
@@ -61,6 +55,10 @@
   font-family: "Serif-Light-Italic";
 }
 
+.s-12 {
+  font-size: 12px;
+}
+
 .s-16 {
   font-size: 16px;
 }
@@ -77,6 +75,10 @@
   font-size: 48px;
 }
 
+.s-64 {
+  font-size: 64px;
+}
+
 .s-72 {
   font-size: 72px;
   line-height: 60px;
@@ -88,4 +90,8 @@
 
 .s-120 {
   font-size: 120px;
+}
+
+.s-128 {
+  font-size: 7rem;
 }
