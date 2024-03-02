@@ -20,6 +20,10 @@ export default function Homepage() {
     }, 1500);
 
     fetchSavedPalette();
+
+    return function cleanUp() {
+
+    }
   }, []);
 
   function onMouseEnterNavItem(index) { }
@@ -35,6 +39,16 @@ export default function Homepage() {
         overflowY: "hidden",
       }}
     >
+      <div className="video-container" style={{
+        height: '100%',
+        width: '100%',
+        zIndex: 1
+      }}>
+        <video controls width="100%" autoPlay muted loop >
+          <source src={"/bgVideo.mp4"} type="video/mp4" />
+          Sorry, your browser doesn't support videos.
+        </video>
+      </div>
       <div
         className="absolute-container"
         style={{
@@ -46,17 +60,17 @@ export default function Homepage() {
         <Grid container spacing={0}>
           <Grid item sm={12} md={6} sx={{ userSelect: "none", marginBottom: "20px" }}>
             <Typography sx={{ lineHeight: "56px" }}>
-              <div className="condensed s-64">
+              <div className="condensed white s-64">
                 Software
                 <br />
                 Developer
               </div>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium s-12">Works mainly as a back-end dev</span>
+              <span className="medium white s-12">Works mainly as a back-end dev</span>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium s-12">but I enjoy doing cool shits</span>
+              <span className="medium white s-12">but I enjoy doing cool shits</span>
             </Typography>
           </Grid>
           <Grid item sm={12} md={6} sx={{ marginBottom: "20px" }}>
@@ -66,6 +80,7 @@ export default function Homepage() {
           </Grid>
         </Grid>
       </div>
+
     </div>
   );
 }

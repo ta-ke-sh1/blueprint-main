@@ -106,7 +106,7 @@ export default function NavigationBar() {
     <>
       <m.nav className="custom-nav" initial={false} custom={height}>
         <Link style={{ textDecoration: "none" }} onClick={() => handlePageChange()} className="nav-link">
-          <div className="condensed s-128">HA TRUNG</div>
+          <div className="condensed s-128 white">HA TRUNG</div>
         </Link>
         <div ref={containerRef}>
           <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
