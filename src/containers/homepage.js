@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import MarqueTrack from "../components/marquee/marquee";
 
 
-export default function Homepage(props) {
+export default function Homepage() {
   const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
 
@@ -20,40 +20,11 @@ export default function Homepage(props) {
     }, 1500);
 
     fetchSavedPalette();
-    iconItems.forEach((_, index) => {
-      const i = document.getElementById("icon-button-" + index);
-      gsap.to(i, {
-        opacity: 0,
-        duration: 0,
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      });
-    });
   }, []);
 
-  function onMouseEnterNavItem(index) {
-    const item = document.getElementById("icon-button-" + index);
+  function onMouseEnterNavItem(index) { }
 
-    gsap.to(item, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "power1",
-      rotate: 4,
-      scale: 1.05,
-    });
-  }
-
-  function onMouseLeaveNavItem(index) {
-    const item = document.getElementById("icon-button-" + index);
-    gsap.to(item, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power1",
-      rotate: 0,
-      scale: 1,
-    });
-  }
+  function onMouseLeaveNavItem(index) { }
 
   return (
     <div

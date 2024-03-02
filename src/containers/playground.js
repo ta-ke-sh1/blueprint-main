@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, IconButton } from "@mui/material";
 
-import ViewListIcon from '@mui/icons-material/ViewList';
-import GridViewIcon from '@mui/icons-material/GridView';
+import ViewListIcon from "@mui/icons-material/ViewList";
+import GridViewIcon from "@mui/icons-material/GridView";
 import Contacts from "./contacts";
 import ScrollWrapper from "../hooks/useSmoothScroll";
 import { ProjectCardGrid, ProjectCardList } from "../components/cards/cards";
@@ -65,7 +65,7 @@ export default function Playground() {
       preloader.tl.play();
     }, 1500);
     fetchSavedPalette();
-  }, [])
+  }, []);
 
   const [isGridView, setIsGridView] = useState(true);
 
@@ -80,28 +80,21 @@ export default function Playground() {
   return (
     <>
       <ScrollWrapper>
-        <div className="playground-container" data-scroll style={{
-          paddingBottom: '30px'
-        }}>
+        <div className="playground-container" data-scroll>
           <div
             className="mt-30 mb-20"
             style={{
-              width: '100%',
-              textAlign: 'center',
+              width: "100%",
+              textAlign: "center",
             }}
           >
-            <div className="serif-light-italic s-72 mb-20">
-              Playground
-            </div>
+            <div className="serif-light-italic s-72 mb-20">Playground</div>
             <div className="regular s-16 mb-10">
               This is where I try to replicate dope effects from around the internet.
               <br /> All the implementations are made in React.js
             </div>
 
-            <IconButton
-              variant=""
-              onClick={handleChangeView}
-            >
+            <IconButton variant="" onClick={handleChangeView}>
               {isGridView ? <GridViewIcon /> : <ViewListIcon />}
             </IconButton>
           </div>
@@ -109,15 +102,17 @@ export default function Playground() {
           <Grid container spacing={isGridView ? 4 : 1}>
             {playground.map((project, index) => {
               project.index = index + 1;
-              return isGridView
-                ? <ProjectCardGrid handleNavigate={handleNavigate} index={index} project={project} />
-                : <ProjectCardList handleNavigate={handleNavigate} index={index} project={project} />;
+              return isGridView ? <ProjectCardGrid handleNavigate={handleNavigate} index={index} project={project} /> : <ProjectCardList handleNavigate={handleNavigate} index={index} project={project} />;
             })}
           </Grid>
-
-          <Contacts />
-          <br /><br />
         </div>
+
+        <Contacts />
+        <div
+          style={{
+            height: "80px",
+          }}
+        ></div>
       </ScrollWrapper>
     </>
   );

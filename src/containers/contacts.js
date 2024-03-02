@@ -3,14 +3,12 @@ import { Grid } from "@mui/material";
 import HelloSvg from "../components/svgs/helloSvg";
 import { Box } from "@mui/system";
 
-
 const text_title_style = {
   fontSize: "12.55vw",
   fontFamily: "SemiBold",
   margin: "0 1.5vw",
   color: "#F4F4F4",
 };
-
 
 export default function Contacts() {
   const [formData, setFormData] = useState({
@@ -31,23 +29,35 @@ export default function Contacts() {
   }
 
   return (
-    <div className="contact-container" style={{
-      height: '100vh',
-      position: 'relative',
-      width: "100vw"
-    }}>
+    <div
+      className="contact-container"
+      style={{
+        height: "100vh",
+        position: "relative",
+        width: "100vw",
+      }}
+    >
       <div className="absolute-container center-position">
-        <div style={{
-          justifyContent: 'center',
-          textAlign: 'center'
-        }}>
-          <HelloSvg sx={{
-            transform: 'rotate(5deg)',
-            marginBottom: "30px"
-          }} />
-          <div className="serif-light-italic s-100" style={{
-            marginBottom: "20px"
-          }}>Say Hi!</div>
+        <div
+          style={{
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <HelloSvg
+            sx={{
+              transform: "rotate(5deg)",
+              marginBottom: "30px",
+            }}
+          />
+          <div
+            className="serif-light-italic s-100"
+            style={{
+              marginBottom: "20px",
+            }}
+          >
+            Say Hi!
+          </div>
           <div className="semi-bold s-16">contact@trungha.com</div>
         </div>
       </div>
@@ -57,7 +67,7 @@ export default function Contacts() {
           maxWidth: "100vw",
           width: "100%",
           bottom: "2vw",
-          padding: "0 2vw"
+          padding: "0 2vw",
         }}
       >
         <Grid container spacing={4}>
@@ -66,17 +76,13 @@ export default function Contacts() {
           </Grid>
           <Grid item xs={2}>
             <div className="regular">Instagram</div>
-
           </Grid>
           <Grid item xs={2}>
             <div className="regular">GitHub</div>
-
           </Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <Box display="flex" justifyContent="flex-end">
               <div className="regular">From Hanoi, Vietnam with love.</div>
-
             </Box>
           </Grid>
         </Grid>
