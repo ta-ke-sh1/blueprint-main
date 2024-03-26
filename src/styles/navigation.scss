@@ -4,14 +4,8 @@
   width: 100%;
   z-index: 100;
   padding-bottom: 30px;
-
-  .nav-link {
-    position: absolute;
-    line-height: 6.5rem;
-    left: 1.5vw;
-    top: 20px;
-  }
 }
+
 
 .burger-btn {
   outline: none;
@@ -24,11 +18,14 @@
   width: 50px;
   border-radius: 50%;
   background: transparent;
-  z-index: 1000000000;
+  z-index: 1000;
 }
 
-.logo {
-  z-index: 1000000000;
+#logo {
+  position: fixed;
+  line-height: 6.5rem;
+  left: 1.5vw;
+  top: 20px;
 }
 
 .nav-item {

@@ -7,6 +7,7 @@ import {
     createContext,
     useMemo,
 } from "react";
+import Animations, { Direction } from "../animations/animations";
 
 const Preloader = createContext();
 
@@ -16,52 +17,31 @@ export function usePreloader() {
 
 export function PreloaderWrapper({ children }) {
     const container = useRef(null);
+    const logoRef = useRef(null)
 
-    const preloader = useRef(null);
     const preloader_2 = useRef(null);
-    const preloader_3 = useRef(null);
-    const preloader_4 = useRef(null);
-    const titleText = useRef(null);
     const [isLoaded, updateLoaded] = useState(false);
 
     const [tl, setTl] = useState(gsap.timeline());
 
-    const delay = 2;
+    const delay = 2.4;
 
     useLayoutEffect(() => {
         const tl = gsap.timeline();
 
+        Animations.appearAnimation(Direction.Up, logoRef.current, 1.2, 0.55, "power4")
+
+        setTimeout(() => {
+            Animations.exitAnimation(Direction.Down, logoRef.current, 2.2, 0, "power4")
+        }, 1500)
+
         const ctx = gsap.context(() => {
-            tl.to(preloader.current, {
+            tl.to(preloader_2.current, {
                 delay: delay,
-                top: "-120vh",
-                duration: 1,
-                ease: "power2",
+                y: "-100%",
+                duration: 1.5,
+                ease: "sine",
             })
-                .to(preloader_2.current, {
-                    delay: -0.8,
-                    top: "-120vh",
-                    duration: 1,
-                    ease: "power2",
-                })
-                .to(preloader_3.current, {
-                    delay: -0.8,
-                    top: "-120vh",
-                    duration: 1,
-                    ease: "power2",
-                })
-                .to(preloader_4.current, {
-                    delay: -0.8,
-                    top: "-120vh",
-                    duration: 1,
-                    ease: "power2",
-                })
-                .to(titleText.current, {
-                    delay: -2.2,
-                    opacity: 0,
-                    duration: 0.4,
-                    ease: "power2",
-                });
         }, container);
 
         const onPageLoad = () => {
@@ -90,28 +70,18 @@ export function PreloaderWrapper({ children }) {
     return (
         <Preloader.Provider value={value}>
             <div
-                style={{
-                    opacity: 1,
-                }}
-                scroll="no">
-                <div
-                    className="preloader"
-                    id="first-slide"
-                    ref={preloader}></div>
-                <div
-                    className="preloader"
-                    id="second-slide"
-                    ref={preloader_2}></div>
-                <div
-                    className="preloader"
-                    id="third-slide"
-                    ref={preloader_3}></div>
-                <div
-                    className="preloader"
-                    id="fourth-slide"
-                    ref={preloader_4}></div>
-                <div ref={titleText} className="text-title medium">
-                    + Space. <span className="reg">01</span>
+                className="preloader"
+                id="second-slide"
+                ref={preloader_2}>
+                <div className="wrapper-hidden preloader-logo-container">
+                    <div className="preloader-logo" ref={logoRef}>
+                        <div className="s-128" style={{
+                            fontFamily: "condensed",
+                            lineHeight: '95px'
+                        }}>
+                            HA TRUNG
+                        </div>
+                    </div>
                 </div>
             </div>
             {children}

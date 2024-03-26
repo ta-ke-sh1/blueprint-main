@@ -9,6 +9,7 @@ import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
 import NavigationContent from "./navContent";
 import { useColorTheme } from "../../hooks/useColorTheme";
+import Animations, { Direction } from "../../animations/animations";
 
 export default function NavigationBar() {
   const { toggle } = useToggle();
@@ -18,7 +19,7 @@ export default function NavigationBar() {
   const preloader = usePreloader();
 
   const containerRef = useRef(null);
-
+  const logoRef = useRef(null);
   const burgerRef = useRef(null);
   const { height } = useDimensions(containerRef);
   const [isOpen, setOpen] = useState(false);
@@ -29,6 +30,11 @@ export default function NavigationBar() {
 
   useEffect(() => {
     closeNav();
+    let elements = document.querySelectorAll(".logo-container");
+    elements.forEach((element) => {
+      Animations.appearAnimation(Direction.Down, element, 1.5, 3.75, "power4")
+    })
+
   }, []);
 
   const openNav = () => {
@@ -104,10 +110,26 @@ export default function NavigationBar() {
 
   return (
     <>
+      <div style={{
+        zIndex: 1000,
+        width: '100vw',
+        height: '100vh',
+        position: 'relative'
+      }}>
+        <div id="logo">
+
+          <Link onClick={handlePageChange} style={{ textDecoration: "none", position: 'relative' }} className="nav-link" >
+            <div className="wrapper-hidden">
+              <div className="condensed s-128 logo-container" ref={logoRef}>
+                <div>
+                  HA TRUNG
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
       <m.nav className="custom-nav" initial={false} custom={height}>
-        <Link style={{ textDecoration: "none" }} onClick={() => handlePageChange()} className="nav-link">
-          <div className="condensed s-128 white">HA TRUNG</div>
-        </Link>
         <div ref={containerRef}>
           <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
             <div className={"nav-menu"} ref={navMenu}>

@@ -1,18 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import Chip from "../components/chip";
-import gsap from "gsap/gsap-core";
+import gsap from "gsap"
 import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
-import { useNavigate } from "react-router-dom";
 import MarqueTrack from "../components/marquee/marquee";
+import Animations, { Direction } from "../animations/animations";
 
 
 export default function Homepage() {
   const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,14 +19,12 @@ export default function Homepage() {
 
     fetchSavedPalette();
 
-    return function cleanUp() {
-
-    }
+    let elements = document.querySelectorAll(".item-container");
+    elements.forEach((element) => {
+      Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4")
+    })
   }, []);
 
-  function onMouseEnterNavItem(index) { }
-
-  function onMouseLeaveNavItem(index) { }
 
   return (
     <div
@@ -39,19 +35,10 @@ export default function Homepage() {
         overflowY: "hidden",
       }}
     >
-      <div className="video-container" style={{
-        height: '100%',
-        width: '100%',
-        zIndex: 1
-      }}>
-        <video controls width="100%" autoPlay muted loop >
-          <source src={"/bgVideo.mp4"} type="video/mp4" />
-          Sorry, your browser doesn't support videos.
-        </video>
-      </div>
       <div
         className="absolute-container"
         style={{
+          position: 'fixed',
           bottom: 0,
           width: "100vw",
           padding: "0 1.5vw",
@@ -60,27 +47,35 @@ export default function Homepage() {
         <Grid container spacing={0}>
           <Grid item sm={12} md={6} sx={{ userSelect: "none", marginBottom: "20px" }}>
             <Typography sx={{ lineHeight: "56px" }}>
-              <div className="condensed white s-64">
-                Software
-                <br />
-                Developer
+              <div className="wrapper-hidden">
+                <div className="condensed primary-text s-64 item-container">
+                  Software
+                </div>
+              </div>
+              <div className="wrapper-hidden">
+                <div className="condensed primary-text s-64 item-container">
+                  Developer
+                </div>
               </div>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium white s-12">Works mainly as a back-end dev</span>
+              <span className="medium primary-text s-12">Works mainly as a back-end dev</span>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium white s-12">but I enjoy doing cool shits</span>
+              <span className="medium primary-text s-12">but I enjoy doing cool shits</span>
             </Typography>
           </Grid>
           <Grid item sm={12} md={6} sx={{ marginBottom: "20px" }}>
             <Box sx={{ display: "flex", justifyContent: "center", height: "100%", alignItems: "flex-end" }}>
-              <MarqueTrack />
+              <div className="wrapper-hidden">
+                <div className="item-container">
+                  <MarqueTrack />
+                </div>
+              </div>
             </Box>
           </Grid>
         </Grid>
       </div>
-
     </div>
   );
 }

@@ -2,41 +2,16 @@
   position: fixed;
   left: 0;
   top: 0;
-
   overflow-y: hidden;
-
   color: white;
   width: 100%;
-  height: 120vh;
-}
-
-#first-slide {
-  background-color: #ebebeb;
-  z-index: 1000;
-  position: fixed;
+  height: 100vh;
+  z-index: -1;
 }
 
 #second-slide {
-  background-color: #0075ff;
+  background-color: #ffffff;
   z-index: 999;
-  position: fixed;
-
-  left: 0;
-  top: 0;
-}
-
-#third-slide {
-  background-color: #f12c2c;
-  z-index: 998;
-  position: fixed;
-
-  left: 0;
-  top: 0;
-}
-
-#fourth-slide {
-  background-color: #ffcf66;
-  z-index: 997;
   position: fixed;
 
   left: 0;
@@ -45,9 +20,7 @@
 
 .text-loading {
   position: fixed;
-
   font-size: 2.5rem;
-  z-index: 1001;
   color: white;
 }
 
@@ -58,5 +31,18 @@
   transform: translate(-50%, -50%);
   font-size: 3rem;
   z-index: 1001;
+  color: black;
+}
+
+.wrapper-hidden {
+  overflow: hidden;
+}
+
+.preloader-logo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   color: black;
 }
