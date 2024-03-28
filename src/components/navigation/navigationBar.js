@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { BurgerToggle } from "./burger";
 import { useDimensions } from "../../hooks/useDimensions";
-import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
@@ -28,13 +28,14 @@ export default function NavigationBar() {
   const navMenu = useRef(null);
   const navBg = useRef(null);
 
+  const [current, setCurrent] = useState(0);
+
   useEffect(() => {
     closeNav();
     let elements = document.querySelectorAll(".logo-container");
     elements.forEach((element) => {
-      Animations.appearAnimation(Direction.Down, element, 1.5, 3.75, "power4")
-    })
-
+      Animations.appearAnimation(Direction.Down, element, 1.5, 3.75, "power4");
+    });
   }, []);
 
   const openNav = () => {
@@ -110,20 +111,42 @@ export default function NavigationBar() {
 
   return (
     <>
-      <div style={{
-        zIndex: 1000,
-        width: '100vw',
-        height: '100vh',
-        position: 'relative'
-      }}>
+      <Box
+        className="absolute-container medium s-16"
+        sx={{
+          opacity: {
+            sm: 0,
+            md: 1,
+          },
+        }}
+        style={{
+          top: "25px",
+          right: "0px",
+          display: "flex",
+        }}
+      >
+        <div className="nav--item active">HOME</div>
+        <div className="spacing-slash">/</div>
+        <div className="nav--item">WORKS</div>
+        <div className="spacing-slash">/</div>
+        <div className="nav--item">PLAYGROUND</div>
+        <div className="spacing-slash">/</div>
+        <div className="nav--item">CONTACT</div>
+      </Box>
+      <div
+        style={{
+          zIndex: 1000,
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          pointerEvents: "none",
+        }}
+      >
         <div id="logo">
-
-          <Link onClick={handlePageChange} style={{ textDecoration: "none", position: 'relative' }} className="nav-link" >
+          <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
               <div className="condensed s-128 logo-container" ref={logoRef}>
-                <div>
-                  HA TRUNG
-                </div>
+                <div>HA TRUNG</div>
               </div>
             </div>
           </Link>
@@ -138,7 +161,16 @@ export default function NavigationBar() {
               </div>
               <div className="nav-background" ref={navBg}></div>
             </div>
-            <BurgerToggle onClick={toggle} toggle={() => toggleOpen()} />
+            <Box
+              sx={{
+                opacity: {
+                  sm: 1,
+                  md: 0,
+                },
+              }}
+            >
+              <BurgerToggle onClick={toggle} toggle={() => toggleOpen()} />
+            </Box>
           </m.div>
         </div>
       </m.nav>

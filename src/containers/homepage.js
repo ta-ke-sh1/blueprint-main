@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import Chip from "../components/chip";
-import gsap from "gsap"
+import gsap from "gsap";
 import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
 import MarqueTrack from "../components/marquee/marquee";
 import Animations, { Direction } from "../animations/animations";
-
 
 export default function Homepage() {
   const { fetchSavedPalette } = useColorTheme();
@@ -21,10 +20,9 @@ export default function Homepage() {
 
     let elements = document.querySelectorAll(".item-container");
     elements.forEach((element) => {
-      Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4")
-    })
+      Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4");
+    });
   }, []);
-
 
   return (
     <div
@@ -38,7 +36,7 @@ export default function Homepage() {
       <div
         className="absolute-container"
         style={{
-          position: 'fixed',
+          position: "fixed",
           bottom: 0,
           width: "100vw",
           padding: "0 1.5vw",
@@ -48,21 +46,17 @@ export default function Homepage() {
           <Grid item sm={12} md={6} sx={{ userSelect: "none", marginBottom: "20px" }}>
             <Typography sx={{ lineHeight: "56px" }}>
               <div className="wrapper-hidden">
-                <div className="condensed primary-text s-64 item-container">
-                  Software
-                </div>
+                <div className="condensed primary-text s-64 item-container">Software</div>
               </div>
               <div className="wrapper-hidden">
-                <div className="condensed primary-text s-64 item-container">
-                  Developer
-                </div>
+                <div className="condensed primary-text s-64 item-container">Developer</div>
               </div>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium primary-text s-12">Works mainly as a back-end dev</span>
+              <span className="medium primary-text s-12">WORKS MAINLY AS A BACK-END DEV</span>
             </Typography>
             <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium primary-text s-12">but I enjoy doing cool shits</span>
+              <span className="medium primary-text s-12">BUT I ENJOY DOING COOL SHITS</span>
             </Typography>
           </Grid>
           <Grid item sm={12} md={6} sx={{ marginBottom: "20px" }}>
