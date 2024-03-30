@@ -5,7 +5,7 @@ import $ from "jquery";
 const themeList = [
   {
     name: "light",
-    bg_color: "#EBEBEB",
+    bg_color: "white",
     text_color: "black",
     primary_color: "#F4F4F4",
     secondary_color: "",
