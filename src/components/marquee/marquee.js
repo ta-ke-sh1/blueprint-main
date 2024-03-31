@@ -48,6 +48,8 @@ export default function MarqueTrack(props) {
             ref={marqueeRef}
             className="marquee-wrapper"
             style={{
+                minWidth: '0px',
+                backgroundColor: 'white',
                 width: "100%",
                 ...props.sx,
                 borderLeft: "2px solid black",

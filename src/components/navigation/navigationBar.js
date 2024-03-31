@@ -115,12 +115,13 @@ export default function NavigationBar() {
         className="absolute-container medium s-16"
         sx={{
           opacity: {
+            xs: 0,
             sm: 0,
             md: 1,
           },
         }}
         style={{
-          top: "25px",
+          top: "10px",
           right: "0px",
           display: "flex",
         }}
@@ -145,7 +146,9 @@ export default function NavigationBar() {
         <div id="logo">
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
-              <div className="condensed s-128 logo-container" ref={logoRef}>
+              <div className="condensed s-48 logo-container" ref={logoRef} style={{
+                lineHeight: '60px'
+              }}>
                 <div>HA TRUNG</div>
               </div>
             </div>
@@ -164,6 +167,7 @@ export default function NavigationBar() {
             <Box
               sx={{
                 opacity: {
+                  xs: 1,
                   sm: 1,
                   md: 0,
                 },

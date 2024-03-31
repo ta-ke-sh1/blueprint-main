@@ -66,7 +66,7 @@ export function PreloaderWrapper({ children }) {
         <div className="wrapper-hidden preloader-logo-container">
           <div className="preloader-logo" ref={logoRef}>
             <div
-              className="s-128"
+              className="s-72"
               style={{
                 fontFamily: "condensed",
                 lineHeight: "95px",
