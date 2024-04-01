@@ -1,32 +1,43 @@
 import { useEffect, useRef } from "react";
 import { Grid, Typography, Box } from "@mui/material";
-import Chip from "../components/chip";
-import gsap from "gsap";
-import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
 import MarqueTrack from "../components/marquee/marquee";
 import Animations, { Direction } from "../animations/animations";
-import Ascii from "../components/ascii/ascii";
 import { useMouse } from "@uidotdev/usehooks";
-import CenterContainer from "../components/containers/center";
-
+import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
 export default function Homepage() {
   const [mouse] = useMouse();
-  const { fetchSavedPalette } = useColorTheme();
   const preloader = usePreloader();
+
+  const currentIndex = useRef(1);
+
+  const ascii = useRef(null);
+
 
   useEffect(() => {
     setTimeout(() => {
       preloader.tl.play();
     }, 1500);
 
-    fetchSavedPalette();
+    AsciiMorph(ascii.current, { x: 60, y: 30 })
+    AsciiMorph.render(AsciiItems.asciis[0])
+
+    let interval = setInterval(function () {
+      AsciiMorph.morph(AsciiItems.asciis[currentIndex.current]);
+      currentIndex.current++;
+      currentIndex.current %= AsciiItems.asciis.length;
+    }, 8000);
 
     let elements = document.querySelectorAll(".item-container");
     elements.forEach((element) => {
       Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4");
     });
+
+    return function () {
+      clearInterval(interval)
+    }
   }, []);
+
 
   return (
     <>
@@ -39,7 +50,28 @@ export default function Homepage() {
           overflowY: "hidden",
         }}
       >
-        <Ascii />
+        <div
+          style={{
+            minWidth: '900px',
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+          }}>
+          <pre
+            style={{
+              margin: '0 auto',
+              fontSize: '12px',
+              letterSpacing: 'calc(0.6px)',
+              lineHeight: 'calc(14.5px)',
+              color: 'black',
+              whiteSpace: 'pre-wrap',
+              fontFamily: "Regular",
+              userSelect: 'none',
+            }} id="asciiArt" ref={ascii}>
+          </pre>
+        </div>
         <div className="medium  absolute-container" style={{
           left: '10px',
           top: '50%',
