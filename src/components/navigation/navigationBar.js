@@ -125,7 +125,10 @@ export default function NavigationBar() {
               <div className="condensed s-48 logo-container" ref={logoRef} style={{
                 lineHeight: '60px'
               }}>
-                <div>HA TRUNG</div>
+                <div style={{
+                  backgroundColor: 'white',
+                  padding: '0 15px'
+                }}>HA TRUNG</div>
               </div>
             </div>
           </Link>

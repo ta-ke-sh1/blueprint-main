@@ -74,12 +74,13 @@ export default function Homepage() {
           }
         }}
       >
-        <div className=" medium primary-text" style={{
+        <div className=" medium" style={{
           backgroundColor: 'rgb(0,0,0,0)',
           textAlign: 'right'
         }}>
-          FEEL FREE<br />
-          <span ref={instruction}>TO PLAY AROUND</span>
+          <span className="primary-text">FEEL FREE</span>
+          <br />
+          <span className="primary-text" ref={instruction}>TO PLAY AROUND</span>
         </div>
       </Box>
       <div
@@ -89,11 +90,15 @@ export default function Homepage() {
           top: "10px",
         }}
       >
-        <div className="primary-text" style={{
+        <div style={{
           textAlign: 'left'
         }}>
-          GOT SOMETHING<br />
-          IN MIND?
+          <span className="primary-text">
+            GOT SOMETHING
+          </span><br />
+          <span className="primary-text">
+            IN MIND?
+          </span>
         </div>
       </div>
       <div
@@ -103,11 +108,13 @@ export default function Homepage() {
           top: "10px",
         }}
       >
-        <div className="primary-text" style={{
+        <div style={{
           textAlign: 'right'
         }}>
-          HANOI,VIETNAM<br />
-          {date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+          <span className="primary-text">
+            HANOI,VIETNAM</span><br />
+          <span className="primary-text">
+            {date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
         </div>
       </div>
       <div

@@ -7,7 +7,7 @@ const themeList = [
     name: "light",
     bg_color: "white",
     text_color: "black",
-    primary_color: "#F4F4F4",
+    primary_color: "#red",
     secondary_color: "",
     tertiary_color: "",
   },

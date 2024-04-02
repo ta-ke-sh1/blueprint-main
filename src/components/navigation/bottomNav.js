@@ -54,45 +54,62 @@ export default function BottomNavigation(props) {
     }, []);
 
     return (
-        <Box
-            className="medium fixed-container"
-            sx={{
-                display: "flex",
-                height: "100%",
-                alignItems: "flex-end",
-                left: "50%",
-                transform: 'translateX(-50%)',
-                bottom: '10px',
-                zIndex: 900,
-            }}
-        >
-            <div className="wrapper-hidden" style={{
-                margin: '0 8px'
+        <>
+            <div className="medium fixed-container" style={{
+                left: 0,
+                top: 0,
+                width: '100dvw',
+                height: '100dvh',
+                outline: '20px solid white',
+                outlineOffset: '-15px',
+                zIndex: -1
             }}>
-                <div className="item-container">
-                    <Box className=" medium s-16" sx={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                    }}>
-                        <div className="nav--item active" onMouseEnter={() => onMouseEnterNav(0)}>
-                            HOME(H)
-                        </div>
-                        <div className="spacing-slash">/</div>
-                        <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)}>
-                            WORKS(W)
-                        </div>
-                        <div className="spacing-slash">/</div>
-                        <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)}>
-                            PLAYGROUND(P)
-                        </div>
-                        <div className="spacing-slash">/</div>
-                        <div className="nav--item" onMouseEnter={() => onMouseEnterNav(3)}>
-                            CONTACT(C)
-                        </div>
-                    </Box>
-                </div>
+
             </div>
-        </Box>
+            <Box
+                className="medium fixed-container"
+                sx={{
+                    borderTop: '8px solid white',
+                    display: "flex",
+                    alignItems: "flex-end",
+                    left: "50%",
+                    transform: 'translateX(-50%)',
+                    bottom: '10px',
+                    zIndex: 900,
+                    backgroundColor: 'white'
+                }}
+            >
+                <div className="wrapper-hidden" style={{
+                    margin: '0 8px',
+
+                }}>
+                    <div className="item-container">
+                        <Box className=" medium s-16" sx={{
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            backgroundColor: 'white'
+                        }}>
+                            <div className="nav--item active" onMouseEnter={() => onMouseEnterNav(0)}>
+                                HOME(H)
+                            </div>
+                            <div className="spacing-slash">/</div>
+                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)}>
+                                WORKS(W)
+                            </div>
+                            <div className="spacing-slash">/</div>
+                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)}>
+                                PLAYGROUND(P)
+                            </div>
+                            <div className="spacing-slash">/</div>
+                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(3)}>
+                                CONTACT(C)
+                            </div>
+                        </Box>
+                    </div>
+                </div>
+            </Box>
+        </>
+
     )
 }
