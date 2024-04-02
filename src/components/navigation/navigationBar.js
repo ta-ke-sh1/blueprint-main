@@ -8,12 +8,10 @@ import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
 import NavigationContent from "./navContent";
-import { useColorTheme } from "../../hooks/useColorTheme";
 import Animations, { Direction } from "../../animations/animations";
 
 export default function NavigationBar() {
   const { toggle } = useToggle();
-  const { changeColor } = useColorTheme();
 
   const navigate = useNavigate();
   const preloader = usePreloader();
@@ -27,8 +25,6 @@ export default function NavigationBar() {
   const navContent = useRef(null);
   const navMenu = useRef(null);
   const navBg = useRef(null);
-
-  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     closeNav();
@@ -111,29 +107,7 @@ export default function NavigationBar() {
 
   return (
     <>
-      <Box
-        className="absolute-container medium s-16"
-        sx={{
-          opacity: {
-            xs: 0,
-            sm: 0,
-            md: 1,
-          },
-        }}
-        style={{
-          top: "10px",
-          right: "0px",
-          display: "flex",
-        }}
-      >
-        <div className="nav--item active">HOME</div>
-        <div className="spacing-slash">/</div>
-        <div className="nav--item">WORKS</div>
-        <div className="spacing-slash">/</div>
-        <div className="nav--item">PLAYGROUND</div>
-        <div className="spacing-slash">/</div>
-        <div className="nav--item">CONTACT</div>
-      </Box>
+
       <div
         style={{
           zIndex: 1000,
@@ -143,7 +117,9 @@ export default function NavigationBar() {
           pointerEvents: "none",
         }}
       >
-        <div id="logo">
+        <div id="logo" style={{
+          margin: '0 auto'
+        }}>
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
               <div className="condensed s-48 logo-container" ref={logoRef} style={{
@@ -164,17 +140,6 @@ export default function NavigationBar() {
               </div>
               <div className="nav-background" ref={navBg}></div>
             </div>
-            <Box
-              sx={{
-                opacity: {
-                  xs: 1,
-                  sm: 1,
-                  md: 0,
-                },
-              }}
-            >
-              <BurgerToggle onClick={toggle} toggle={() => toggleOpen()} />
-            </Box>
           </m.div>
         </div>
       </m.nav>

@@ -22,8 +22,9 @@
 
 #logo {
   position: fixed;
-  left: 10px;
+  left: 50%;
   top: 0px;
+  transform: translateX(-50%);
 }
 
 .nav-item {

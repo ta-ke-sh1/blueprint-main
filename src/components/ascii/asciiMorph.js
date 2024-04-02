@@ -134,6 +134,8 @@ export const AsciiMorph = (function () {
     var framesToAnimate = [];
     var myTimeout = null;
 
+    const animationDuration = 10
+
     /**
      * Utils
      */
@@ -291,7 +293,6 @@ export const AsciiMorph = (function () {
 
     // Morph between whatever is current, to the new frame
     function morph(data) {
-
         clearTimeout(myTimeout);
         var frameData = prepareFrames(data.slice());
         animateFrames(frameData);
@@ -343,13 +344,12 @@ export const AsciiMorph = (function () {
             if (framesToAnimate.length > 0) {
                 animateFrame();
             }
-        }, 20)
+        }, animationDuration)
 
         // framesToAnimate
     }
 
     function main(element, canvasSize) {
-
         if (!element || !canvasSize) {
             console.log("sorry, I need an element and a canvas size");
             return;
@@ -358,9 +358,18 @@ export const AsciiMorph = (function () {
         init(element, canvasSize);
     }
 
+    function destroy(){
+        element = null;
+        canvasDimensions = {};
+        renderedData = [];
+        framesToAnimate = [];
+        myTimeout = null;
+    }
+
     return extend(main, {
         render: render,
-        morph: morph
+        morph: morph,
+        destroy: destroy
     });
 
 })();

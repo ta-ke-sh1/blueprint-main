@@ -24,6 +24,16 @@
   src: url("./fonts/Koulen-Regular.ttf");
 }
 
+@font-face {
+  font-family: "display-italic";
+  src: url("./fonts/Newsreader_14pt-Italic.ttf");
+}
+
+@font-face {
+  font-family: "display-light-italic";
+  src: url("./fonts/Newsreader_60pt-LightItalic.ttf");
+}
+
 .condensed {
   font-family: "Condensed";
 }
