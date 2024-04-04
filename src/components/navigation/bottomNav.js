@@ -1,115 +1,225 @@
-import { Box } from "@mui/material"
-import { useEffect } from "react";
+import { Box } from "@mui/material";
+import { useEffect, useState } from "react";
 import Animations, { Direction } from "../../animations/animations";
-
+import { usePreloader } from "../../hooks/usePreloader";
+import { useNavigate } from "react-router-dom";
+import { useMouse } from "@uidotdev/usehooks";
 
 export default function BottomNavigation(props) {
+  const preloader = usePreloader();
+  const [date, setDate] = useState(new Date());
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        let elements = document.querySelectorAll(".item-container");
-        elements.forEach((element) => {
-            Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4");
-        });
+  const [mouse] = useMouse();
 
-    }, [])
+  useEffect(() => {
+    if (props.current) {
+      onMouseEnterNav(props.current);
+    }
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 30000);
 
-    function onMouseEnterNav(index) {
-        const navItems = document.querySelectorAll(".nav--item");
-        for (let i = 0; i < navItems.length; i++) {
-            navItems[i].classList.remove("active")
-        }
-        navItems[index].classList.add("active")
-        props.onMouseEnterNav(index);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const routes = ["home", "folio", "playground", "contact"];
+
+  useEffect(() => {
+    setTimeout(() => {
+      let elements = document.querySelectorAll(".item-container");
+      elements.forEach((element) => {
+        Animations.appearAnimation(Direction.Up, element, 2, 3.55, "power4");
+      });
+    }, 1500);
+  }, []);
+
+  function onMouseEnterNav(index) {
+    const navItems = document.querySelectorAll(".nav--item");
+    for (let i = 0; i < navItems.length; i++) {
+      navItems[i].classList.remove("active");
+    }
+    navItems[index].classList.add("active");
+    if (props.onMouseEnterNav) {
+      props.onMouseEnterNav(index);
+    }
+  }
+
+  function navigatePage(index) {
+    if (props.onExit) {
+      props.onExit();
     }
 
-    useEffect(() => {
-        window.addEventListener(
-            "keydown",
-            function (event) {
-                if (event.preventDefault()) {
-                    return;
-                }
+    setTimeout(() => {
+      preloader.closeAnimation();
+      setTimeout(() => {
+        navigate("/" + routes[index]);
+      }, 1500);
+    }, 1000);
+  }
 
-                switch (event.key) {
-                    case "h":
-                        onMouseEnterNav(0);
-                        break;
-                    case "c":
-                        onMouseEnterNav(3);
-                        break;
-                    case "p":
-                        onMouseEnterNav(2);
-                        break;
-                    case "w":
-                        onMouseEnterNav(1);
-                        break;
-                    default:
-                        return;
-                }
+  useEffect(() => {
+    window.addEventListener(
+      "keydown",
+      function (event) {
+        if (event.preventDefault()) {
+          return;
+        }
 
-                event.preventDefault();
-            },
-            true
-        );
-    }, []);
+        switch (event.key) {
+          case "h":
+            onMouseEnterNav(0);
+            break;
+          case "c":
+            onMouseEnterNav(3);
+            break;
+          case "p":
+            onMouseEnterNav(2);
+            break;
+          case "f":
+            onMouseEnterNav(1);
+            break;
+          case "Enter":
+            props.onExit();
+          default:
+            return;
+        }
+        event.preventDefault();
+      },
+      true
+    );
+  }, []);
 
-    return (
-        <>
-            <div className="medium fixed-container" style={{
-                left: 0,
-                top: 0,
-                width: '100dvw',
-                height: '100dvh',
-                outline: '20px solid white',
-                outlineOffset: '-15px',
-                zIndex: -1
-            }}>
-
-            </div>
+  return (
+    <>
+      <div
+        className="medium fixed-container"
+        style={{
+          left: 0,
+          top: 0,
+          width: "100dvw",
+          height: "100dvh",
+          outline: "20px solid white",
+          outlineOffset: "-15px",
+          zIndex: 10,
+          pointerEvents: "none",
+        }}
+      >
+        <div
+          className="medium absolute-container"
+          style={{
+            left: "10px",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <div>
+            <span className="primary-text"> X: {mouse.x}</span>
+            <br />
+            <span className="primary-text">Y: {mouse.y}</span>
+          </div>
+        </div>
+        <div
+          className="medium absolute-container"
+          style={{
+            right: "10px",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <span className="primary-text">YOUR VISION</span>
+            <br />
+            <span className="primary-text">MY MATERIALIZATION</span>
+          </div>
+        </div>
+        <div
+          className="medium absolute-container"
+          style={{
+            left: "10px",
+            top: "10px",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "left",
+            }}
+          >
+            <span className="primary-text">GOT SOMETHING</span>
+            <br />
+            <span className="primary-text">IN MIND?</span>
+          </div>
+        </div>
+        <div
+          className="medium absolute-container"
+          style={{
+            right: "10px",
+            top: "10px",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <span className="primary-text">HANOI,VIETNAM</span>
+            <br />
+            <span className="primary-text">{date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true })}</span>
+          </div>
+        </div>
+      </div>
+      <Box
+        className="medium fixed-container"
+        sx={{
+          display: "flex",
+          alignItems: "flex-end",
+          left: "50%",
+          transform: "translateX(-50%)",
+          bottom: "15px",
+          zIndex: 900,
+        }}
+      >
+        <div
+          className="wrapper-hidden"
+          style={{
+            margin: "0 10px",
+          }}
+        >
+          <div className="item-container">
             <Box
-                className="medium fixed-container"
-                sx={{
-                    borderTop: '8px solid white',
-                    display: "flex",
-                    alignItems: "flex-end",
-                    left: "50%",
-                    transform: 'translateX(-50%)',
-                    bottom: '10px',
-                    zIndex: 900,
-                    backgroundColor: 'white'
-                }}
+              className=" medium s-16"
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                backgroundColor: "white",
+              }}
             >
-                <div className="wrapper-hidden" style={{
-                    margin: '0 8px',
-
-                }}>
-                    <div className="item-container">
-                        <Box className=" medium s-16" sx={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            backgroundColor: 'white'
-                        }}>
-                            <div className="nav--item active" onMouseEnter={() => onMouseEnterNav(0)}>
-                                HOME(H)
-                            </div>
-                            <div className="spacing-slash">/</div>
-                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)}>
-                                WORKS(W)
-                            </div>
-                            <div className="spacing-slash">/</div>
-                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)}>
-                                PLAYGROUND(P)
-                            </div>
-                            <div className="spacing-slash">/</div>
-                            <div className="nav--item" onMouseEnter={() => onMouseEnterNav(3)}>
-                                CONTACT(C)
-                            </div>
-                        </Box>
-                    </div>
-                </div>
+              <div className="nav--item active" onMouseEnter={() => onMouseEnterNav(0)} onClick={() => navigatePage(0)}>
+                HOME(H)
+              </div>
+              <div className="spacing-slash">/</div>
+              <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)} onClick={() => navigatePage(1)}>
+                FOLIO(F)
+              </div>
+              <div className="spacing-slash">/</div>
+              <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)} onClick={() => navigatePage(0)}>
+                PLAYGROUND(P)
+              </div>
+              <div className="spacing-slash">/</div>
+              <div className="nav--item" onMouseEnter={() => onMouseEnterNav(3)} onClick={() => navigatePage(0)}>
+                CONTACT(C)
+              </div>
             </Box>
-        </>
-
-    )
+          </div>
+        </div>
+      </Box>
+    </>
+  );
 }

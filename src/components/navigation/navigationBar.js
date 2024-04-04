@@ -25,6 +25,7 @@ export default function NavigationBar() {
   const navContent = useRef(null);
   const navMenu = useRef(null);
   const navBg = useRef(null);
+  
 
   useEffect(() => {
     closeNav();
@@ -107,10 +108,9 @@ export default function NavigationBar() {
 
   return (
     <>
-
       <div
         style={{
-          zIndex: 1000,
+          zIndex: 100,
           width: "100%",
           height: "100%",
           position: "relative",
@@ -118,17 +118,17 @@ export default function NavigationBar() {
         }}
       >
         <div id="logo" style={{
-          margin: '0 auto'
+          margin: '5px auto'
         }}>
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
-              <div className="condensed s-48 logo-container" ref={logoRef} style={{
+              <div className="display-light-italic s-48 logo-container" ref={logoRef} style={{
                 lineHeight: '60px'
               }}>
                 <div style={{
                   backgroundColor: 'white',
                   padding: '0 15px'
-                }}>HA TRUNG</div>
+                }}>Ha Trung</div>
               </div>
             </div>
           </Link>

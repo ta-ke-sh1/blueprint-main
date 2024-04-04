@@ -116,7 +116,7 @@ export function useColorTheme() {
   };
 
   function normalizeRange(value, min, max) {
-    if (value == max) {
+    if (value === max) {
       return min;
     }
 

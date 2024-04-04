@@ -1,36 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Typography, Box } from "@mui/material";
-import { usePreloader } from "../hooks/usePreloader";
-import Animations, { Direction } from "../animations/animations";
-import { useMouse } from "@uidotdev/usehooks";
 import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
 import { textShuffle } from "../animations/text";
 import BottomNavigation from "../components/navigation/bottomNav";
-export default function Homepage() {
-  const [mouse] = useMouse();
-  const preloader = usePreloader();
-  const instruction = useRef(null)
 
-  const [current, setCurrent] = useState(0)
-  const [date, setDate] = useState(new Date());
+export default function Homepage() {
+  const instruction = useRef(null);
+
+  const [isExiting, setIsExiting] = useState(false);
+
+  const currIndex = useRef(0);
 
   const ascii = useRef(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setDate(new Date());
-    }, 30000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      preloader.tl.play();
-    }, 1500);
-
     AsciiMorph(ascii.current, { x: 60, y: 30 });
     AsciiMorph.render(AsciiItems.asciis[0]);
 
@@ -39,99 +22,49 @@ export default function Homepage() {
     };
   }, []);
 
-
-
-  const containers = {
-
-  }
-
   function onMouseEnterNav(index) {
-    AsciiMorph.morph(AsciiItems.asciis[index]);
-    setCurrent(index)
-
-    let interval = null
-    if (instruction.current) {
-      if (index === 0) {
-        textShuffle(instruction.current, "TO PLAY AROUND", interval, 40)
-      } else if (instruction.current.innerHTML !== "TO PRESS ENTER") {
-        textShuffle(instruction.current, "TO PRESS ENTER", interval, 40)
-      }
+    if (!isExiting) {
+      AsciiMorph.morph(AsciiItems.asciis[index]);
+      currIndex.current = index;
     }
 
+    let interval = null;
+    if (instruction.current) {
+      if (index === 0) {
+        textShuffle(instruction.current, "TO PLAY AROUND", interval, 40);
+      } else if (instruction.current.innerHTML !== "TO PRESS ENTER") {
+        textShuffle(instruction.current, "TO PRESS ENTER", interval, 40);
+      }
+    }
+  }
+
+  function onExit() {
+    setIsExiting(true);
+    if (currIndex.current === 3 || currIndex.current === 2 || currIndex.current === 1) {
+      AsciiMorph.morph(AsciiItems.asciis[4]);
+    }
   }
 
   return (
     <>
-      <BottomNavigation onMouseEnterNav={onMouseEnterNav} />
-      <Box
-        className="absolute-container"
-        sx={{
-          right: "10px",
-          bottom: {
-            xs: "40px",
-            sm: "40px",
-            md: "10px",
-          }
+      <BottomNavigation
+        onMouseEnterNav={onMouseEnterNav}
+        onExit={() => {
+          onExit();
         }}
-      >
-        <div className=" medium" style={{
-          backgroundColor: 'rgb(0,0,0,0)',
-          textAlign: 'right'
-        }}>
-          <span className="primary-text">FEEL FREE</span>
-          <br />
-          <span className="primary-text" ref={instruction}>TO PLAY AROUND</span>
-        </div>
-      </Box>
-      <div
-        className="medium absolute-container"
-        style={{
-          left: "10px",
-          top: "10px",
-        }}
-      >
-        <div style={{
-          textAlign: 'left'
-        }}>
-          <span className="primary-text">
-            GOT SOMETHING
-          </span><br />
-          <span className="primary-text">
-            IN MIND?
-          </span>
-        </div>
-      </div>
-      <div
-        className="medium absolute-container"
-        style={{
-          right: "10px",
-          top: "10px",
-        }}
-      >
-        <div style={{
-          textAlign: 'right'
-        }}>
-          <span className="primary-text">
-            HANOI,VIETNAM</span><br />
-          <span className="primary-text">
-            {date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
-        </div>
-      </div>
+      />
       <div
         className="relative-container"
         style={{
-          width: '100%',
+          width: "100%",
           height: "100vh",
           msOverflowX: "hidden",
           overflowX: "hidden",
         }}
       >
-        {
-
-        }
         <div
           style={{
-            minWidth: '900px',
+            minWidth: "900px",
             overflowX: "hidden",
             position: "absolute",
             left: "50%",
@@ -142,7 +75,7 @@ export default function Homepage() {
         >
           <pre
             style={{
-              overflow: 'hidden',
+              overflow: "hidden",
               margin: "0 auto",
               fontSize: "12px",
               letterSpacing: "calc(0.6px)",
@@ -151,43 +84,38 @@ export default function Homepage() {
               whiteSpace: "pre-wrap",
               fontFamily: "Regular",
               userSelect: "none",
+              zIndex: -1,
             }}
             id="asciiArt"
             ref={ascii}
           ></pre>
         </div>
-        <div
-          className="medium absolute-container"
-          style={{
-            left: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <div>
-            <span className="primary-text"> X: {mouse.x}</span>
-            <br />
-            <span className="primary-text">Y: {mouse.y}</span>
-          </div>
-        </div>
-        <div
-          className="medium absolute-container"
-          style={{
+        <Box
+          className="absolute-container"
+          sx={{
             right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
+            bottom: {
+              xs: "40px",
+              sm: "40px",
+              md: "10px",
+            },
+            zIndex: 10,
           }}
         >
           <div
+            className=" medium"
             style={{
+              backgroundColor: "rgb(0,0,0,0)",
               textAlign: "right",
             }}
           >
-            <span className="primary-text">YOUR VISION</span>
+            <span className="primary-text">FEEL FREE</span>
             <br />
-            <span className="primary-text">MY MATERIALIZATION</span>
+            <span className="primary-text" ref={instruction}>
+              TO PLAY AROUND
+            </span>
           </div>
-        </div>
+        </Box>
         <Box
           className="absolute-container"
           sx={{
@@ -196,18 +124,13 @@ export default function Homepage() {
               sm: "40px",
               md: "10px",
             },
-            left: '10px',
+            left: "10px",
           }}
         >
-          <Typography sx={{ lineHeight: "44px" }}>
-            <div
-              className="wrapper-hidden"
-              style={{
-                marginBottom: "4px",
-              }}
-            >
+          <Typography sx={{ lineHeight: "50px" }}>
+            <div className="wrapper-hidden">
               <div
-                className="condensed s-48 item-container"
+                className="display-light-italic s-48 item-container"
                 style={{
                   backgroundColor: "white",
                   width: "fit-content",
@@ -218,7 +141,7 @@ export default function Homepage() {
             </div>
             <div className="wrapper-hidden">
               <div
-                className="condensed s-48 item-container"
+                className="display-light-italic s-48 item-container"
                 style={{
                   backgroundColor: "white",
                   width: "fit-content",
@@ -235,7 +158,7 @@ export default function Homepage() {
             <span className="medium primary-text s-12">BUT I ENJOY DOING COOL SHITS</span>
           </Typography>
         </Box>
-      </div >
+      </div>
     </>
   );
 }

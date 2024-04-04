@@ -9,39 +9,19 @@ export function usePreloader() {
 }
 
 export function PreloaderWrapper({ children }) {
-  const container = useRef(null);
   const logoRef = useRef(null);
 
   const preloader_2 = useRef(null);
   const [isLoaded, updateLoaded] = useState(false);
 
-  const [tl, setTl] = useState(gsap.timeline());
-
   const delay = 2.4;
 
   useLayoutEffect(() => {
-    const tl = gsap.timeline();
-
     Animations.appearAnimation(Direction.Up, logoRef.current, 1.2, 0.55, "power4");
-
-    setTimeout(() => {
-      Animations.exitAnimation(Direction.Down, logoRef.current, 2.2, 0, "power4");
-    }, 1500);
-
-    const ctx = gsap.context(() => {
-      tl.to(preloader_2.current, {
-        delay: delay,
-        y: "-100%",
-        duration: 1.8,
-        ease: "power2",
-      });
-    }, container);
-
     const onPageLoad = () => {
       updateLoaded(true);
-      tl.play();
+      openAnimation();
     };
-
     if (document.readyState === "complete") {
       onPageLoad();
     } else {
@@ -50,15 +30,31 @@ export function PreloaderWrapper({ children }) {
         window.removeEventListener("load", onPageLoad);
       };
     }
-
-    setTl(tl);
-
-    return function () {
-      ctx.revert();
-    };
   }, [isLoaded]);
 
-  let value = useMemo(() => ({ tl, isLoaded }), [tl, isLoaded]);
+  const closeAnimation = () => {
+    console.log("close");
+    gsap.to(preloader_2.current, {
+      y: "0%",
+      duration: 1.8,
+      ease: "power2",
+    });
+    Animations.appearAnimation(Direction.Up, logoRef.current, 1.2, 1.8, "power4");
+  };
+
+  const openAnimation = () => {
+    Animations.exitAnimation(Direction.Down, logoRef.current, 2.2, 2.2, "power4");
+    setTimeout(() => {
+      gsap.to(preloader_2.current, {
+        delay: delay,
+        y: "-100%",
+        duration: 1.8,
+        ease: "power2",
+      });
+    }, 1500);
+  };
+
+  let value = useMemo(() => ({ isLoaded, closeAnimation, openAnimation }), [isLoaded]);
 
   return (
     <Preloader.Provider value={value}>

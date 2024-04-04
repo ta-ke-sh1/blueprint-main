@@ -8,9 +8,9 @@ export default function ScrollWrapper(props) {
     useEffect(() => {
         const scroll = new locomotiveScroll({
             el: containerRef.current,
-            smooth: props.isSmooth ?? true,
-            lerp: props.lerp ?? 0.05,
-            multiplier: props.multiplier ?? 0.4,
+            smooth:  true,
+            lerp:  0.05,
+            multiplier:  0.4,
         });
 
         return function () {
