@@ -1,71 +1,164 @@
-import { useEffect } from "react";
-import { Grid, Typography, Box } from "@mui/material";
-import Chip from "../components/chip";
-import gsap from "gsap/gsap-core";
-import { useColorTheme } from "../hooks/useColorTheme";
-import { usePreloader } from "../hooks/usePreloader";
-import { useNavigate } from "react-router-dom";
-import MarqueTrack from "../components/marquee/marquee";
-
+import { useEffect, useRef, useState } from "react";
+import { Typography, Box } from "@mui/material";
+import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
+import { textShuffle } from "../animations/text";
+import BottomNavigation from "../components/navigation/bottomNav";
 
 export default function Homepage() {
-  const { fetchSavedPalette } = useColorTheme();
-  const preloader = usePreloader();
+  const instruction = useRef(null);
 
-  const navigate = useNavigate();
+  const [isExiting, setIsExiting] = useState(false);
+
+  const currIndex = useRef(0);
+
+  const ascii = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      preloader.tl.play();
-    }, 1500);
+    AsciiMorph(ascii.current, { x: 60, y: 30 });
+    AsciiMorph.render(AsciiItems.asciis[0]);
 
-    fetchSavedPalette();
+    return function () {
+      AsciiMorph.destroy();
+    };
   }, []);
 
-  function onMouseEnterNavItem(index) { }
+  function onMouseEnterNav(index) {
+    if (!isExiting) {
+      AsciiMorph.morph(AsciiItems.asciis[index]);
+      currIndex.current = index;
+    }
 
-  function onMouseLeaveNavItem(index) { }
+    let interval = null;
+    if (instruction.current) {
+      if (index === 0) {
+        textShuffle(instruction.current, "TO PLAY AROUND", interval, 40);
+      } else if (instruction.current.innerHTML !== "TO PRESS ENTER") {
+        textShuffle(instruction.current, "TO PRESS ENTER", interval, 40);
+      }
+    }
+  }
+
+  function onExit() {
+    setIsExiting(true);
+    if (currIndex.current === 3 || currIndex.current === 2 || currIndex.current === 1) {
+      AsciiMorph.morph(AsciiItems.asciis[4]);
+    }
+  }
 
   return (
-    <div
-      style={{
-        maxWidth: "100vw",
-        height: "100vh",
-        msOverflowY: "hidden",
-        overflowY: "hidden",
-      }}
-    >
+    <>
+      <BottomNavigation
+        onMouseEnterNav={onMouseEnterNav}
+        onExit={() => {
+          onExit();
+        }}
+      />
       <div
-        className="absolute-container"
+        className="relative-container"
         style={{
-          bottom: 0,
-          width: "100vw",
-          padding: "0 1.5vw",
+          width: "100%",
+          height: "100vh",
+          msOverflowX: "hidden",
+          overflowX: "hidden",
         }}
       >
-        <Grid container spacing={0}>
-          <Grid item sm={12} md={6} sx={{ userSelect: "none", marginBottom: "20px" }}>
-            <Typography sx={{ lineHeight: "56px" }}>
-              <div className="condensed s-64">
+        <div
+          style={{
+            minWidth: "900px",
+            overflowX: "hidden",
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+          }}
+        >
+          <pre
+            style={{
+              overflow: "hidden",
+              margin: "0 auto",
+              fontSize: "12px",
+              letterSpacing: "calc(0.6px)",
+              lineHeight: "calc(14.5px)",
+              color: "black",
+              whiteSpace: "pre-wrap",
+              fontFamily: "Regular",
+              userSelect: "none",
+              zIndex: -1,
+            }}
+            id="asciiArt"
+            ref={ascii}
+          ></pre>
+        </div>
+        <Box
+          className="absolute-container"
+          sx={{
+            right: "10px",
+            bottom: {
+              xs: "40px",
+              sm: "40px",
+              md: "10px",
+            },
+            zIndex: 10,
+          }}
+        >
+          <div
+            className=" medium"
+            style={{
+              backgroundColor: "rgb(0,0,0,0)",
+              textAlign: "right",
+            }}
+          >
+            <span className="primary-text">FEEL FREE</span>
+            <br />
+            <span className="primary-text" ref={instruction}>
+              TO PLAY AROUND
+            </span>
+          </div>
+        </Box>
+        <Box
+          className="absolute-container"
+          sx={{
+            bottom: {
+              xs: "40px",
+              sm: "40px",
+              md: "10px",
+            },
+            left: "10px",
+          }}
+        >
+          <Typography sx={{ lineHeight: "50px" }}>
+            <div className="wrapper-hidden">
+              <div
+                className="display-light-italic s-48 item-container"
+                style={{
+                  backgroundColor: "white",
+                  width: "fit-content",
+                }}
+              >
                 Software
-                <br />
+              </div>
+            </div>
+            <div className="wrapper-hidden">
+              <div
+                className="display-light-italic s-48 item-container"
+                style={{
+                  backgroundColor: "white",
+                  width: "fit-content",
+                }}
+              >
                 Developer
               </div>
-            </Typography>
-            <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium s-12">Works mainly as a back-end dev</span>
-            </Typography>
-            <Typography sx={{ lineHeight: "22px" }}>
-              <span className="medium s-12">but I enjoy doing cool shits</span>
-            </Typography>
-          </Grid>
-          <Grid item sm={12} md={6} sx={{ marginBottom: "20px" }}>
-            <Box sx={{ display: "flex", justifyContent: "center", height: "100%", alignItems: "flex-end" }}>
-              <MarqueTrack />
-            </Box>
-          </Grid>
-        </Grid>
+            </div>
+          </Typography>
+          <Typography sx={{ lineHeight: "18px" }}>
+            <span className="medium primary-text s-12">WORKS MAINLY AS A BACK-END DEV</span>
+          </Typography>
+          <Typography sx={{ lineHeight: "18px" }}>
+            <span className="medium primary-text s-12">BUT I ENJOY DOING COOL SHITS</span>
+          </Typography>
+        </Box>
       </div>
-    </div>
+    </>
   );
 }

@@ -8,7 +8,6 @@ import Contacts from "./contacts";
 import ScrollWrapper from "../hooks/useSmoothScroll";
 import { ProjectCardGrid, ProjectCardList } from "../components/cards/cards";
 
-import { useColorTheme } from "../hooks/useColorTheme";
 import { usePreloader } from "../hooks/usePreloader";
 
 const playground = [
@@ -56,15 +55,13 @@ const playground = [
 
 export default function Playground() {
   const navigate = useNavigate();
-  const { fetchSavedPalette } = useColorTheme();
 
-  const preloader = usePreloader();
+  const { openAnimation } = usePreloader();
 
   useEffect(() => {
     setTimeout(() => {
-      preloader.tl.play();
+      openAnimation();
     }, 1500);
-    fetchSavedPalette();
   }, []);
 
   const [isGridView, setIsGridView] = useState(true);

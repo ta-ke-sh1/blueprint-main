@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect } from "react";
-import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 export default function MarqueTrack(props) {
@@ -49,10 +48,12 @@ export default function MarqueTrack(props) {
             ref={marqueeRef}
             className="marquee-wrapper"
             style={{
+                minWidth: '0px',
+                backgroundColor: 'white',
                 width: "100%",
                 ...props.sx,
-                borderLeft: "1px solid black",
-                borderRight: "1px solid black",
+                borderLeft: "2px solid black",
+                borderRight: "2px solid black",
             }}
         >
             <div

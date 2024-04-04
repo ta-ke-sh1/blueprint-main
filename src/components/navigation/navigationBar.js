@@ -3,22 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { BurgerToggle } from "./burger";
 import { useDimensions } from "../../hooks/useDimensions";
-import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
 import NavigationContent from "./navContent";
-import { useColorTheme } from "../../hooks/useColorTheme";
+import Animations, { Direction } from "../../animations/animations";
 
 export default function NavigationBar() {
   const { toggle } = useToggle();
-  const { changeColor } = useColorTheme();
 
   const navigate = useNavigate();
   const preloader = usePreloader();
 
   const containerRef = useRef(null);
-
+  const logoRef = useRef(null);
   const burgerRef = useRef(null);
   const { height } = useDimensions(containerRef);
   const [isOpen, setOpen] = useState(false);
@@ -26,9 +25,14 @@ export default function NavigationBar() {
   const navContent = useRef(null);
   const navMenu = useRef(null);
   const navBg = useRef(null);
+  
 
   useEffect(() => {
     closeNav();
+    let elements = document.querySelectorAll(".logo-container");
+    elements.forEach((element) => {
+      Animations.appearAnimation(Direction.Down, element, 1.5, 3.75, "power4");
+    });
   }, []);
 
   const openNav = () => {
@@ -104,10 +108,33 @@ export default function NavigationBar() {
 
   return (
     <>
+      <div
+        style={{
+          zIndex: 100,
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          pointerEvents: "none",
+        }}
+      >
+        <div id="logo" style={{
+          margin: '5px auto'
+        }}>
+          <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
+            <div className="wrapper-hidden">
+              <div className="display-light-italic s-48 logo-container" ref={logoRef} style={{
+                lineHeight: '60px'
+              }}>
+                <div style={{
+                  backgroundColor: 'white',
+                  padding: '0 15px'
+                }}>Ha Trung</div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
       <m.nav className="custom-nav" initial={false} custom={height}>
-        <Link style={{ textDecoration: "none" }} onClick={() => handlePageChange()} className="nav-link">
-          <div className="condensed s-128">HA TRUNG</div>
-        </Link>
         <div ref={containerRef}>
           <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
             <div className={"nav-menu"} ref={navMenu}>
@@ -116,7 +143,6 @@ export default function NavigationBar() {
               </div>
               <div className="nav-background" ref={navBg}></div>
             </div>
-            <BurgerToggle onClick={toggle} toggle={() => toggleOpen()} />
           </m.div>
         </div>
       </m.nav>

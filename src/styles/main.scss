@@ -22,6 +22,10 @@
   position: relative;
 }
 
+.fixed-container {
+  position: fixed;
+}
+
 .center-position {
   left: 50%;
   top: 50%;
@@ -37,15 +41,19 @@ a {
   flex-flow: row wrap;
 }
 
-@media (prefers-color-scheme: dark) {
-  /* defaults to dark theme */
-}
 
 body {
-  background-color: #ebebeb;
   margin: 0;
   box-sizing: border-box;
   font-size: 14px;
+
+  position: relative;
+  overflow-x: hidden;
+}
+
+body,
+html {
+  overflow-x: hidden;
 }
 
 *,
@@ -67,8 +75,10 @@ body {
 /*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 
 html::-webkit-scrollbar {
-  display: none;
-  -ms-overflow-style: none; /* IE and Edge */
+
+  display: none !important;
+  -ms-overflow-style: none;
+  /* IE and Edge */
   scrollbar-width: none;
 }
 
@@ -125,14 +135,17 @@ html.has-scroll-dragging {
   transition: transform 0.3s, opacity 0.3s;
   opacity: 0;
 }
+
 .c-scrollbar:hover {
   transform: scaleX(1.45);
 }
+
 .c-scrollbar:hover,
 .has-scroll-scrolling .c-scrollbar,
 .has-scroll-dragging .c-scrollbar {
   opacity: 1;
 }
+
 [data-scroll-direction="horizontal"] .c-scrollbar {
   width: 100%;
   height: 10px;
@@ -140,6 +153,7 @@ html.has-scroll-dragging {
   bottom: 0;
   transform: scaleY(1);
 }
+
 [data-scroll-direction="horizontal"] .c-scrollbar:hover {
   transform: scaleY(1.3);
 }
@@ -156,10 +170,12 @@ html.has-scroll-dragging {
   cursor: -webkit-grab;
   cursor: grab;
 }
+
 .has-scroll-dragging .c-scrollbar_thumb {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
+
 [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
   right: auto;
   bottom: 0;

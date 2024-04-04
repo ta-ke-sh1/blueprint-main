@@ -2,7 +2,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgb(249, 141, 24);
     position: fixed;
     z-index: 10000;
     pointer-events: none;
@@ -10,7 +10,7 @@
 
 .cursor-text {
     position: fixed;
-    z-index: 100000;
+    z-index: 10hh000;
     pointer-events: none;
     color: black;
     mix-blend-mode: difference;
@@ -21,13 +21,13 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgb(249, 224, 35);
     transition-timing-function: ease-out;
     mix-blend-mode: difference;
     position: fixed;
     left: -50px;
     top: -50px;
-    z-index: 1000;
+    z-index: 10000;
     pointer-events: none;
 }
 

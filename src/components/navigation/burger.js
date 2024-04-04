@@ -5,7 +5,7 @@ const Path = (props) => <motion.path className="burger-path" strokeWidth={3} str
 
 export const BurgerToggle = ({ toggle }) => (
   <button onClick={toggle} className="burger-btn">
-    <svg width="23" height="23" viewBox="0 0 23 23">
+    <svg width="23" height="23" viewBox="0 0 23 23" fill="black">
       <Path
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5", stroke: "black" },
