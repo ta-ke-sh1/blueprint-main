@@ -17,9 +17,9 @@ export default function AboutMe(props) {
     console.log("loaded");
   }, []);
 
-  function onExit() {}
+  function onExit() { }
 
-  function onMouseEnterNav() {}
+  function onMouseEnterNav() { }
 
   function mouseEnterTitle() {
     let interval;
@@ -63,7 +63,7 @@ export default function AboutMe(props) {
                   transform: "translate(-50%, -50%)",
                   textAlign: "center",
                   color: "white",
-                  zIndex: 1000,
+                  zIndex: 10,
                 }}
               >
                 <div className="display-light-italic s-48">
@@ -86,11 +86,11 @@ export default function AboutMe(props) {
           </div>
           <div
             style={{
-              paddingTop: "120dvh",
+              paddingTop: "110dvh",
               margin: "0 auto",
               position: "relative",
               minHeight: "100vh",
-              width: "80vw",
+              width: "60vw",
             }}
           >
             <div
@@ -102,7 +102,13 @@ export default function AboutMe(props) {
                 marginBottom: "20px",
               }}
             >
-              FRESHLY GRADUATED IN 2023, CURRENTLY, HE'S WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM AS A VIRTUALIZATION-AND-SIMULATION-FOCUSED BACK-END DEVELOPER.
+              HA TRUNG GRADUATED FROM THE UNIVERSITY OF GREENWICH WITH FIRST-CLASS HONORS IN 2023. HE HAS BEEN WORKING AS A BACK-END DEVELOPER WITH
+              A FOCUS ON VIRTUALIZATION AND SIMULATION AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM. TRUNG HAS ALWAYS HAD A PASSION FOR CREATING VISUALLY STUNNING PRODUCTS,
+              WHICH HE HAS ENJOYED SINCE HIS EARLY YEARS OF CHILDHOOD.
+              <br /><br />
+              IN HIS FREE TIME, TRUNG PURSUES VISUAL DESIGNING AND FRONT-END DEVELOPMENT AS A HOBBY. THIS WEBSITE IS PRIMARILY
+              A SPACE FOR HIM TO EXPERIMENT AND LEARN ON HIS OWN, WHERE HE TRIES TO REPLICATE AMAZING SCENES FROM TALENTED INDIVIDUALS AROUND THE WORLD.
+              HE USES MAINLY REACT.JS FOR IMPLEMENTATION.
             </div>
             <div
               className="regular"
@@ -112,24 +118,10 @@ export default function AboutMe(props) {
                 letterSpacing: "0px",
               }}
             >
-              EVER SINCE A KID, TRUNG HAS ALWAYS LOVED CREATING MESMERIZING, EYE-CANDIED, AND DOPE-ASS PRODUCTS. NOW, HE TAKES VISUAL DESIGNING AND FRONT-END DEVELOPMENT AS A SIDE HOBBY. THIS WEBSITE MAINLY SERVES AS HIS PLAYGROUND AND SELF-LEARNING SPACE WHERE HE TRIES TO
-              RECREATE STUNNING SCENES FROM TALENTS AROUND THE WORLD. THEY ARE REVISIONED MAINLY IN REACT.JS
             </div>
-            <WorkExperiences
-              sx={{
-                marginTop: "100px",
-              }}
-            />
-            <AcademicResults
-              sx={{
-                marginTop: "100px",
-              }}
-            />
-            <AcademicAchievements
-              sx={{
-                marginTop: "100px",
-              }}
-            />
+            <WhatIDo sx={{
+              marginTop: "100px",
+            }} />
           </div>
         </div>
         <Contacts />
@@ -138,67 +130,17 @@ export default function AboutMe(props) {
   );
 }
 
-function Ethos(props) {
+function WhatIDo(props) {
   return (
     <div
       style={{
         ...props.sx,
       }}
     >
-      <div xs={12} className="s-40 display-medium">
-        My Ethos
+      <div xs={12} className="s-40 display-light-italic">
+        What can<br />
+        I Do?
       </div>
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            I believe in trial and errors{" "}
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              May 2023 - Now
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function WorkExperiences(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <div xs={12} className="s-40 display-medium">
-        Work <br />
-        Experiences
-      </div>
-      <p>
-        <span
-          className="semi-bold"
-          style={{
-            fontSize: "14px",
-            textAlign: "justify",
-          }}
-        >
-          Toshiba Software Development Vietnam
-        </span>
-      </p>
       <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
         <Grid item xs={8}>
           <p
@@ -212,186 +154,6 @@ function WorkExperiences(props) {
             <br />
             Worked a full-time software engineer to develop a virtual environment for testing industrial IOT systems that uses different networking protocol (DIO, SECNET, FLNET).
           </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              May 2023 - Now
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="medium">Intern</span>
-            <br />
-            Work as an intern for my final defense thesis. Created a mobile application in Flutter to utilize deep learning model to predict and categorize human movements types using sensors readings of built-in sensors such as Accelerometer and Gyroscope.
-          </p>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            The model has achieved 95% prediction accuracy on 13 different holding positions. The result was further used in a pedometer module, which has achieved 91% overall accuracy in counting & differentiate walking, running and stairs climbing steps.
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              Nov 2022 - Apr 2023
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function AcademicResults(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <div
-        className="regular"
-        style={{
-          textAlign: "justify",
-          fontSize: "14px",
-          letterSpacing: "0px",
-        }}
-      >
-        IF YOU ARE LOOKING FOR MY ACADEMIC RESULTS THEN HERE IT IS:
-      </div>
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={12} className="s-40 display-medium">
-          Academic
-          <br />
-          Results
-        </Grid>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">University of Greenwich, Vietnam</span>
-            <br />
-            Bachelor of Software Engineering
-            <br />
-            First Class Honors
-            <br />
-            GPA: 3.7/4.0
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              2020-2023
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">Foreign Trade University, Vietnam</span>
-            <br />
-            Bachelor of Business Japanese
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              2016 - 2020
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function AcademicAchievements(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={12} className="s-40 display-medium">
-          Academic
-          <br />
-          Achievements
-        </Grid>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">Top 3 Student with highest GPA</span>
-            <br />
-            of Computing Department
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end" textAlign={"end"}>
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              Summer 2023 <br />
-              Fall 2022 <br />
-              Summer 2022 <br />
-              Spring 2022 <br />
-              Fall 2021 <br />
-              Spring 2021
-            </p>
-          </Box>
         </Grid>
       </Grid>
     </div>
