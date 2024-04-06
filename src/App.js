@@ -5,6 +5,7 @@ import AboutMe from "./containers/about";
 import Playground from "./containers/playground";
 import Projects from "./containers/projects";
 import Test from "./containers/test";
+import ContactPage from "./containers/contact";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/folio" element={<AboutMe />} />
       <Route path="/playground" element={<Playground />} />
       <Route path="/projects" element={<Projects />} />
+      <Route path="/contact" element={<ContactPage />} />
     </Routes>
   );
 }
