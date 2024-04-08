@@ -111,13 +111,13 @@ export default function NavigationBar() {
                 className="display-light-italic s-48 logo-container"
                 ref={logoRef}
                 style={{
-                  lineHeight: "60px",
                 }}
               >
                 <div
                   style={{
                     backgroundColor: "white",
-                    padding: "0 15px",
+                    padding: "0 12px",
+                    paddingTop: '10px'
                   }}
                 >
                   Ha Trung

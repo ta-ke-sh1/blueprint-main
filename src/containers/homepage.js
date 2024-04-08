@@ -125,6 +125,7 @@ export default function Homepage() {
               md: "10px",
             },
             left: "10px",
+            zIndex: 100,
           }}
         >
           <Typography sx={{ lineHeight: "50px" }}>

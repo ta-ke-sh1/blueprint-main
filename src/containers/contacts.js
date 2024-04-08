@@ -44,12 +44,6 @@ export default function Contacts() {
             textAlign: "center",
           }}
         >
-          <HelloSvg
-            sx={{
-              transform: "rotate(5deg)",
-              marginBottom: "30px",
-            }}
-          />
           <div
             className="serif-light-italic s-100"
             style={{

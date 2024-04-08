@@ -47,6 +47,13 @@ export default function BottomNavigation(props) {
     }
   }
 
+  function handleMouseLeaveNavigation() {
+    const navItems = document.querySelectorAll(".nav--item");
+    for (let i = 0; i < navItems.length; i++) {
+      navItems[i].classList.remove("active");
+    }
+  }
+
   function navigatePage(index) {
     if (props.onExit) {
       props.onExit();
@@ -59,38 +66,6 @@ export default function BottomNavigation(props) {
       }, 1500);
     }, 1000);
   }
-
-  useEffect(() => {
-    window.addEventListener(
-      "keydown",
-      function (event) {
-        if (event.preventDefault()) {
-          return;
-        }
-
-        switch (event.key) {
-          case "h":
-            onMouseEnterNav(0);
-            break;
-          case "c":
-            onMouseEnterNav(3);
-            break;
-          case "p":
-            onMouseEnterNav(2);
-            break;
-          case "f":
-            onMouseEnterNav(1);
-            break;
-          case "Enter":
-            props.onExit();
-          default:
-            return;
-        }
-        event.preventDefault();
-      },
-      true
-    );
-  }, []);
 
   return (
     <>
@@ -184,6 +159,7 @@ export default function BottomNavigation(props) {
           bottom: "15px",
           zIndex: 900,
         }}
+        onMouseLeave={() => { handleMouseLeaveNavigation() }}
       >
         <div
           className="wrapper-hidden"

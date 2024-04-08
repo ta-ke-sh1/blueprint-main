@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutMe(props) {
   const { openAnimation } = usePreloader();
   const title = useRef();
+  const smallImg = useRef();
 
   const landingImg = useRef();
 
@@ -36,7 +37,18 @@ export default function AboutMe(props) {
           },
         },
         backgroundPosition: "100% 100%",
-        ilter: "grayscale(100%)",
+      });
+      gsap.to(smallImg.current, {
+        scrollTrigger: {
+          trigger: smallImg.current,
+          scrub: true,
+          start: "top center",
+          end: () => {
+            let height = window.innerHeight;
+            return `+=${height * 1.5}px`;
+          },
+        },
+        backgroundPosition: "100% 100%",
       });
     }, []);
 
@@ -45,9 +57,9 @@ export default function AboutMe(props) {
     };
   });
 
-  function onExit() {}
+  function onExit() { }
 
-  function onMouseEnterNav() {}
+  function onMouseEnterNav() { }
 
   function mouseEnterTitle() {
     let interval;
@@ -63,6 +75,7 @@ export default function AboutMe(props) {
             ...props.sx,
           }}
         >
+
           <div
             ref={landingImg}
             style={{
@@ -72,10 +85,9 @@ export default function AboutMe(props) {
               top: 0,
               width: "100dvw",
               height: "100dvh",
-              backgroundImage: `url("/banner.jpg")`,
+              backgroundImage: `linear-gradient(rgb(0,0,0, 0.5), rgb(0,0,0, 0.3)), url("/banner.jpg")`,
               backgroundSize: "cover",
               backgroundPosition: "0% 0%",
-              filter: "grayscale(0%)",
             }}
           >
             <div
@@ -99,53 +111,76 @@ export default function AboutMe(props) {
                 <div
                   className="display-light-italic"
                   style={{
-                    maxWidth: "600px",
+                    minWidth: "320px",
+                    maxWidth: "700px",
                     fontSize: "calc(10px + 4vmin)",
                   }}
                 >
-                  A young developer specialized in virtualization & simulation with a side-hobby passion for creating dope-ass visuals. Currently based in Hanoi, Vietnam
+                  <span className="semi-bold">DEVELOPER</span>{" "}by day,<br /><span className="semi-bold">ART SEEKER</span>{" "}by night
+                </div>
+                <div
+                  className="regular"
+                  style={{
+                    marginTop: '20px',
+                    maxWidth: "600px",
+                    fontSize: "calc(5px + 1vmin)",
+                  }}
+                >
+                  Specialized in virtualization & simulation with a side-hobby passion for creating dope-ass visuals. Currently based in Hanoi, Vietnam
                 </div>
               </div>
             </div>
           </div>
-          <div
-            style={{
-              paddingTop: "110dvh",
-              margin: "0 auto",
-              position: "relative",
-              minHeight: "100vh",
-              width: "60vw",
-            }}
-          >
+          <div style={{
+            position: 'relative',
+            minHeight: '100vh',
+            marginTop: "100dvh",
+            width: '100%'
+          }}>
             <div
-              className="regular"
               style={{
-                textAlign: "justify",
-                fontSize: "14px",
-                letterSpacing: "0px",
-                marginBottom: "20px",
+                margin: "0 auto",
+                minHeight: "100vh",
+                width: "60vw",
+                paddingTop: '100px',
               }}
             >
-              Ha Trung graduated from the University of Greenwich with first-class honors in 2023. He has been working as a back-end developer with a focus on virtualization and simulation at Toshiba Software Development Vietnam.
-              <br />
-              <br />
-              In his free time, Trung pursues visual designing and front-end development as a hobby. This website is primarily a space for him to experiment and learn on his own, where he tries to replicate amazing scenes from talented individuals around the world. He uses mainly
-              React.Js as tool for implementation.
+              <div
+                className="regular"
+                style={{
+
+                  textAlign: "justify",
+                  fontSize: "14px",
+                  letterSpacing: "0px",
+                  marginBottom: "20px",
+                }}
+              >
+                Ha Trung graduated from the University of Greenwich with first-class honors in 2023. He has been working as a back-end developer with a focus on virtualization and simulation at Toshiba Software Development Vietnam.
+                <br />
+                <div ref={smallImg} style={{
+                  margin: '40px auto',
+                  minWidth: '250px',
+                  backgroundPosition: "0% 0%",
+                  width: '20vw',
+                  height: '400px',
+                  backgroundImage: 'url("/color.jpg")',
+                  backgroundSize: 'cover',
+                }}></div>
+                <br />
+                In his free time, Trung pursues visual designing and front-end development as a hobby. This website is primarily a space for him to experiment and learn on his own, where he tries to replicate amazing scenes from talented individuals around the world. He uses mainly
+                React.Js as tool for implementation.
+              </div>
+              <div
+                className="regular"
+                style={{
+                  textAlign: "justify",
+                  fontSize: "14px",
+                  letterSpacing: "0px",
+                }}
+              ></div>
             </div>
-            <div
-              className="regular"
-              style={{
-                textAlign: "justify",
-                fontSize: "14px",
-                letterSpacing: "0px",
-              }}
-            ></div>
-            <WhatIDo
-              sx={{
-                marginTop: "100px",
-              }}
-            />
           </div>
+
         </div>
         <Contacts />
       </ScrollWrapper>
