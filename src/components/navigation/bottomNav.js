@@ -25,7 +25,7 @@ export default function BottomNavigation(props) {
     };
   }, []);
 
-  const routes = ["home", "folio", "playground", "contact"];
+  const routes = ["", "folio", "playground", "contact"];
 
   useEffect(() => {
     setTimeout(() => {
@@ -109,9 +109,9 @@ export default function BottomNavigation(props) {
               textAlign: "right",
             }}
           >
-            <span className="primary-text">YOUR VISION</span>
+            <span className="primary-text">ALWAYS READY TO</span>
             <br />
-            <span className="primary-text">MY MATERIALIZATION</span>
+            <span className="primary-text">MATERIALIZE YOUR VISION</span>
           </div>
         </div>
         <div
@@ -156,7 +156,7 @@ export default function BottomNavigation(props) {
           alignItems: "flex-end",
           left: "50%",
           transform: "translateX(-50%)",
-          bottom: "15px",
+          bottom: "5px",
           zIndex: 900,
         }}
         onMouseLeave={() => { handleMouseLeaveNavigation() }}

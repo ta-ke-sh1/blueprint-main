@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { BothWays } from "./commonIcon";
 import $ from "jquery"
 
 export default function CustomCursor(ref) {
-    const outer = useRef(null);
-    const text = useRef(null);
+    const vertical = useRef(null);
+    const horizontal = useRef(null);
 
     useEffect(() => {
         $(function () {
@@ -18,49 +17,94 @@ export default function CustomCursor(ref) {
             $(document).on("mouseenter", () => {
                 onMouseEnter()
             })
+
+            $(document).on("mousedown", () => {
+                onMouseDown()
+            })
+
+            $(document).on("mouseup", () => {
+                onMouseUp()
+            })
         })
     }, []);
 
     function onMouseMove(event) {
-        gsap.to(outer.current, {
-            left: event.clientX - 25,
-            top: event.clientY - 25,
-            duration: 0.6,
+        gsap.to(vertical.current, {
+            left: event.clientX,
+            top: event.clientY,
+            duration: 0.5,
             ease: "power",
         });
 
-        gsap.to(text.current, {
-            left: event.clientX - 50,
-            top: event.clientY - 50,
-            duration: 0.6,
+        gsap.to(horizontal.current, {
+            left: event.clientX,
+            top: event.clientY,
+            duration: 0.5,
             ease: "power",
         });
     }
 
     const onMouseLeave = () => {
-        gsap.to(outer.current, {
+        gsap.to(vertical.current, {
             opacity: 0,
-            scale: 0,
+            duration: 0.3,
+            ease: "none",
+        });
+
+        gsap.to(horizontal.current, {
+            opacity: 0,
             duration: 0.3,
             ease: "none",
         });
     };
 
     const onMouseEnter = () => {
-        gsap.to(outer.current, {
+        gsap.to(vertical.current, {
             opacity: 1,
-            scale: 1,
+            duration: 0.3,
+            ease: "none",
+        });
+
+        gsap.to(horizontal.current, {
+            opacity: 1,
             duration: 0.3,
             ease: "none",
         });
     };
 
+    const onMouseDown = () => {
+        gsap.to(vertical.current, {
+            duration: 0.3,
+            ease: "none",
+            height: '100px'
+        });
+
+        gsap.to(horizontal.current, {
+            duration: 0.3,
+            width: '100px'
+        });
+    }
+
+    const onMouseUp = () => {
+        gsap.to(vertical.current, {
+            duration: 0.3,
+            ease: "none",
+            height: '200vh'
+        });
+
+        gsap.to(horizontal.current, {
+            duration: 0.3,
+            ease: "none",
+            width: '200vw'
+        });
+    }
+
     return (
-        <div>
-            <span id="cursor-text" className="cursor-text reg" ref={text}>
-                <BothWays />
-            </span>
-            <span id="outer-circle" className="outer-circle" ref={outer}></span>
+        <div >
+            <div id="horizontal cursor" className="horizontal" ref={horizontal}>
+            </div>
+            <div id="vertical cursor" className="vertical" ref={vertical}>
+            </div>
         </div>
     );
 }

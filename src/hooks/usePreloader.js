@@ -12,25 +12,12 @@ export function PreloaderWrapper({ children }) {
   const logoRef = useRef(null);
 
   const preloader_2 = useRef(null);
-  const [isLoaded, updateLoaded] = useState(false);
 
   const delay = 2.4;
 
   useLayoutEffect(() => {
     Animations.appearAnimation(Direction.Up, logoRef.current, 1.2, 0.55, "power4");
-    const onPageLoad = () => {
-      updateLoaded(true);
-      openAnimation();
-    };
-    if (document.readyState === "complete") {
-      onPageLoad();
-    } else {
-      window.addEventListener("load", onPageLoad, false);
-      return () => {
-        window.removeEventListener("load", onPageLoad);
-      };
-    }
-  }, [isLoaded]);
+  }, []);
 
   const closeAnimation = () => {
     console.log("close");
@@ -54,7 +41,7 @@ export function PreloaderWrapper({ children }) {
     }, 1500);
   };
 
-  let value = useMemo(() => ({ isLoaded, closeAnimation, openAnimation }), [isLoaded]);
+  let value = useMemo(() => ({ closeAnimation, openAnimation }), []);
 
   return (
     <Preloader.Provider value={value}>

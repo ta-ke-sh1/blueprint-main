@@ -3,8 +3,11 @@ import { Typography, Box } from "@mui/material";
 import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
 import { textShuffle } from "../animations/text";
 import BottomNavigation from "../components/navigation/bottomNav";
+import { usePreloader } from "../hooks/usePreloader";
 
 export default function Homepage() {
+  const { openAnimation } = usePreloader();
+
   const instruction = useRef(null);
 
   const [isExiting, setIsExiting] = useState(false);
@@ -12,6 +15,10 @@ export default function Homepage() {
   const currIndex = useRef(0);
 
   const ascii = useRef(null);
+
+  useEffect(() => {
+    openAnimation();
+  }, [])
 
   useEffect(() => {
     AsciiMorph(ascii.current, { x: 60, y: 30 });
@@ -56,12 +63,22 @@ export default function Homepage() {
       <div
         className="relative-container"
         style={{
-          width: "100%",
+          width: "100vw",
           height: "100vh",
           msOverflowX: "hidden",
           overflowX: "hidden",
+
         }}
       >
+        <img src='./pc_overlay.png' style={{
+          position: 'absolute',
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%) scale(0.7)",
+          width: '780px',
+          zIndex: 10,
+          mixBlendMode: "screen",
+        }} />
         <div
           style={{
             minWidth: "900px",
@@ -69,7 +86,7 @@ export default function Homepage() {
             position: "absolute",
             left: "50%",
             top: "50%",
-            transform: "translate(-50%, -50%)",
+            transform: "translate(-50%, -65%) scale(0.7)",
             textAlign: "center",
           }}
         >
@@ -77,14 +94,16 @@ export default function Homepage() {
             style={{
               overflow: "hidden",
               margin: "0 auto",
-              fontSize: "12px",
-              letterSpacing: "calc(0.6px)",
-              lineHeight: "calc(14.5px)",
+              fontSize: "8px",
+              letterSpacing: "calc(1px)",
+              lineHeight: "calc(10.5px)",
               color: "black",
               whiteSpace: "pre-wrap",
               fontFamily: "Regular",
               userSelect: "none",
               zIndex: -1,
+              color: 'rgb(253, 135, 0)',
+
             }}
             id="asciiArt"
             ref={ascii}
@@ -128,13 +147,14 @@ export default function Homepage() {
             zIndex: 100,
           }}
         >
-          <Typography sx={{ lineHeight: "50px" }}>
+          <Typography sx={{ lineHeight: "40px" }}>
             <div className="wrapper-hidden">
               <div
                 className="display-light-italic s-48 item-container"
                 style={{
                   backgroundColor: "white",
                   width: "fit-content",
+                  padding: '3px 20px 0 10px'
                 }}
               >
                 Software
@@ -146,6 +166,7 @@ export default function Homepage() {
                 style={{
                   backgroundColor: "white",
                   width: "fit-content",
+                  padding: '0px 20px 0 10px'
                 }}
               >
                 Developer
@@ -153,10 +174,14 @@ export default function Homepage() {
             </div>
           </Typography>
           <Typography sx={{ lineHeight: "18px" }}>
-            <span className="medium primary-text s-12">WORKS MAINLY AS A BACK-END DEV</span>
+            <span className="medium primary-text s-12" style={{
+              padding: '3px 10px'
+            }}>WORKS MAINLY AS A BACK-END DEV</span>
           </Typography>
           <Typography sx={{ lineHeight: "18px" }}>
-            <span className="medium primary-text s-12">BUT I ENJOY DOING COOL SHITS</span>
+            <span className="medium primary-text s-12" style={{
+              padding: '3px 10px'
+            }}>BUT I ENJOY DOING COOL SHITS</span>
           </Typography>
         </Box>
       </div>

@@ -1,14 +1,5 @@
 import { useState } from "react";
 import { Grid } from "@mui/material";
-import HelloSvg from "../components/svgs/helloSvg";
-import { Box } from "@mui/system";
-
-const text_title_style = {
-  fontSize: "12.55vw",
-  fontFamily: "SemiBold",
-  margin: "0 1.5vw",
-  color: "#F4F4F4",
-};
 
 export default function Contacts() {
   const [formData, setFormData] = useState({
@@ -42,10 +33,11 @@ export default function Contacts() {
           style={{
             justifyContent: "center",
             textAlign: "center",
+            width: '40vw'
           }}
         >
           <div
-            className="serif-light-italic s-100"
+            className="display-light-italic s-100"
             style={{
               marginBottom: "20px",
             }}
@@ -53,61 +45,29 @@ export default function Contacts() {
             Say Hi!
           </div>
           <div className="semi-bold s-16">contact@trungha.com</div>
+          <Grid container spacing={4}>
+            <Grid item xs={2}>
+              <div className="regular">Facebook</div>
+            </Grid>
+            <Grid item xs={2}>
+              <div className="regular">Instagram</div>
+            </Grid>
+            <Grid item xs={2}>
+              <div className="regular">GitHub</div>
+            </Grid>
+          </Grid>
         </div>
       </div>
       <div
         className="absolute-container"
         style={{
-          maxWidth: "100vw",
-          width: "100%",
-          bottom: "2vw",
-          padding: "0 2vw",
+          bottom: "10px",
+          right: "10px",
+          zIndex: 1000
         }}
       >
-        <Grid container spacing={4}>
-          <Grid item xs={2}>
-            <div className="regular">Facebook</div>
-          </Grid>
-          <Grid item xs={2}>
-            <div className="regular">Instagram</div>
-          </Grid>
-          <Grid item xs={2}>
-            <div className="regular">GitHub</div>
-          </Grid>
-          <Grid item xs={6}>
-            <Box display="flex" justifyContent="flex-end">
-              <div className="regular">From Hanoi, Vietnam with love.</div>
-            </Box>
-          </Grid>
-        </Grid>
+        <div className="regular">From Hanoi, Vietnam with love.</div>
       </div>
-
-      <div
-        className="absolute-container"
-        style={{
-          maxWidth: "100vw",
-          width: "100%",
-          bottom: "-15px",
-          zIndex: -20,
-        }}
-      >
-        <div
-          className="row user-select-none"
-          style={{
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ ...text_title_style }} className="primary">
-            HA
-          </div>
-          <div style={{ ...text_title_style }} className="primary">
-            THE
-          </div>
-          <div style={{ ...text_title_style }} className="primary">
-            TRUNG
-          </div>
-        </div>
-      </div>
-    </div>
+    </div >
   );
 }

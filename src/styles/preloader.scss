@@ -11,7 +11,7 @@
 
 #second-slide {
   background-color: #141414;
-  z-index: 999;
+  z-index: 1999;
   position: fixed;
 
   left: 0;
@@ -30,7 +30,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 3rem;
-  z-index: 1000;
+  z-index: 1001;
   color: black;
 }
 
@@ -43,7 +43,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1001;
   color: black;
 }
 

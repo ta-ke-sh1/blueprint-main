@@ -155,7 +155,7 @@ export default function AboutMe(props) {
                   marginBottom: "20px",
                 }}
               >
-                Ha Trung graduated from the University of Greenwich with first-class honors in 2023. He has been working as a back-end developer with a focus on virtualization and simulation at Toshiba Software Development Vietnam.
+                Graduated from the University of Greenwich with first-class honors in 2023, I have been working as a back-end developer with a focus on virtualization and simulation at Toshiba Software Development Vietnam.
                 <br />
                 <div ref={smallImg} style={{
                   margin: '40px auto',
@@ -167,8 +167,8 @@ export default function AboutMe(props) {
                   backgroundSize: 'cover',
                 }}></div>
                 <br />
-                In his free time, Trung pursues visual designing and front-end development as a hobby. This website is primarily a space for him to experiment and learn on his own, where he tries to replicate amazing scenes from talented individuals around the world. He uses mainly
-                React.Js as tool for implementation.
+                In his free time, I pursue visual designing and front-end development as a hobby. This website is primarily a space for me to experiment and learn so it's quite messy. In here, I try to replicate amazing scenes from talented individuals around the world. Mainly
+                React.Js is used as tool for implementation.
               </div>
               <div
                 className="regular"
