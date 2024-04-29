@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion as m } from "framer-motion";
-import { BurgerToggle } from "./burger";
 import { useDimensions } from "../../hooks/useDimensions";
-import { Box } from "@mui/material";
 import { gsap } from "gsap";
 import useToggle from "../../hooks/useToggle";
 import { usePreloader } from "../../hooks/usePreloader";
@@ -11,8 +8,6 @@ import NavigationContent from "./navContent";
 import Animations, { Direction } from "../../animations/animations";
 
 export default function NavigationBar() {
-  const { toggle } = useToggle();
-
   const navigate = useNavigate();
   const preloader = usePreloader();
 
@@ -25,7 +20,6 @@ export default function NavigationBar() {
   const navContent = useRef(null);
   const navMenu = useRef(null);
   const navBg = useRef(null);
-  
 
   useEffect(() => {
     closeNav();
@@ -94,18 +88,6 @@ export default function NavigationBar() {
 
   const ease = "power";
 
-  const toggleOpen = () => {
-    if (isOpen) {
-      // close
-      closeNav();
-    } else {
-      // open
-      openNav();
-    }
-
-    setOpen(!isOpen);
-  };
-
   return (
     <>
       <div
@@ -117,35 +99,34 @@ export default function NavigationBar() {
           pointerEvents: "none",
         }}
       >
-        <div id="logo" style={{
-          margin: '5px auto'
-        }}>
+        <div
+          id="logo"
+          style={{
+            margin: "5px auto",
+          }}
+        >
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
-              <div className="display-light-italic s-48 logo-container" ref={logoRef} style={{
-                lineHeight: '60px'
-              }}>
-                <div style={{
-                  backgroundColor: 'white',
-                  padding: '0 15px'
-                }}>Ha Trung</div>
+              <div
+                className="display-light-italic s-48 logo-container"
+                ref={logoRef}
+                style={{
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    padding: "0 12px",
+                    paddingTop: '10px'
+                  }}
+                >
+                  Ha Trung
+                </div>
               </div>
             </div>
           </Link>
         </div>
       </div>
-      <m.nav className="custom-nav" initial={false} custom={height}>
-        <div ref={containerRef}>
-          <m.div ref={burgerRef} animate={isOpen ? "open" : "closed"}>
-            <div className={"nav-menu"} ref={navMenu}>
-              <div className="nav-content" ref={navContent}>
-                <NavigationContent />
-              </div>
-              <div className="nav-background" ref={navBg}></div>
-            </div>
-          </m.div>
-        </div>
-      </m.nav>
     </>
   );
 }

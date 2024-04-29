@@ -36,7 +36,6 @@ export default class AsciiItems {
             "                     #%:........-==....                     ",
         ],
         [
-
             "                       .-----..                      ",
             "                 +#.             .#+                 ",
             "             .+.                     .+-             ",
@@ -119,7 +118,6 @@ export default class AsciiItems {
             "...:::::----------------------:-::::::::...........    ",
             "...:::::--------------------::::::::.............      ",
             ".....::::----------------:::::::........... ",
-
         ],
         [
             "                                                            ",
@@ -131,12 +129,118 @@ export default class AsciiItems {
             "   ##    ### -##  #######  ##+ ###  ###  ##  ###  ###  ##-  ",
             "   ####+  #####   ##-  ##  ######   ###  ##  -##   ####-#-  ",
             "                                                            ",
-        ]
-    ]
+        ],
+    ];
+
+    static contacts = [
+        [
+            "                                                                                                      ",
+            "           /########                                        /#######      /########    ##     #####/  ",
+            "          ##        #/                                          ###           ###      #       ###    ",
+            "         ##         #                                           ##            ##               ##     ",
+            "         ##         #        /##  +    #        #              ##            ##       ##      ##      ",
+            "          ###             ###   ###  #####      ##            ###            ##    #####      #       ",
+            "            ###         .##     ##   #  ##      #             ## ==+++++====##    #  ##      ##       ",
+            "              ####     ##       ##  #   ##     ##            +##           ###       ##      #        ",
+            "                ###   ##       ##        #     #             ##            ##       ##      ##        ",
+            "                 ##  ###      ##         ##   #             ###           ###      ##       +         ",
+            "     #           ##  ##     # ##   .     ##   #             ##            ##      ###  #              ",
+            "     ##         ##  +##   ## ##  #.      ## ##             ##            ##       ## .#  ###          ",
+            "     #########/     ####/  ####/        ##.#           ######/       ######/    ####.   ####         ",
+            "                                         ##                                                           ",
+            "                                         #                                                            ",
+            "                                ###   .#                                                              ",
+            "                                ######                                                                ",
+            "                                                                                                      ",
+        ],
+        [
+            "                                                   ",
+            "                  +++++++++++++++                  ",
+            "              +++++++++++++++++++++++              ",
+            "           +++++++++++++++++++++++++++++           ",
+            "        +++++++++++++++++++++++++++++++++++        ",
+            "       +++++++++++++++++++++++++++++++++++++       ",
+            "     ++++++++++++++++++++++.        ++++++++++     ",
+            "    ++++++++++++++++++++.           +++++++++++    ",
+            "   ++++++++++++++++++++             ++++++++++++   ",
+            "  ++++++++++++++++++++          ....+++++++++++++  ",
+            "  ++++++++++++++++++++       .+++++++++++++++++++  ",
+            " +++++++++++++++++++++       -++++++++++++++++++++ ",
+            " +++++++++++++++++++++       -++++++++++++++++++++ ",
+            " +++++++++++++++++++++       -++++++++++++++++++++ ",
+            " ++++++++++++++.                    ++++++++++++++ ",
+            " ++++++++++++++.                   .++++++++++++++ ",
+            " ++++++++++++++.                   +++++++++++++++ ",
+            "  +++++++++++++-                   ++++++++++++++  ",
+            "  ++++++++++++++++++++       -+++++++++++++++++++  ",
+            "   +++++++++++++++++++       -++++++++++++++++++   ",
+            "    ++++++++++++++++++       -+++++++++++++++++    ",
+            "     +++++++++++++++++       -++++++++++++++++     ",
+            "       +++++++++++++++       -++++++++++++++       ",
+            "        ++++++++++++++       -+++++++++++++        ",
+            "           +++++++++++       -++++++++++           ",
+            "              ++++++++       -+++++++              ",
+            "                 +++++       -++++                 ",
+            "                                                   ",
+            "                                                   ",
+            "                                                   ",
+        ],
+        [
+            "                                                              ",
+            "   .+#+#+#+#+#+#+#+#+#+++-                                    ",
+            "   -++++++++++++++++++++++++-          #+#++#+#+#+#+#-        ",
+            "   -++++++++++++++++++++++++++.        +++++++++++++#-        ",
+            "   -++++++#++++++++++++++++++++                               ",
+            "   -++++++#-           #+++++++            ......             ",
+            "   -++++++#-           -+++++++        .+++++++++++#+         ",
+            "   -++++++#-           #+++++++      +#++++++++++++++++.      ",
+            "   -++++++#+         ++++++++-     -+++++++++--+#+++++++-     ",
+            "   -++++++++++++++++++++++#       -#++++++        +++++++.    ",
+            "   -++++++++++++++++++++++++#+    +++++++         .++++++#    ",
+            "   -++++++#+--------+#++++++++#- ++++++++++++++++++++++++#.   ",
+            "   -++++++#-           .+++++++#.+++++++++++++++++++++++++-   ",
+            "   -++++++#-            .+++++++++++++++++++++++++++++++++.   ",
+            "   -++++++#-             #+++++++-+++++++                     ",
+            "   -+++++++-            ++++++++- +++++++.         -++++++    ",
+            "   -++++++##++++++++++++++++++++   #++++++#-     -++++++#.    ",
+            "   -+++++++++++++++++++++++++++     +#+++++++++++++++++#.     ",
+            "   -+++++++++++++++++++++++++.       .+++++++++++++++#-       ",
+            "   .#+#+#+#+#+#+#+#+#++++-               -+++#+#++-.          ",
+            "                                                              ",
+        ],
+        [
+            "                                                    ",
+            "                  +++++++++++++++++++               ",
+            "               +++++++++++++++++++++++++            ",
+            "            +++++++++++++++++++++++++++++++         ",
+            "          +++++++++++++++++++++++++++++++++++       ",
+            "         ++++++++++++++++++++++++++++++++++++++     ",
+            "       ++++++++  +++++++++++++++++++++  ++++++++    ",
+            "      +++++++++      ++         ++      +++++++++   ",
+            "     ++++++++++                         ++++++++++  ",
+            "     ++++++++++                         ++++++++++  ",
+            "    ++++++++++                           ++++++++++ ",
+            "    +++++++++                             +++++++++ ",
+            "    +++++++++                             +++++++++ ",
+            "    +++++++++                             +++++++++ ",
+            "    +++++++++                             +++++++++ ",
+            "    ++++++++++                           ++++++++++ ",
+            "    +++++++++++                         +++++++++++ ",
+            "     +++++++++++++                    ++++++++++++  ",
+            "      +++++ +++++++++++         +++++++++++++++++   ",
+            "       ++++++ +++++++++         ++++++++++++++++    ",
+            "        ++++++  ++++++           ++++++++++++++     ",
+            "         +++++++                 +++++++++++++      ",
+            "           +++++++++++           +++++++++++        ",
+            "             +++++++++           +++++++++          ",
+            "                ++++++           ++++++             ",
+            "                                                    ",
+        ],
+    ];
 }
 
 export const AsciiMorph = (function () {
-    'use strict';
+    "use strict";
 
     var element = null;
     var canvasDimensions = {};
@@ -145,7 +249,7 @@ export const AsciiMorph = (function () {
     var framesToAnimate = [];
     var myTimeout = null;
 
-    const animationDuration = 10
+    const animationDuration = 7;
 
     /**
      * Utils
@@ -161,8 +265,8 @@ export const AsciiMorph = (function () {
     }
 
     function repeat(pattern, count) {
-        if (count < 1) return '';
-        var result = '';
+        if (count < 1) return "";
+        var result = "";
         while (count > 1) {
             if (count & 1) result += pattern;
             count >>= 1;
@@ -172,7 +276,11 @@ export const AsciiMorph = (function () {
     }
 
     function replaceAt(string, index, character) {
-        return string.substr(0, index) + character + string.substr(index + character.length);
+        return (
+            string.substr(0, index) +
+            character +
+            string.substr(index + character.length)
+        );
     }
 
     function init(el, canvasSize) {
@@ -185,39 +293,41 @@ export const AsciiMorph = (function () {
         var i;
         var renderDimensions = {
             x: 0,
-            y: data.length
+            y: data.length,
         };
 
         // Calculate centering numbers
         for (i = 0; i < data.length; i++) {
             if (data[i].length > renderDimensions.x) {
-                renderDimensions.x = data[i].length
+                renderDimensions.x = data[i].length;
             }
         }
 
         // Pad out right side of data to square it out
         for (i = 0; i < data.length; i++) {
             if (data[i].length < renderDimensions.x) {
-                data[i] = (data[i] + repeat(' ', renderDimensions.x - data[i].length));
+                data[i] =
+                    data[i] + repeat(" ", renderDimensions.x - data[i].length);
             }
         }
 
         var paddings = {
             x: Math.floor((canvasDimensions.x - renderDimensions.x) / 2),
-            y: Math.floor((canvasDimensions.y - renderDimensions.y) / 2)
-        }
+            y: Math.floor((canvasDimensions.y - renderDimensions.y) / 2),
+        };
 
         // Left Padding
         for (var i = 0; i < data.length; i++) {
-            data[i] = repeat(' ', paddings.x) + data[i] + repeat(' ', paddings.x);
+            data[i] =
+                repeat(" ", paddings.x) + data[i] + repeat(" ", paddings.x);
         }
 
         // Pad out the rest of everything
         for (var i = 0; i < canvasDimensions.y; i++) {
             if (i < paddings.y) {
-                data.unshift(repeat(' ', canvasDimensions.x));
-            } else if (i > (paddings.y + renderDimensions.y)) {
-                data.push(repeat(' ', canvasDimensions.x));
+                data.unshift(repeat(" ", canvasDimensions.x));
+            } else if (i > paddings.y + renderDimensions.y) {
+                data.push(repeat(" ", canvasDimensions.x));
             }
         }
 
@@ -226,11 +336,10 @@ export const AsciiMorph = (function () {
 
     // Crushes the frame data by 1 unit.
     function getMorphedFrame(data) {
-
-        var firstInLine, lastInLine = null;
+        var firstInLine,
+            lastInLine = null;
         var found = false;
         for (var i = 0; i < data.length; i++) {
-
             var line = data[i];
             firstInLine = line.search(/\S/);
             if (firstInLine === -1) {
@@ -238,13 +347,13 @@ export const AsciiMorph = (function () {
             }
 
             for (var j = 0; j < line.length; j++) {
-                if (line[j] != ' ') {
+                if (line[j] != " ") {
                     lastInLine = j;
                 }
             }
 
             if (firstInLine !== null && lastInLine !== null) {
-                data = crushLine(data, i, firstInLine, lastInLine)
+                data = crushLine(data, i, firstInLine, lastInLine);
                 found = true;
             }
 
@@ -260,11 +369,10 @@ export const AsciiMorph = (function () {
     }
 
     function crushLine(data, line, start, end) {
-
         var centers = {
             x: Math.floor(canvasDimensions.x / 2),
-            y: Math.floor(canvasDimensions.y / 2)
-        }
+            y: Math.floor(canvasDimensions.y / 2),
+        };
 
         var crushDirection = 1;
         if (line > centers.y) {
@@ -277,12 +385,37 @@ export const AsciiMorph = (function () {
         data[line] = replaceAt(data[line], start, " ");
         data[line] = replaceAt(data[line], end, " ");
 
-        if (!((end - 1) == (start + 1)) && !(start === end) && !((start + 1) === end)) {
-            data[line + crushDirection] = replaceAt(data[line + crushDirection], (start + 1), '+*/\\'.substr(Math.floor(Math.random() * '+*/\\'.length), 1));
-            data[line + crushDirection] = replaceAt(data[line + crushDirection], (end - 1), '+*/\\'.substr(Math.floor(Math.random() * '+*/\\'.length), 1));
-        } else if ((((start === end) || (start + 1) === end)) && ((line + 1) !== centers.y && (line - 1) !== centers.y && line !== centers.y)) {
-            data[line + crushDirection] = replaceAt(data[line + crushDirection], (start), '+*/\\'.substr(Math.floor(Math.random() * '+*/\\'.length), 1));
-            data[line + crushDirection] = replaceAt(data[line + crushDirection], (end), '+*/\\'.substr(Math.floor(Math.random() * '+*/\\'.length), 1));
+        if (
+            !(end - 1 == start + 1) &&
+            !(start === end) &&
+            !(start + 1 === end)
+        ) {
+            data[line + crushDirection] = replaceAt(
+                data[line + crushDirection],
+                start + 1,
+                "+*/\\".substr(Math.floor(Math.random() * "+*/\\".length), 1)
+            );
+            data[line + crushDirection] = replaceAt(
+                data[line + crushDirection],
+                end - 1,
+                "+*/\\".substr(Math.floor(Math.random() * "+*/\\".length), 1)
+            );
+        } else if (
+            (start === end || start + 1 === end) &&
+            line + 1 !== centers.y &&
+            line - 1 !== centers.y &&
+            line !== centers.y
+        ) {
+            data[line + crushDirection] = replaceAt(
+                data[line + crushDirection],
+                start,
+                "+*/\\".substr(Math.floor(Math.random() * "+*/\\".length), 1)
+            );
+            data[line + crushDirection] = replaceAt(
+                data[line + crushDirection],
+                end,
+                "+*/\\".substr(Math.floor(Math.random() * "+*/\\".length), 1)
+            );
         }
 
         return data;
@@ -294,9 +427,9 @@ export const AsciiMorph = (function () {
     }
 
     function renderSquareData(data) {
-        element.innerHTML = '';
+        element.innerHTML = "";
         for (var i = 0; i < data.length; i++) {
-            element.innerHTML = element.innerHTML + data[i] + '\n';
+            element.innerHTML = element.innerHTML + data[i] + "\n";
         }
 
         renderedData = data;
@@ -310,11 +443,10 @@ export const AsciiMorph = (function () {
     }
 
     function prepareFrames(data) {
-
         var deconstructionFrames = [];
         var constructionFrames = [];
 
-        var clonedData = renderedData
+        var clonedData = renderedData;
 
         // If its taking more than 100 frames, its probably somehow broken
         // Get the deconscrution frames
@@ -339,7 +471,7 @@ export const AsciiMorph = (function () {
             squareData = newData;
         }
 
-        return deconstructionFrames.concat(constructionFrames)
+        return deconstructionFrames.concat(constructionFrames);
     }
 
     function animateFrames(frameData) {
@@ -349,13 +481,12 @@ export const AsciiMorph = (function () {
 
     function animateFrame() {
         myTimeout = setTimeout(function () {
-
             renderSquareData(framesToAnimate[0]);
             framesToAnimate.shift();
             if (framesToAnimate.length > 0) {
                 animateFrame();
             }
-        }, animationDuration)
+        }, animationDuration);
 
         // framesToAnimate
     }
@@ -369,7 +500,7 @@ export const AsciiMorph = (function () {
         init(element, canvasSize);
     }
 
-    function destroy(){
+    function destroy() {
         element = null;
         canvasDimensions = {};
         renderedData = [];
@@ -380,7 +511,6 @@ export const AsciiMorph = (function () {
     return extend(main, {
         render: render,
         morph: morph,
-        destroy: destroy
+        destroy: destroy,
     });
-
 })();

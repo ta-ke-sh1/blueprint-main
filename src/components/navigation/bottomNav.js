@@ -25,7 +25,7 @@ export default function BottomNavigation(props) {
     };
   }, []);
 
-  const routes = ["home", "folio", "playground", "contact"];
+  const routes = ["", "folio", "playground", "contact"];
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,6 +47,13 @@ export default function BottomNavigation(props) {
     }
   }
 
+  function handleMouseLeaveNavigation() {
+    const navItems = document.querySelectorAll(".nav--item");
+    for (let i = 0; i < navItems.length; i++) {
+      navItems[i].classList.remove("active");
+    }
+  }
+
   function navigatePage(index) {
     if (props.onExit) {
       props.onExit();
@@ -59,38 +66,6 @@ export default function BottomNavigation(props) {
       }, 1500);
     }, 1000);
   }
-
-  useEffect(() => {
-    window.addEventListener(
-      "keydown",
-      function (event) {
-        if (event.preventDefault()) {
-          return;
-        }
-
-        switch (event.key) {
-          case "h":
-            onMouseEnterNav(0);
-            break;
-          case "c":
-            onMouseEnterNav(3);
-            break;
-          case "p":
-            onMouseEnterNav(2);
-            break;
-          case "f":
-            onMouseEnterNav(1);
-            break;
-          case "Enter":
-            props.onExit();
-          default:
-            return;
-        }
-        event.preventDefault();
-      },
-      true
-    );
-  }, []);
 
   return (
     <>
@@ -134,9 +109,9 @@ export default function BottomNavigation(props) {
               textAlign: "right",
             }}
           >
-            <span className="primary-text">YOUR VISION</span>
+            <span className="primary-text">ALWAYS READY TO</span>
             <br />
-            <span className="primary-text">MY MATERIALIZATION</span>
+            <span className="primary-text">MATERIALIZE YOUR VISION</span>
           </div>
         </div>
         <div
@@ -181,9 +156,10 @@ export default function BottomNavigation(props) {
           alignItems: "flex-end",
           left: "50%",
           transform: "translateX(-50%)",
-          bottom: "15px",
+          bottom: "5px",
           zIndex: 900,
         }}
+        onMouseLeave={() => { handleMouseLeaveNavigation() }}
       >
         <div
           className="wrapper-hidden"

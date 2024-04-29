@@ -1,399 +1,294 @@
 import { useEffect, useRef } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import Contacts from "./contacts";
 import { usePreloader } from "../hooks/usePreloader";
 import ScrollWrapper from "../hooks/useSmoothScroll";
 import BottomNavigation from "../components/navigation/bottomNav";
 import { textShuffle } from "../animations/text";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutMe(props) {
-  const { openAnimation } = usePreloader();
-  const title = useRef();
+    const { openAnimation } = usePreloader();
+    const title = useRef();
 
-  let currentIndex = 1;
+    const landingImg = useRef();
 
-  useEffect(() => {
-    openAnimation();
-    console.log("loaded");
-  }, []);
+    useEffect(() => {
+        openAnimation();
+    }, []);
 
-  function onExit() {}
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.to(landingImg.current, {
+                scrollTrigger: {
+                    trigger: landingImg.current,
+                    scrub: true,
+                    start: "-50% center",
+                    end: () => {
+                        let height = window.innerHeight * 2;
+                        return `+=${height}px`;
+                    },
+                },
+                backgroundPosition: "100% 100%",
+            });
+        }, []);
 
-  function onMouseEnterNav() {}
+        return function () {
+            ctx.revert();
+        };
+    });
 
-  function mouseEnterTitle() {
-    let interval;
-    textShuffle(title.current, "DEVELOPER", interval, 50);
-  }
+    function onExit() {}
 
-  return (
-    <>
-      <BottomNavigation onExit={onExit} onMouseEnterNav={onMouseEnterNav} current={1} />
-      <ScrollWrapper>
-        <div
-          style={{
-            ...props.sx,
-          }}
-        >
-          <div
-            style={{
-              margin: 0,
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "100dvw",
-              height: "100dvh",
-              backgroundImage: `url("/banner.jpg")`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  textAlign: "center",
-                  color: "white",
-                  zIndex: 1000,
-                }}
-              >
-                <div className="display-light-italic s-48">
-                  a
-                  <br />
-                  <span className="medium" onMouseEnter={mouseEnterTitle} ref={title}>
-                    DEVELOPER
-                  </span>
-                  <br />
-                  currently
-                  <br />
-                  based
-                  <br />
-                  in
-                  <br />
-                  Hanoi, Vietnam
+    function onMouseEnterNav() {}
+
+    function mouseEnterTitle() {
+        let interval;
+        textShuffle(title.current, "DEVELOPER", interval, 50);
+    }
+
+    return (
+        <>
+            <BottomNavigation
+                onExit={onExit}
+                onMouseEnterNav={onMouseEnterNav}
+                current={1}
+            />
+            <ScrollWrapper>
+                <div
+                    style={{
+                        ...props.sx,
+                    }}>
+                    <div
+                        style={{
+                            margin: 0,
+                            width: "100dvw",
+                            height: "100dvh",
+                        }}>
+                        <div
+                            style={{
+                                position: "relative",
+                                width: "100%",
+                                height: "100%",
+                            }}>
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                    textAlign: "center",
+                                    color: "black",
+                                    zIndex: 10,
+                                }}>
+                                <div
+                                    className="display-light-italic"
+                                    style={{
+                                        minWidth: "320px",
+                                        maxWidth: "700px",
+                                        fontSize: "calc(10px + 4vmin)",
+                                    }}>
+                                    <span className="semi-bold">DEVELOPER</span>{" "}
+                                    by day,
+                                    <br />
+                                    <span className="semi-bold">
+                                        ART SEEKER
+                                    </span>{" "}
+                                    by night
+                                </div>
+                                <div
+                                    className="medium"
+                                    style={{
+                                        marginTop: "20px",
+                                        maxWidth: "400px",
+                                        fontSize: "calc(5px + 1vmin)",
+                                        lineHeight: "calc(10px + 1vmin)",
+                                    }}>
+                                    SPECIALIZED IN VIRTUALIZATION & SIMULATION
+                                    WITH A SIDE-HOBBY PASSION FOR CREATING
+                                    DOPE-ASS VISUALS. CURRENTLY BASED IN HANOI,
+                                    VIETNAM
+                                </div>
+                                <div
+                                    className="medium"
+                                    style={{
+                                        width: "fit-content",
+                                        padding: "5px 15px",
+                                        margin: "0 auto",
+                                        backgroundColor: "black",
+                                        color: "white",
+                                        marginTop: "20px",
+                                        fontSize: "calc(5px + 1vmin)",
+                                        lineHeight: "calc(10px + 1vmin)",
+                                    }}>
+                                    SCROLL TO EXPLORE ↓
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        ref={landingImg}
+                        style={{
+                            minHeight: "100vh",
+                            width: "100%",
+                            backgroundImage: `linear-gradient(rgb(0,0,0, 0.5), rgb(0,0,0, 0.3)), url("/banner.jpg")`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "0% 0%",
+                        }}></div>
+                    <div
+                        style={{
+                            position: "relative",
+                            minHeight: "100vh",
+                            width: "100%",
+                        }}>
+                        <Grid
+                            container
+                            spacing={4}
+                            sx={{
+                                margin: "0 auto",
+                                minHeight: "100vh",
+                                width: "80vw",
+                                paddingTop: "100px",
+                            }}>
+                            <Grid item sm={12} md={6}></Grid>
+                            <Grid item sm={12} md={6}>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        fontSize: "48px",
+                                        lineHeight: "52px",
+                                        letterSpacing: "0px",
+                                        marginBottom: "20px",
+                                    }}>
+                                    Graduated from the University of Greenwich
+                                    with first-class honors in 2023, I have been
+                                    working as a back-end developer with a focus
+                                    on virtualization and simulation at Toshiba
+                                    Software Development Vietnam.
+                                    <br />
+                                    <br />
+                                    In my free time, I pursue visual designing
+                                    and front-end development as a hobby. This
+                                    website is primarily a space for me to
+                                    experiment and learn so it's quite messy. In
+                                    here, I try to replicate amazing scenes from
+                                    talented individuals around the world.
+                                    Mainly React.Js is used as tool for
+                                    implementation.
+                                </div>
+                            </Grid>
+                            <Grid item sm={12}>
+                                <div
+                                    style={{
+                                        margin: "0 auto",
+                                        width: "80vw",
+                                        height: "400px",
+                                    }}></div>
+                            </Grid>
+                            <Grid item sm={12} md={6}>
+                                <div
+                                    className="display-light-italic"
+                                    style={{
+                                        fontSize: "48px",
+                                        lineHeight: "52px",
+                                        letterSpacing: "0px",
+                                        marginBottom: "10px",
+                                    }}>
+                                    Work Experience
+                                </div>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        letterSpacing: "0px",
+                                        marginBottom: "20px",
+                                    }}>
+                                    <span
+                                        style={{
+                                            fontSize: "48px",
+                                            lineHeight: "40px",
+                                        }}>
+                                        Fullstack Developer <br />
+                                        Toshiba Software Development Vietnam
+                                    </span>
+                                    <br />
+                                    <span
+                                        style={{
+                                            fontSize: "24px",
+                                            lineHeight: "32px",
+                                        }}>
+                                        2023 - Current
+                                    </span>
+                                </div>
+
+                                <div
+                                    className="display-light-italic"
+                                    style={{
+                                        marginTop: "100px",
+                                        fontSize: "48px",
+                                        lineHeight: "52px",
+                                        letterSpacing: "0px",
+                                        marginBottom: "10px",
+                                    }}>
+                                    Education
+                                </div>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        letterSpacing: "0px",
+                                        marginBottom: "20px",
+                                    }}>
+                                    <span
+                                        style={{
+                                            fontSize: "48px",
+                                            lineHeight: "40px",
+                                        }}>
+                                        Bachelor of Computing
+                                        <br />
+                                        University of Greenwich
+                                    </span>
+                                    <br />
+                                    <span
+                                        style={{
+                                            fontSize: "24px",
+                                            lineHeight: "32px",
+                                        }}>
+                                        2020 - 2023
+                                    </span>
+                                </div>
+                                <div
+                                    className="regular"
+                                    style={{
+                                        letterSpacing: "0px",
+                                        marginBottom: "20px",
+                                    }}>
+                                    <span
+                                        style={{
+                                            fontSize: "48px",
+                                            lineHeight: "40px",
+                                        }}>
+                                        Bachelor of Business Japanese
+                                        <br />
+                                        Foreign Trade University
+                                    </span>
+                                    <br />
+                                    <span
+                                        style={{
+                                            fontSize: "24px",
+                                            lineHeight: "32px",
+                                        }}>
+                                        2016 - 2020
+                                    </span>
+                                </div>
+                            </Grid>
+                            <Grid item sm={12} md={6}></Grid>
+                        </Grid>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              paddingTop: "120dvh",
-              margin: "0 auto",
-              position: "relative",
-              minHeight: "100vh",
-              width: "80vw",
-            }}
-          >
-            <div
-              className="regular"
-              style={{
-                textAlign: "justify",
-                fontSize: "14px",
-                letterSpacing: "0px",
-                marginBottom: "20px",
-              }}
-            >
-              FRESHLY GRADUATED IN 2023, CURRENTLY, HE'S WORKING AT TOSHIBA SOFTWARE DEVELOPMENT VIETNAM AS A VIRTUALIZATION-AND-SIMULATION-FOCUSED BACK-END DEVELOPER.
-            </div>
-            <div
-              className="regular"
-              style={{
-                textAlign: "justify",
-                fontSize: "14px",
-                letterSpacing: "0px",
-              }}
-            >
-              EVER SINCE A KID, TRUNG HAS ALWAYS LOVED CREATING MESMERIZING, EYE-CANDIED, AND DOPE-ASS PRODUCTS. NOW, HE TAKES VISUAL DESIGNING AND FRONT-END DEVELOPMENT AS A SIDE HOBBY. THIS WEBSITE MAINLY SERVES AS HIS PLAYGROUND AND SELF-LEARNING SPACE WHERE HE TRIES TO
-              RECREATE STUNNING SCENES FROM TALENTS AROUND THE WORLD. THEY ARE REVISIONED MAINLY IN REACT.JS
-            </div>
-            <WorkExperiences
-              sx={{
-                marginTop: "100px",
-              }}
-            />
-            <AcademicResults
-              sx={{
-                marginTop: "100px",
-              }}
-            />
-            <AcademicAchievements
-              sx={{
-                marginTop: "100px",
-              }}
-            />
-          </div>
-        </div>
-        <Contacts />
-      </ScrollWrapper>
-    </>
-  );
-}
-
-function Ethos(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <div xs={12} className="s-40 display-medium">
-        My Ethos
-      </div>
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            I believe in trial and errors{" "}
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              May 2023 - Now
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function WorkExperiences(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <div xs={12} className="s-40 display-medium">
-        Work <br />
-        Experiences
-      </div>
-      <p>
-        <span
-          className="semi-bold"
-          style={{
-            fontSize: "14px",
-            textAlign: "justify",
-          }}
-        >
-          Toshiba Software Development Vietnam
-        </span>
-      </p>
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="medium">Software Engineer</span>
-            <br />
-            Worked a full-time software engineer to develop a virtual environment for testing industrial IOT systems that uses different networking protocol (DIO, SECNET, FLNET).
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              May 2023 - Now
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="medium">Intern</span>
-            <br />
-            Work as an intern for my final defense thesis. Created a mobile application in Flutter to utilize deep learning model to predict and categorize human movements types using sensors readings of built-in sensors such as Accelerometer and Gyroscope.
-          </p>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            The model has achieved 95% prediction accuracy on 13 different holding positions. The result was further used in a pedometer module, which has achieved 91% overall accuracy in counting & differentiate walking, running and stairs climbing steps.
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              Nov 2022 - Apr 2023
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function AcademicResults(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <div
-        className="regular"
-        style={{
-          textAlign: "justify",
-          fontSize: "14px",
-          letterSpacing: "0px",
-        }}
-      >
-        IF YOU ARE LOOKING FOR MY ACADEMIC RESULTS THEN HERE IT IS:
-      </div>
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={12} className="s-40 display-medium">
-          Academic
-          <br />
-          Results
-        </Grid>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">University of Greenwich, Vietnam</span>
-            <br />
-            Bachelor of Software Engineering
-            <br />
-            First Class Honors
-            <br />
-            GPA: 3.7/4.0
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              2020-2023
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">Foreign Trade University, Vietnam</span>
-            <br />
-            Bachelor of Business Japanese
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              2016 - 2020
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
-
-function AcademicAchievements(props) {
-  return (
-    <div
-      style={{
-        ...props.sx,
-      }}
-    >
-      <Grid container spacing={4} sx={{ marginBottom: "30px" }}>
-        <Grid item xs={12} className="s-40 display-medium">
-          Academic
-          <br />
-          Achievements
-        </Grid>
-        <Grid item xs={8}>
-          <p
-            className="regular"
-            style={{
-              fontSize: "14px",
-              textAlign: "justify",
-            }}
-          >
-            <span className="semi-bold">Top 3 Student with highest GPA</span>
-            <br />
-            of Computing Department
-          </p>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end" textAlign={"end"}>
-            <p
-              className="regular"
-              style={{
-                fontSize: "14px",
-              }}
-            >
-              Summer 2023 <br />
-              Fall 2022 <br />
-              Summer 2022 <br />
-              Spring 2022 <br />
-              Fall 2021 <br />
-              Spring 2021
-            </p>
-          </Box>
-        </Grid>
-      </Grid>
-    </div>
-  );
+                <Contacts />
+            </ScrollWrapper>
+        </>
+    );
 }

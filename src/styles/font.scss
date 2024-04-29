@@ -10,13 +10,13 @@
 
 @font-face {
   font-family: "Regular";
-  src: url("./fonts/GeistMono-Medium.otf");
+  src: url("./fonts/regular.otf");
 
 }
 
 @font-face {
   font-family: "SemiBold";
-  src: url("./fonts/Inter-SemiBold.ttf");
+  src: url("./fonts/PPMondwest-Regular.otf");
 }
 
 @font-face {
@@ -48,13 +48,14 @@
 
 .semi-bold {
   font-family: "SemiBold";
+  letter-spacing: -2px;
 }
 
 .medium {
   font-family: "Medium";
 }
 
-.display-italic{
+.display-italic {
   font-family: "display-italic";
 }
 
@@ -79,7 +80,7 @@
 }
 
 .s-48 {
-  font-size: 48px;
+  font-size: 36px;
 }
 
 .s-64 {

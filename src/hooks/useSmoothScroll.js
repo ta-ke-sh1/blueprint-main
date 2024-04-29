@@ -1,28 +1,27 @@
-import { useEffect, useRef } from "react"
-import locomotiveScroll from "locomotive-scroll";
+import { useEffect, useRef } from "react";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 export default function ScrollWrapper(props) {
-    const { children } = props
-    const containerRef = useRef(null)
+  const { children } = props;
+  const containerRef = useRef(null);
 
-    useEffect(() => {
-        const scroll = new locomotiveScroll({
-            el: containerRef.current,
-            smooth:  true,
-            lerp:  0.05,
-            multiplier:  0.4,
-        });
+  useEffect(() => {}, []);
 
-        return function () {
-            scroll.destroy();
-        }
-    }, [])
-
-    return (
-        <>
-            <main data-scroll-container ref={containerRef}>
-                {children}
-            </main>
-        </>
-    )
+  return (
+    <>
+      <ReactLenis
+        root
+        options={{
+          syncTouch: true,
+          lerp: 0.05,
+          wheelMultiplier: 0.5,
+          touchMultiplier: 0.4,
+        }}
+      >
+        <main data-scroll-container ref={containerRef}>
+          {children}
+        </main>
+      </ReactLenis>
+    </>
+  );
 }
