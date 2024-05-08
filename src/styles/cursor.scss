@@ -1,7 +1,7 @@
 .horizontal {
     width: 200vw;
     height: 2px;
-    background-color: rgb(253, 135, 0, 0.4);
+    background-color: rgb(253, 135, 0, 1);
     transition-timing-function: ease-out;
     position: fixed;
     left: -100vw;
@@ -14,7 +14,7 @@
 .vertical {
     width: 2px;
     height: 200vh;
-    background-color: rgb(253, 135, 0, 0.4);
+    background-color: rgb(253, 135, 0, 1);
     transition-timing-function: ease-out;
     position: fixed;
     left: -1px;

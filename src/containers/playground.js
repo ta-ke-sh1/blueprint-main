@@ -105,11 +105,6 @@ export default function Playground() {
         </div>
 
         <Contacts />
-        <div
-          style={{
-            height: "80px",
-          }}
-        ></div>
       </ScrollWrapper>
     </>
   );

@@ -335,6 +335,7 @@ body #cdawrap {
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "frame frame" "content content" "meta demos";
   }
+
   .frame {
     grid-template-columns: auto auto auto 1fr;
     grid-template-areas: "title back prev sponsor";
@@ -346,9 +347,11 @@ body #cdawrap {
   .frame__title::after {
     content: "_";
   }
+
   .frame__title::before {
     content: "_";
   }
+
   .demos {
     justify-self: end;
     grid-column-gap: 0.5rem;

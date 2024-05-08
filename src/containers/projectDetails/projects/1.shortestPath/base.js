@@ -3,28 +3,29 @@ import TextField from '@mui/material/TextField';
 import IconButton from "@mui/material/IconButton"
 import Grid from "@mui/material/Grid"
 import { Grid3x3, Start } from "@mui/icons-material";
+import Cell from "./cell";
 
 const normalizeRange = (i, min, max) => {
     return i < min ? min : i > max ? max : i
 }
 
-export default function InvoiceMaker() {
+export default function ShortestPathProject() {
 
     const [grid, setGrid] = useState([[]])
 
     const [gridData, setGridData] = useState([[]])
 
-    const [xSize, setXSize] = useState(15)
-    const [ySize, setYSize] = useState(15)
+    const [colSize, setXSize] = useState(20)
+    const [rowSize, setYSize] = useState(20)
 
     const [start, setStart] = useState({
-        x: 0,
-        y: 0,
+        col: 0,
+        row: 0,
     })
 
     const [end, setEnd] = useState({
-        x: 14,
-        y: 14
+        col: 5,
+        row: 5,
     })
 
     useEffect(() => {
@@ -34,18 +35,18 @@ export default function InvoiceMaker() {
     function createGrid() {
         let grid = [];
         let gridData = [];
-        for (let i = 0; i < ySize; i++) {
+        for (let i = 0; i < rowSize; i++) {
             let row = []
             let rowData = [];
-            for (let j = 0; j < xSize; j++) {
+            for (let j = 0; j < colSize; j++) {
                 row.push(
                     <Cell
-                        x={j}
-                        y={i}
+                        col={j}
+                        row={i}
                         isVisited={false}
                         isWall={false}
-                        isStart={start.x === i && start.y === j}
-                        isEnd={end.x === i && end.y === j}
+                        isStart={start.row === i && start.col === j}
+                        isEnd={end.row === i && end.col === j}
                         onMouseEnter={onMouseEnterCell}
                         onMouseLeave={onMouseLeaveCell}
                         onMouseDown={onMouseDownCell}
@@ -55,11 +56,11 @@ export default function InvoiceMaker() {
                 )
 
                 rowData.push({
-                    x: j,
-                    y: i,
+                    col: j,
+                    row: i,
                     isWall: false,
-                    isStart: start.x === i && start.y === j,
-                    isEnd: end.x === i && end.y === j,
+                    isStart: start.row === i && start.col === j,
+                    isEnd: end.row === i && end.col === j,
                     weight: 1,
                     isVisited: false,
                     f: Infinity,
@@ -76,25 +77,55 @@ export default function InvoiceMaker() {
         setGridData(gridData)
     }
 
-    function onMouseEnterCell(x, y) {
+    function onMouseEnterCell(row, col) {
 
     }
 
-    function onMouseLeaveCell(x, y) {
+    function onMouseLeaveCell(row, col) {
 
     }
 
-    function onMouseDownCell(x, y) {
-        console.log("x: " + x, "y: " + y)
+    function onMouseDownCell(row, col) {
+
     }
 
-    function onMouseUpCell(x, y) {
+    function onMouseUpCell(row, col) {
 
     }
 
     function startAnimation() {
-        const path = ShortestPath(gridData, start, end)
-        console.log(path)
+        const visitedNodes = ShortestPath(gridData, gridData[start.row][start.col], gridData[end.row][end.col])
+        const shortestPath = getNodesShortestPath(gridData[end.row][end.col])
+        animateAlgorithm(visitedNodes, shortestPath);
+    }
+
+    function animateAlgorithm(visitedNodes, shortestPath) {
+        for (let i = 0; i <= visitedNodes.length; i++) {
+            if (i === visitedNodes.length) {
+                setTimeout(() => {
+                    animatePath(shortestPath);
+                }, 10 * i);
+                return;
+            }
+            setTimeout(() => {
+                const node = visitedNodes[i];
+
+                document.getElementById(
+                    `cell-${node.row}-${node.col}`
+                ).className = "sp-cell node-visited";
+            }, 10 * i);
+        }
+    }
+
+    function animatePath(path) {
+        for (let i = 0; i < path.length; i++) {
+            setTimeout(() => {
+                const node = path[i];
+                document.getElementById(
+                    `cell-${node.row}-${node.col}`
+                ).className = "sp-cell node-shortest-path";
+            }, 40 * i);
+        }
     }
 
     return (
@@ -116,13 +147,13 @@ export default function InvoiceMaker() {
                     <div className="sp-control">
                         <Grid container spacing={4}>
                             <Grid item xs={3}>
-                                <TextField value={xSize} onChange={(e) => {
+                                <TextField value={colSize} onChange={(e) => {
                                     let value = normalizeRange(parseInt(e.target.value), 0, 40);
                                     setXSize(value)
                                 }} id="standard-basic" label="X" variant="standard" />
                             </Grid>
                             <Grid item xs={3}>
-                                <TextField value={ySize} onChange={(e) => {
+                                <TextField value={rowSize} onChange={(e) => {
                                     let value = normalizeRange(parseInt(e.target.value), 0, 40);
                                     setYSize(value)
                                 }} id="standard-basic" label="Y" variant="standard" />
@@ -174,31 +205,9 @@ function ShortestPathGrid(props) {
     )
 }
 
-function Cell(props) {
-    const { x, y, isStart, isEnd, isWall, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp, weight, enableWeight } = props
-
-    const tag = isStart ? "start-cell" : isEnd ? "end-cell" : isWall ? "wall-cell" : "";
-
-    const [w, setW] = useState(weight ?? 1)
-
-    return (
-        <div
-            onMouseEnter={() => onMouseEnter(x, y)}
-            onMouseLeave={() => onMouseLeave(x, y)}
-            onMouseDown={() => onMouseDown(x, y)}
-            onMouseUp={() => onMouseUp(x, y)}
-            id={`cell-${props.x}-${props.y}`}
-            className={`sp-cell ${tag}`}>
-            <div className="sp-cell-weight">
-                {w}
-            </div>
-        </div>
-    )
-}
 
 function ShortestPath(grid, start, end) {
     const shortestPath = [];
-    start.f = 0;
     start.distance = 0;
 
     const nodeList = getAllNodes(grid);
@@ -209,11 +218,17 @@ function ShortestPath(grid, start, end) {
             const currentNode = nodeList.shift();
 
             if (currentNode.isWall) continue;
-            if (currentNode.f === Infinity) return shortestPath;
+            if (currentNode.distance === Infinity) {
+                console.log('return')
+                return shortestPath;
+            }
             currentNode.isVisited = true;
             shortestPath.push(currentNode)
 
-            if (currentNode.x === end.x && currentNode.y === end.y) return shortestPath;
+            if (currentNode.row === end.row && currentNode.col === end.col) {
+                console.log('found')
+                return shortestPath;
+            }
 
             let neighbors = getNeighbor(currentNode, grid)
             for (const neighbor of neighbors) {
@@ -241,12 +256,11 @@ function getAllNodes(grid) {
 
 function getNeighbor(node, grid) {
     const neighbors = [];
-    const x = node.x;
-    const y = node.y;
-    if (x > 1) neighbors.push(grid[x - 1][y])
-    if (x < grid.length - 1) neighbors.push(grid[x + 1][y])
-    if (y > 1) neighbors.push(grid[x][y - 1])
-    if (y < grid[0].length - 1) neighbors.push(grid[x][y + 1])
+    const { col, row } = node;
+    if (row > 1) neighbors.push(grid[row - 1][col])
+    if (row < grid.length - 1) neighbors.push(grid[row + 1][col])
+    if (col > 1) neighbors.push(grid[row][col - 1])
+    if (col < grid[0].length - 1) neighbors.push(grid[row][col + 1])
     return neighbors.filter((neighbor) => !neighbor.isVisited);
 }
 
@@ -254,4 +268,15 @@ function sortNodesByDistance(unvisitedNodes) {
     unvisitedNodes.sort((nodeA, nodeB) => {
         return nodeA.distance - nodeB.distance;
     });
+}
+
+export function getNodesShortestPath(finishNode) {
+    const nodesInShortestPathOrder = [];
+    let currentNode = finishNode;
+    while (currentNode !== null) {
+        nodesInShortestPathOrder.unshift(currentNode);
+
+        currentNode = currentNode.previousNode;
+    }
+    return nodesInShortestPathOrder;
 }

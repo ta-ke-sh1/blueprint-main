@@ -17,14 +17,6 @@ export default function CustomCursor(ref) {
             $(document).on("mouseenter", () => {
                 onMouseEnter()
             })
-
-            $(document).on("mousedown", () => {
-                onMouseDown()
-            })
-
-            $(document).on("mouseup", () => {
-                onMouseUp()
-            })
         })
     }, []);
 
@@ -71,33 +63,6 @@ export default function CustomCursor(ref) {
             ease: "none",
         });
     };
-
-    const onMouseDown = () => {
-        gsap.to(vertical.current, {
-            duration: 0.3,
-            ease: "none",
-            height: '100px'
-        });
-
-        gsap.to(horizontal.current, {
-            duration: 0.3,
-            width: '100px'
-        });
-    }
-
-    const onMouseUp = () => {
-        gsap.to(vertical.current, {
-            duration: 0.3,
-            ease: "none",
-            height: '200vh'
-        });
-
-        gsap.to(horizontal.current, {
-            duration: 0.3,
-            ease: "none",
-            width: '200vw'
-        });
-    }
 
     return (
         <div >
