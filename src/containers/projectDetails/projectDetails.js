@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import BottomNavigation from "../../components/navigation/bottomNav";
 import { usePreloader } from "../../hooks/usePreloader";
-import ShortestPathProject from "./projects/1.shortestPath/base";
+import { useParams } from "react-router-dom";
+import ShortestPathProblem from "./projects/1.shortestPath/main";
+import Contacts from "../contacts";
 
 export default function ProjectDetails(props) {
     const { openAnimation } = usePreloader();
 
+    const { id } = useParams();
+
     const components = [
-        <ShortestPathProject />
+        <ShortestPathProblem />,
+
     ]
 
     const [current, setCurrent] = useState(0)
@@ -21,9 +26,10 @@ export default function ProjectDetails(props) {
             <BottomNavigation />
             <div>
                 {
-                    components[current]
+                    components[id]
                 }
             </div>
+            <Contacts />
         </>
     )
 }

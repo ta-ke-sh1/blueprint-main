@@ -182,7 +182,7 @@ export default function BottomNavigation(props) {
               </div>
               <div className="spacing-slash">/</div>
               <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)} onClick={() => navigatePage(1)}>
-                FOLIO(F)
+                BLOG(B)
               </div>
               <div className="spacing-slash">/</div>
               <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)} onClick={() => navigatePage(0)}>

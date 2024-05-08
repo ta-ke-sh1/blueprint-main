@@ -15,8 +15,8 @@ export default function ShortestPathProject() {
 
     const [gridData, setGridData] = useState([[]])
 
-    const [colSize, setXSize] = useState(20)
-    const [rowSize, setYSize] = useState(20)
+    const [colSize, setXSize] = useState(15)
+    const [rowSize, setYSize] = useState(15)
 
     const [start, setStart] = useState({
         col: 0,
@@ -130,53 +130,38 @@ export default function ShortestPathProject() {
 
     return (
         <>
-            <div style={{
-                position: 'relative',
-                width: '100dvw',
-                height: '100dvh'
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    textAlign: 'center',
-                    justifyContent: 'center',
-                }}>
-                    Shortest Path Visualizer
-                    <div className="sp-control">
-                        <Grid container spacing={4}>
-                            <Grid item xs={3}>
-                                <TextField value={colSize} onChange={(e) => {
-                                    let value = normalizeRange(parseInt(e.target.value), 0, 40);
-                                    setXSize(value)
-                                }} id="standard-basic" label="X" variant="standard" />
-                            </Grid>
-                            <Grid item xs={3}>
-                                <TextField value={rowSize} onChange={(e) => {
-                                    let value = normalizeRange(parseInt(e.target.value), 0, 40);
-                                    setYSize(value)
-                                }} id="standard-basic" label="Y" variant="standard" />
-                            </Grid>
-                            <Grid item xs={2}>
-                                <IconButton onClick={() => {
-                                    createGrid()
-                                }}>
-                                    <Grid3x3 />
-                                </IconButton>
-                            </Grid>
-                            <Grid item xs={2}>
-                                <IconButton onClick={() => {
-                                    startAnimation()
-                                }}>
-                                    <Start />
-                                </IconButton>
-                            </Grid>
-                        </Grid>
-                    </div>
-                    <ShortestPathGrid grid={grid} onMouseDown={onMouseDownCell} onMouseUp={onMouseUpCell} onMouseEnter={onMouseEnterCell} onMouseLeave={onMouseLeaveCell} />
-                </div>
+
+            <div className="sp-control">
+                <Grid container spacing={4}>
+                    <Grid item xs={3}>
+                        <TextField value={colSize} onChange={(e) => {
+                            let value = normalizeRange(parseInt(e.target.value), 0, 40);
+                            setXSize(value)
+                        }} id="standard-basic" label="X" variant="standard" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <TextField value={rowSize} onChange={(e) => {
+                            let value = normalizeRange(parseInt(e.target.value), 0, 40);
+                            setYSize(value)
+                        }} id="standard-basic" label="Y" variant="standard" />
+                    </Grid>
+                    <Grid item xs={2}>
+                        <IconButton onClick={() => {
+                            createGrid()
+                        }}>
+                            <Grid3x3 />
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <IconButton onClick={() => {
+                            startAnimation()
+                        }}>
+                            <Start />
+                        </IconButton>
+                    </Grid>
+                </Grid>
             </div>
+            <ShortestPathGrid grid={grid} onMouseDown={onMouseDownCell} onMouseUp={onMouseUpCell} onMouseEnter={onMouseEnterCell} onMouseLeave={onMouseLeaveCell} />
         </>
 
     )
