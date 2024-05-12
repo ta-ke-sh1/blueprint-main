@@ -117,10 +117,11 @@ export default function NavigationBar() {
                   style={{
                     backgroundColor: "white",
                     padding: "0 12px",
-                    paddingTop: '10px'
+                    paddingTop: '10px',
+
                   }}
-                >
-                  Ha Trung
+                > Ha Trung
+
                 </div>
               </div>
             </div>

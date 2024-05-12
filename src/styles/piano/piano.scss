@@ -1,0 +1,57 @@
+.piano-row {
+    position: relative;
+    user-select: none;
+
+    .black-row {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .white-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .black-note-item:first-child {
+        margin-left: 30px;
+    }
+
+    .black-note-item {
+        height: 80px;
+        width: 20px;
+        margin-left: 20px;
+        background-color: black;
+        color: white;
+    }
+
+    .blank-black-note-item {
+        height: 40px;
+        width: 20px;
+        margin-left: 20px;
+        opacity: 0;
+        z-index: 5;
+    }
+
+    .down-key {
+        background-color: crimson;
+        color: white;
+    }
+
+    .note-item {
+        height: 150px;
+        width: 40px;
+        border: 1px solid black;
+        position: relative;
+
+        .content {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+}
