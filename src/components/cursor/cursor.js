@@ -21,47 +21,57 @@ export default function CustomCursor(ref) {
   }, []);
 
   function onMouseMove(event) {
-    gsap.to(vertical.current, {
-      left: event.clientX,
-      top: event.clientY,
-      duration: 0.5,
-      ease: "power",
-    });
-
-    gsap.to(horizontal.current, {
-      left: event.clientX,
-      top: event.clientY,
-      duration: 0.5,
-      ease: "power",
-    });
+    if (vertical.current) {
+      gsap.to(vertical.current, {
+        left: event.clientX,
+        top: event.clientY,
+        duration: 0.5,
+        ease: "power",
+      });
+    }
+    if (horizontal.current) {
+      gsap.to(horizontal.current, {
+        left: event.clientX,
+        top: event.clientY,
+        duration: 0.5,
+        ease: "power",
+      });
+    }
   }
 
   const onMouseLeave = () => {
-    gsap.to(vertical.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "none",
-    });
+    if (horizontal.current) {
+      gsap.to(horizontal.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "none",
+      });
+    }
 
-    gsap.to(horizontal.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "none",
-    });
+    if (vertical.current) {
+      gsap.to(vertical.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "none",
+      });
+    }
   };
 
   const onMouseEnter = () => {
-    gsap.to(vertical.current, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "none",
-    });
-
-    gsap.to(horizontal.current, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "none",
-    });
+    if (vertical.current) {
+      gsap.to(vertical.current, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "none",
+      });
+    }
+    if (horizontal.current) {
+      gsap.to(horizontal.current, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "none",
+      });
+    }
   };
 
   return (
