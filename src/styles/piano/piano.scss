@@ -1,57 +1,90 @@
 .piano-row {
-    position: relative;
-    user-select: none;
+  position: relative;
+  user-select: none;
 
-    .black-row {
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .white-row {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .black-note-item:first-child {
-        margin-left: 30px;
-    }
+  .black-row {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
 
     .black-note-item {
-        height: 80px;
-        width: 20px;
-        margin-left: 20px;
-        background-color: black;
-        color: white;
+      outline: 4px solid black;
+
+      .btm-line {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background-color: #676766;
+        border-top: 5px solid white;
+        border-bottom: 5px solid gray;
+      }
     }
+  }
 
-    .blank-black-note-item {
-        height: 40px;
-        width: 20px;
-        margin-left: 20px;
-        opacity: 0;
-        z-index: 5;
+  .white-row {
+    display: flex;
+    flex-direction: row;
+
+    .btm-line {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background-color: #323233;
+      border-top: 5px solid #676766;
+      border-bottom: 5px solid #8d8d8c;
     }
+  }
 
-    .down-key {
-        background-color: crimson;
-        color: white;
+  .black-note-item:first-child {
+    margin-left: 30px;
+  }
+
+  .black-note-item {
+    height: 80px;
+    width: 20px;
+    margin-left: 20px;
+    background-color: black;
+    color: white;
+    z-index: 5;
+    position: relative;
+  }
+
+  .blank-black-note-item {
+    height: 40px;
+    width: 20px;
+    margin-left: 20px;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .down-key {
+    background-color: crimson;
+    color: white;
+  }
+
+  .note-item {
+    height: 150px;
+    width: 40px;
+    border: 1px solid black;
+    outline: 3px solid black;
+    position: relative;
+    background-color: #d9d9d9;
+
+    .content {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-family: "regular";
+      color: #282828;
+      font-size: 18px;
     }
-
-    .note-item {
-        height: 150px;
-        width: 40px;
-        border: 1px solid black;
-        position: relative;
-
-        .content {
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    }
-
+  }
 }
