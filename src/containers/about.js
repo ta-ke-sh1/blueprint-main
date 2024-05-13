@@ -41,9 +41,9 @@ export default function AboutMe(props) {
         };
     });
 
-    function onExit() {}
+    function onExit() { }
 
-    function onMouseEnterNav() {}
+    function onMouseEnterNav() { }
 
     function mouseEnterTitle() {
         let interval;
@@ -143,6 +143,7 @@ export default function AboutMe(props) {
                             position: "relative",
                             minHeight: "100vh",
                             width: "100%",
+                            marginTop: "10vh"
                         }}>
                         <Grid
                             container

@@ -30,7 +30,7 @@ export function ProjectCardList(props) {
 export function ProjectCardGrid(props) {
   const { project, index } = props;
   return (
-    <Grid item xs={6}>
+    <Grid item xs={12} sm={12} md={6}>
       <div
         className="project-card-grid"
         onClick={() => {

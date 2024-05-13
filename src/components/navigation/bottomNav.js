@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import Animations, { Direction } from "../../animations/animations";
 import { usePreloader } from "../../hooks/usePreloader";
 import { useNavigate } from "react-router-dom";
-import { useMouse } from "@uidotdev/usehooks";
 
 export default function BottomNavigation(props) {
   const preloader = usePreloader();
   const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
-
-  const [mouse] = useMouse();
 
   useEffect(() => {
     if (props.current) {
@@ -82,38 +79,7 @@ export default function BottomNavigation(props) {
           pointerEvents: "none",
         }}
       >
-        <div
-          className="medium absolute-container"
-          style={{
-            left: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <div>
-            <span className="primary-text"> X: {mouse.x}</span>
-            <br />
-            <span className="primary-text">Y: {mouse.y}</span>
-          </div>
-        </div>
-        <div
-          className="medium absolute-container"
-          style={{
-            right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            <span className="primary-text">ALWAYS READY TO</span>
-            <br />
-            <span className="primary-text">MATERIALIZE YOUR VISION</span>
-          </div>
-        </div>
+
         <div
           className="medium absolute-container"
           style={{
@@ -182,7 +148,7 @@ export default function BottomNavigation(props) {
               </div>
               <div className="spacing-slash">/</div>
               <div className="nav--item" onMouseEnter={() => onMouseEnterNav(1)} onClick={() => navigatePage(1)}>
-                FOLIO(F)
+                BLOG(B)
               </div>
               <div className="spacing-slash">/</div>
               <div className="nav--item" onMouseEnter={() => onMouseEnterNav(2)} onClick={() => navigatePage(0)}>

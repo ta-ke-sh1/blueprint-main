@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 import BottomNavigation from "../../components/navigation/bottomNav";
-import InvoiceMaker from "./projects/1/1";
+import { usePreloader } from "../../hooks/usePreloader";
+import { useParams } from "react-router-dom";
+import ShortestPathProblem from "./projects/1.shortestPath/main";
+import Contacts from "../contacts";
+import PianoBoard from "./projects/2.piano/main";
 
 export default function ProjectDetails(props) {
+    const { openAnimation } = usePreloader();
+
+    const { id } = useParams();
 
     const components = [
-        <InvoiceMaker />
+        <ShortestPathProblem />,
+        <PianoBoard />
     ]
 
     const [current, setCurrent] = useState(0)
 
     useEffect(() => {
-
+        openAnimation();
     }, [])
 
     return (
@@ -19,9 +27,10 @@ export default function ProjectDetails(props) {
             <BottomNavigation />
             <div>
                 {
-                    components[current]
+                    components[id]
                 }
             </div>
+            <Contacts />
         </>
     )
 }

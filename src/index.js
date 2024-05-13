@@ -10,6 +10,7 @@ import "./styles/preloader.scss";
 import "./styles/cursor.scss";
 import "./styles/marquee.scss";
 import "./styles/color.scss";
+import "./styles/piano/piano.scss"
 
 import "./styles/shortestPath/board.scss";
 

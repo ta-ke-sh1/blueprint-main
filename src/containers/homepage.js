@@ -4,6 +4,7 @@ import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
 import { textShuffle } from "../animations/text";
 import BottomNavigation from "../components/navigation/bottomNav";
 import { usePreloader } from "../hooks/usePreloader";
+import { useMouse } from "@uidotdev/usehooks";
 
 export default function Homepage() {
     const { openAnimation } = usePreloader();
@@ -15,6 +16,8 @@ export default function Homepage() {
     const currIndex = useRef(0);
 
     const ascii = useRef(null);
+
+    const [mouse] = useMouse();
 
     useEffect(() => {
         openAnimation();
@@ -82,6 +85,40 @@ export default function Homepage() {
                     msOverflowX: "hidden",
                     overflowX: "hidden",
                 }}>
+                <div
+                    className="medium absolute-container"
+                    style={{
+                        left: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        zIndex: 10
+                    }}
+                >
+                    <div>
+                        <span className="primary-text"> X: {mouse.x}</span>
+                        <br />
+                        <span className="primary-text">Y: {mouse.y}</span>
+                    </div>
+                </div>
+                <div
+                    className="medium absolute-container"
+                    style={{
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        zIndex: 10
+                    }}
+                >
+                    <div
+                        style={{
+                            textAlign: "right",
+                        }}
+                    >
+                        <span className="primary-text">ALWAYS READY TO</span>
+                        <br />
+                        <span className="primary-text">MATERIALIZE YOUR VISION</span>
+                    </div>
+                </div>
                 <img
                     src="./pc_overlay.png"
                     style={{
