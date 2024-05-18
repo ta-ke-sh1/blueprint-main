@@ -7,6 +7,7 @@ import BottomNavigation from "../components/navigation/bottomNav";
 import { textShuffle } from "../animations/text";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import HeadingText from "../components/headingText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,6 +157,7 @@ export default function AboutMe(props) {
                             }}>
                             <Grid item sm={12} md={6}></Grid>
                             <Grid item sm={12} md={6}>
+                                <HeadingText title="About" />
                                 <div
                                     className="regular"
                                     style={{
@@ -190,16 +192,7 @@ export default function AboutMe(props) {
                                     }}></div>
                             </Grid>
                             <Grid item sm={12} md={6}>
-                                <div
-                                    className="display-light-italic"
-                                    style={{
-                                        fontSize: "48px",
-                                        lineHeight: "52px",
-                                        letterSpacing: "0px",
-                                        marginBottom: "10px",
-                                    }}>
-                                    Work Experience
-                                </div>
+                                <HeadingText title="Work Experience" />
                                 <div
                                     className="regular"
                                     style={{
@@ -224,17 +217,7 @@ export default function AboutMe(props) {
                                     </span>
                                 </div>
 
-                                <div
-                                    className="display-light-italic"
-                                    style={{
-                                        marginTop: "100px",
-                                        fontSize: "48px",
-                                        lineHeight: "52px",
-                                        letterSpacing: "0px",
-                                        marginBottom: "10px",
-                                    }}>
-                                    Education
-                                </div>
+                                <HeadingText title="Education" style={{ marginTop: '40px' }} />
                                 <div
                                     className="regular"
                                     style={{
