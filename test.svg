@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect style="stroke: rgb(0, 0, 0); fill: none; stroke-dashoffset: -18px; shape-rendering: geometricprecision; stroke-linecap: round; stroke-miterlimit: 7.85; paint-order: stroke; stroke-dasharray: 10; stroke-width: 2px;" transform="matrix(1, 0, 0.00006200000643730164, 1, -0.01307500060647726, -11.778696060180664)" x="4.801" y="-65.292" width="490.399" height="547.439" rx="89.997" ry="89.997">
+    <title>Outer layer</title>
+  </rect>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 3px; transform-origin: 248.29px 178.12px;" d="M 114.205 178.12 L 382.374 178.12" transform="matrix(0.999994302282, -0.003491064825, 0.003491344623, 0.999994302282, -0.000104186846, 0.000069457897)"/>
+  <g>
+    <title>Border</title>
+    <rect style="stroke: rgb(0, 0, 0); paint-order: stroke; fill: none;" x="-47.511" y="-124.108" width="593.24" height="631.328" rx="2" ry="2"/>
+    <g style="" transform="matrix(1.096898, 0, 0, 1.073537, -25.11758, -20.913881)">
+      <title>Gates</title>
+      <g>
+        <rect x="572.562" y="121.952" width="39.514" height="19.118" rx="9" ry="9" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0, -1, 1, 0, -71.52754, -127.16003)"/>
+        <rect x="572.562" y="121.952" width="39.514" height="19.118" rx="9" ry="9" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: 592.319px 131.511px;" transform="matrix(0, -1, 1, 0, -71.377731, 302.347519)"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px; white-space: pre; transform-origin: -157.709px 303.912px;" transform="matrix(0, -1, 1, 0, 671.918945, -215.100189)" x="-165.879" y="306.699">F4</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px; white-space: pre; transform-origin: -157.709px 303.912px;" transform="matrix(0, -1, 1, 0, 672.177673, 42.444366)" x="-165.879" y="306.699">F3</text>
+      </g>
+      <g>
+        <rect x="572.562" y="121.952" width="39.514" height="19.118" rx="9" ry="9" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: 592.319px 131.511px;" transform="matrix(0, -1, 1, 0, -612.327881, -126.627518)"/>
+        <rect x="572.562" y="121.952" width="39.514" height="19.118" rx="9" ry="9" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: 592.319px 131.511px;" transform="matrix(0, -1, 1, 0, -612.178223, 302.880112)"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px; white-space: pre; transform-box: fill-box; transform-origin: 58.3493% 59.6775%;" transform="matrix(0, -1, 1, 0, 146.778811, -214.296371)" x="-165.879" y="306.699">F1</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px; white-space: pre; transform-origin: -157.709px 303.912px;" transform="matrix(0, -1, 1, 0, 147.037521, 43.248184)" x="-165.879" y="306.699">F2</text>
+      </g>
+    </g>
+    <g style="" transform="matrix(1.096898, 0, 0, 1.073537, -25.11758, -20.913881)">
+      <title>Doors</title>
+      <g transform="matrix(1, 0, 0, 1, 0, -13.005008)">
+        <rect style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x="-20.656" y="84.89" width="15.895" height="38.293"/>
+        <rect style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x="504.601" y="84.807" width="15.895" height="38.293"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0.361182, 243.886139)">
+        <rect style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x="-20.656" y="84.89" width="15.895" height="38.293"/>
+        <rect style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x="504.601" y="84.807" width="15.895" height="38.293"/>
+      </g>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 1.1653900146484375, 0)">
+    <title>Stage</title>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; transform-box: fill-box; transform-origin: 55.5222% 54.1668%;" transform="matrix(0, -1, 1, 0, 219.951267, 46.544247)" x="-194.284" y="282.938">B1</text>
+    <g>
+      <g transform="matrix(1, 0, 0, 1, 0, -6.502504)">
+        <g transform="matrix(0.942204, 0, 0, 0.942204, 51.776962, 21.791084)">
+          <path style="stroke: rgb(0, 0, 0); fill: none; transform-box: fill-box; transform-origin: 50% 50%; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 29.532 -62.619 L 30.447 41.511 C 30.447 41.511 28.619 121.864 151.098 115.304" transform="matrix(0, 1, -1, 0, 0.000016, -0.000027)"/>
+          <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: -537.013px -2.271px; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 0.664 115.03 L -0.806 346.648" transform="matrix(0.999976, -0.006981, 0.006981, 0.999976, 0, 0)"/>
+          <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: -498.249px -2.018px; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 39.429 115.283 L 37.959 346.901" transform="matrix(0.999976, -0.006981, 0.006981, 0.999976, 0, 0)"/>
+        </g>
+        <g transform="matrix(0.704652, 0, 0, 0.742336, 89.099747, 30.82354)" style="">
+          <path style="stroke: rgb(0, 0, 0); fill: none; transform-origin: 94.934px 41.621px; shape-rendering: geometricprecision; stroke-width: 2.76436px;" d="M 37.584 -52.15 L 38.448 57.375 C 38.448 57.375 36.722 141.891 152.284 134.991" transform="matrix(0, 1, -1, 0, -0.00004, 0.000024)"/>
+        </g>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" transform="matrix(0, -1, 1, 0, -237.806992, -92.387154)" x="-194.284" y="282.938">B2</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" transform="matrix(0, -1, 1, 0, -198.999893, -91.410194)" x="-194.284" y="282.938">UH2</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" transform="matrix(0, -1, 1, 0, -200.491867, 147.173447)" x="-194.284" y="282.938">UH1</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; transform-box: fill-box; transform-origin: 50% 50%;" x="276.844" y="-19.872">B3</text>
+      </g>
+      <g transform="matrix(-1, 0, 0, 1, 500.565552, -4.393129)" style="">
+        <g transform="matrix(0.942204, 0, 0, 0.942204, 51.776962, 21.791084)">
+          <path style="stroke: rgb(0, 0, 0); fill: none; transform-box: fill-box; transform-origin: 50% 50%; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 29.532 -62.619 L 30.447 41.511 C 30.447 41.511 28.619 121.864 151.098 115.304" transform="matrix(0, 1, -1, 0, 0.000016, -0.000027)"/>
+          <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: -537.013px -2.271px; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 0.664 115.03 L -0.806 346.648" transform="matrix(0.999976, -0.006981, 0.006981, 0.999976, 0, 0)"/>
+          <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: -498.249px -2.018px; shape-rendering: geometricprecision; stroke-width: 2.12268px;" d="M 39.429 115.283 L 37.959 346.901" transform="matrix(0.999976, -0.006981, 0.006981, 0.999976, 0, 0)"/>
+        </g>
+        <g transform="matrix(0.704652, 0, 0, 0.742336, 89.099747, 30.82354)" style="">
+          <path style="stroke: rgb(0, 0, 0); fill: none; transform-origin: 94.934px 41.621px; shape-rendering: geometricprecision; stroke-width: 2.76436px;" d="M 37.584 -52.15 L 38.448 57.375 C 38.448 57.375 36.722 141.891 152.284 134.991" transform="matrix(0, 1, -1, 0, -0.00004, 0.000024)"/>
+        </g>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="-194.284" y="282.938" transform="matrix(0, -1, -1, 0, 353.87085, 149.651123)">B4</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="-222.087" y="12.618" transform="matrix(-1, 0, 0, 1, 0, 0)">UH3</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="194.284" y="-282.938" transform="matrix(0, -1, -1, 0, -249.320496, 535.741852)">UH4</text>
+      </g>
+      <path style="stroke: rgb(0, 0, 0); fill: none; shape-rendering: geometricprecision; stroke-width: 2.12268px; stroke-dasharray: 4; transform-origin: 372.744px 1.693px;" d="M 322.699 97.615 L 323.453 -14.421 C 323.453 -14.421 321.947 -100.875 422.79 -93.817" transform="matrix(0, 1, -1, 0, 0.000015, -0.000028)"/>
+      <path style="stroke: rgb(0, 0, 0); fill: none; shape-rendering: geometricprecision; stroke-width: 2.12268px; stroke-dasharray: 4; transform-origin: 129.624px 1.803px;" d="M 80.301 -94.119 L 81.044 17.917 C 81.044 17.917 79.56 104.371 178.947 97.313" transform="matrix(0, 1, -1, 0, 0.000024, -0.000024)"/>
+    </g>
+  </g>
+  <g>
+    <title>Seats</title>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 3px; transform-box: fill-box; transform-origin: 50% 50%;" d="M 117.099 103.129 L 385.268 103.129" transform="matrix(0.999994, -0.003491, 0.003491, 0.999994, 0, 0.000017)"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 3px; transform-box: fill-box; transform-origin: 50% 50%;" d="M 114.471 254.099 L 382.64 254.099" transform="matrix(0.999994, -0.003491, 0.003491, 0.999994, 0, 0)"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 3px; transform-box: fill-box; transform-origin: 50% 50%;" d="M 115.521 329.076 L 383.69 329.077" transform="matrix(0.999994, -0.003491, 0.003491, 0.999994, 0, 0)"/>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="238.441" y="93.336">L1</text>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="238.542" y="246.009">L3</text>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="242.154" y="318.814">L4</text>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 3px; transform-origin: 250.001px 398.457px;" d="M 53.058 398.457 L 446.942 398.456" transform="matrix(0.999994, -0.00349, 0.00349, 0.999994, 0, 0)"/>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="243.88" y="385.452" transform="matrix(1, 0, 0, 1, 0.000017, 3)">L5<tspan x="243.8800048828125" dy="1em">​</tspan></text>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="237.819" y="169.146">L2</text>
+  </g>
+</svg>

@@ -107,21 +107,15 @@ export default function NavigationBar() {
         >
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="wrapper-hidden">
-              <div
-                className="display-light-italic s-48 logo-container"
-                ref={logoRef}
-                style={{
-                }}
-              >
+              <div className="display-light-italic s-48 logo-container" ref={logoRef} style={{}}>
                 <div
                   style={{
                     backgroundColor: "white",
                     padding: "0 12px",
-                    paddingTop: '10px',
-
+                    paddingTop: "0px",
                   }}
-                > Ha Trung
-
+                >
+                  Trung Ha
                 </div>
               </div>
             </div>

@@ -67,7 +67,7 @@ export default function BottomNavigation(props) {
   return (
     <>
       <div
-        className="medium fixed-container"
+        className="regular fixed-container"
         style={{
           left: 0,
           top: 0,
@@ -79,9 +79,8 @@ export default function BottomNavigation(props) {
           pointerEvents: "none",
         }}
       >
-
         <div
-          className="medium absolute-container"
+          className="regular absolute-container"
           style={{
             left: "10px",
             top: "10px",
@@ -98,7 +97,7 @@ export default function BottomNavigation(props) {
           </div>
         </div>
         <div
-          className="medium absolute-container"
+          className="regular absolute-container"
           style={{
             right: "10px",
             top: "10px",
@@ -116,7 +115,7 @@ export default function BottomNavigation(props) {
         </div>
       </div>
       <Box
-        className="medium fixed-container"
+        className="regular fixed-container"
         sx={{
           display: "flex",
           alignItems: "flex-end",
@@ -125,7 +124,9 @@ export default function BottomNavigation(props) {
           bottom: "5px",
           zIndex: 900,
         }}
-        onMouseLeave={() => { handleMouseLeaveNavigation() }}
+        onMouseLeave={() => {
+          handleMouseLeaveNavigation();
+        }}
       >
         <div
           className="wrapper-hidden"
@@ -135,7 +136,7 @@ export default function BottomNavigation(props) {
         >
           <div className="item-container">
             <Box
-              className=" medium s-16"
+              className="regular s-16"
               sx={{
                 width: "100%",
                 display: "flex",

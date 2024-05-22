@@ -49,14 +49,14 @@ export function PreloaderWrapper({ children }) {
         <div className="wrapper-hidden preloader-logo-container">
           <div className="preloader-logo" ref={logoRef}>
             <div
-              className="s-72"
+              className="s-64"
               style={{
-                fontFamily: "condensed",
+                fontFamily: "display-italic",
                 lineHeight: "95px",
                 color: "white",
               }}
             >
-              HA TRUNG
+              Trung Ha
             </div>
           </div>
         </div>

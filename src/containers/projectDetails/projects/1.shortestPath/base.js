@@ -9,7 +9,7 @@ import FlagIcon from "@mui/icons-material/Flag";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { textShuffle } from "../../../../animations/text";
-import { RoomTwoTone } from "@mui/icons-material";
+import BlockIcon from "@mui/icons-material/Block";
 
 const toolTipSlotProps = {
   popper: {
@@ -31,13 +31,18 @@ const statusList = {
   SELECTE_WALL: "SELECTING WALL",
 };
 
+const STATUS_CODE = {
+  none: 0,
+  start: 1,
+  end: 2,
+  wall: 3,
+};
+
 export default function ShortestPathProject() {
   const gridRef = useRef();
   const [gridData, setGridData] = useState([[]]);
 
-  const [isSelectStart, setSelectStart] = useState(false);
-  const [isSelectEnd, setSelectEnd] = useState(false);
-  const [isSelectWall, setSelectWall] = useState(false);
+  const [selectStatus, setSelectStatus] = useState(STATUS_CODE.none);
 
   const [status, setStatus] = useState("SELECTING START");
 
@@ -65,8 +70,8 @@ export default function ShortestPathProject() {
     let x = window.innerWidth;
     let y = window.innerHeight;
 
-    let colCount = (x / 30) * 0.7;
-    let rowCount = (y / 30) * 0.4;
+    let colCount = (x / 30) * 0.5;
+    let rowCount = (y / 30) * 0.3;
     createGrid(rowCount, colCount);
 
     setStart({
@@ -74,8 +79,8 @@ export default function ShortestPathProject() {
       row: 1,
     });
     setEnd({
-      col: parseInt(colCount) - 1,
-      row: parseInt(rowCount) - 1,
+      col: parseInt(colCount) - 2,
+      row: parseInt(rowCount) - 2,
     });
   }
 
@@ -109,13 +114,13 @@ export default function ShortestPathProject() {
   function onMouseLeaveCell(row, col) {}
 
   function onMouseDownCell(row, col) {
-    if (isSelectStart) {
+    if (selectStatus === STATUS_CODE.start) {
       console.log("SELECT START", row, col);
       handleSelect("START", row, col);
-    } else if (isSelectEnd) {
+    } else if (selectStatus === STATUS_CODE.end) {
       console.log("SELECT END", row, col);
       handleSelect("END", row, col);
-    } else if (isSelectWall) {
+    } else if (selectStatus === STATUS_CODE.wall) {
       console.log("SELECT WALL", row, col);
     } else {
       console.log("SELECT NONE", row, col);
@@ -196,14 +201,14 @@ export default function ShortestPathProject() {
 
   return (
     <>
+      <ShortestPathGrid ref={gridRef} status={status} enableWeight={enableWeight} grid={gridData} onMouseDown={onMouseDownCell} onMouseUp={onMouseUpCell} onMouseEnter={onMouseEnterCell} onMouseLeave={onMouseLeaveCell} />
       <div className="sp-control">
         <div className="sp-control-button">
           <Tooltip title="Select start point" placement="left-start" slotProps={toolTipSlotProps}>
             <IconButton
               onClick={() => {
                 gridRef.current.updateStatus(statusList.SELECT_START);
-                setSelectStart(true);
-                setSelectEnd(false);
+                setSelectStatus(STATUS_CODE.start);
               }}
             >
               <FlagIcon />
@@ -215,11 +220,22 @@ export default function ShortestPathProject() {
             <IconButton
               onClick={() => {
                 gridRef.current.updateStatus(statusList.SELECT_END);
-                setSelectStart(false);
-                setSelectEnd(true);
+                setSelectStatus(STATUS_CODE.end);
               }}
             >
               <RecommendIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className="sp-control-button">
+          <Tooltip title="Select wall titles" placement="left-start" slotProps={toolTipSlotProps}>
+            <IconButton
+              onClick={() => {
+                gridRef.current.updateStatus(statusList.SELECT_START);
+                setSelectStatus(STATUS_CODE.wall);
+              }}
+            >
+              <BlockIcon />
             </IconButton>
           </Tooltip>
         </div>
@@ -253,7 +269,6 @@ export default function ShortestPathProject() {
           </Tooltip>
         </div>
       </div>
-      <ShortestPathGrid ref={gridRef} status={status} enableWeight={enableWeight} grid={gridData} onMouseDown={onMouseDownCell} onMouseUp={onMouseUpCell} onMouseEnter={onMouseEnterCell} onMouseLeave={onMouseLeaveCell} />
     </>
   );
 }
@@ -291,7 +306,6 @@ const ShortestPathGrid = forwardRef(function (props, ref) {
       style={{
         position: "relative",
         padding: "0px",
-        border: "2px solid #4e4e4e",
       }}
     >
       <div

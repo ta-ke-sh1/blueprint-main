@@ -53,14 +53,13 @@ export default function PianoBoard() {
             <Grid id="spp-paragraph-1" item xs={12} sx={{ marginBottom: "100px" }}>
               <h1 className="semi-bold">Story</h1>
               <div className="regular s-24" style={{ textAlign: "left" }}>
-                First of all, I don't know how to play the piano but my wife does. This piano play is simple note mapping.
-                We simply only have to map the keynotes with its corresponding mp3 note.
+                First of all, I don't know how to play the piano but my wife does. This project came across my mind when
               </div>
             </Grid>
             <Grid id="spp-paragraph-1" item xs={12}>
               <h1 className="semi-bold">How does it work?</h1>
               <p className="regular s-24" style={{ textAlign: "left" }}>
-
+                We simply only have to map the keynotes with its corresponding mp3 note.
               </p>
               <p className="regular s-24" style={{ textAlign: "left", marginBottom: "100px" }}>
                 The problem is also sometimes called the single-pair shortest path problem, to distinguish it from the following variations:
