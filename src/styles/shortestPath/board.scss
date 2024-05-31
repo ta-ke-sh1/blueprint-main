@@ -13,11 +13,12 @@
     flex-direction: row;
 
     .sp-cell {
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
       text-align: center;
       position: relative;
-      border: 1px solid rgba(150, 150, 150, 0.3);
+      border: 1px solid #6269762d;
+      background-color: #f3f0e6df;
 
       .sp-cell-weight {
         position: absolute;
@@ -34,11 +35,15 @@
     }
 
     .start-cell {
-      background-color: teal;
+      background-color: #4793af;
     }
 
     .end-cell {
-      background-color: crimson;
+      background-color: #fa7070;
+    }
+
+    .wall-cell {
+      background-color: #686d76;
     }
   }
 }
@@ -68,24 +73,20 @@
 
 @keyframes visitedAnimation {
   0% {
-    background-color: rgba(0, 0, 66, 0.75);
+    background-color: #fdde55;
   }
 
   50% {
-    background-color: rgba(17, 104, 217, 0.75);
+    background-color: #68d2e8;
   }
 
   75% {
-    background-color: rgba(0, 217, 159, 0.75);
+    background-color: #03aed2;
   }
 
   100% {
-    background-color: rgba(0, 190, 218, 0.75);
+    background-color: #f3f0e6df;
   }
-}
-
-.node-wall {
-  background-color: rgb(12, 53, 71);
 }
 
 .node-shortest-path {
@@ -101,14 +102,14 @@
 
 @keyframes shortestPath {
   0% {
-    background-color: rgb(255, 254, 106);
+    background-color: #5abaff;
   }
 
   50% {
-    background-color: rgb(255, 254, 106);
+    background-color: #f6886d;
   }
 
   100% {
-    background-color: rgb(255, 254, 106);
+    background-color: #fa7070;
   }
 }

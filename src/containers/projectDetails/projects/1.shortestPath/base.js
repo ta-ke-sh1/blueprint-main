@@ -10,6 +10,8 @@ import RecommendIcon from "@mui/icons-material/Recommend";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { textShuffle } from "../../../../animations/text";
 import BlockIcon from "@mui/icons-material/Block";
+import MazeGenerator, { ALGORITHMS } from "./mazeGenerator";
+import AppsIcon from "@mui/icons-material/Apps";
 
 const toolTipSlotProps = {
   popper: {
@@ -43,6 +45,7 @@ export default function ShortestPathProject() {
   const [gridData, setGridData] = useState([[]]);
 
   const [selectStatus, setSelectStatus] = useState(STATUS_CODE.none);
+  const [mouseDown, setMouseDown] = useState(false);
 
   const [status, setStatus] = useState("SELECTING START");
 
@@ -70,8 +73,15 @@ export default function ShortestPathProject() {
     let x = window.innerWidth;
     let y = window.innerHeight;
 
-    let colCount = (x / 30) * 0.5;
-    let rowCount = (y / 30) * 0.3;
+    let colCount = (x / 15) * 0.4;
+    let rowCount = (y / 15) * 0.3;
+
+    // Make row & col to be odd
+    rowCount -= rowCount % 2;
+    rowCount++;
+    colCount -= colCount % 2;
+    colCount++;
+
     createGrid(rowCount, colCount);
 
     setStart({
@@ -109,21 +119,48 @@ export default function ShortestPathProject() {
     setGridData(gridData);
   }
 
-  function onMouseEnterCell(row, col) {}
+  function refreshGrid() {
+    for (let row = 0; row < gridData.length; row++) {
+      for (let col = 0; col < gridData[0].length; col++) {
+        if (gridData[row][col].isStart) {
+          document.getElementById(`cell-${row}-${col}`).className = "sp-cell start-cell";
+        } else if (gridData[row][col].isEnd) {
+          document.getElementById(`cell-${row}-${col}`).className = "sp-cell end-cell";
+        } else {
+          document.getElementById(`cell-${row}-${col}`).className = "sp-cell";
+        }
+      }
+    }
+
+    createGrid(gridData.length, gridData[0].length);
+  }
+
+  function onMouseEnterCell(row, col) {
+    if (mouseDown) {
+      if (selectStatus === STATUS_CODE.wall) {
+        console.log("SELECT WALL", row, col);
+        handleSelect("WALL", row, col);
+      } else {
+        console.log("SELECT NONE", row, col);
+      }
+    }
+  }
 
   function onMouseLeaveCell(row, col) {}
 
+  function onMouseUpCell(row, col) {
+    setMouseDown(false);
+  }
+
   function onMouseDownCell(row, col) {
+    setMouseDown(true);
+
     if (selectStatus === STATUS_CODE.start) {
       console.log("SELECT START", row, col);
       handleSelect("START", row, col);
     } else if (selectStatus === STATUS_CODE.end) {
       console.log("SELECT END", row, col);
       handleSelect("END", row, col);
-    } else if (selectStatus === STATUS_CODE.wall) {
-      console.log("SELECT WALL", row, col);
-    } else {
-      console.log("SELECT NONE", row, col);
     }
   }
 
@@ -158,15 +195,24 @@ export default function ShortestPathProject() {
         });
         break;
       case "WALL":
+        if (gridData[row][col].isStart || gridData[row][col].isEnd) {
+          console.log("Invalid");
+          return;
+        }
+        let current = document.getElementById(`cell-${row}-${col}`);
+        current.classList.toggle("wall-cell");
+        let temp = gridData;
+        temp[row][col].isWall = true;
+        setGridData(temp);
+
         break;
       default:
         break;
     }
   }
 
-  function onMouseUpCell(row, col) {}
-
   function startAnimation() {
+    console.log(gridData);
     const visitedNodes = ShortestPath(gridData, gridData[start.row][start.col], gridData[end.row][end.col]);
     const shortestPath = getNodesShortestPath(gridData[end.row][end.col]);
     animateAlgorithm(visitedNodes, shortestPath);
@@ -197,7 +243,23 @@ export default function ShortestPathProject() {
     }
   }
 
-  function createMaze() {}
+  function createMaze() {
+    refreshGrid();
+
+    const mazeGenerator = new MazeGenerator(gridData, ALGORITHMS.Kruskal);
+    const maze = mazeGenerator.generateMaze(start, end);
+    console.log(maze);
+
+    for (let i = 0; i < maze.length; i++) {
+      for (let j = 0; j < maze[0].length; j++) {
+        if (maze[i][j].isWall) {
+          let current = document.getElementById(`cell-${i}-${j}`);
+          current.classList.toggle("wall-cell");
+          setGridData(maze);
+        }
+      }
+    }
+  }
 
   return (
     <>
@@ -252,8 +314,15 @@ export default function ShortestPathProject() {
         </div>
         <div className="sp-control-button">
           <Tooltip title="Refresh Grid" placement="right-start" slotProps={toolTipSlotProps}>
-            <IconButton onClick={() => {}}>
+            <IconButton onClick={refreshGrid}>
               <RefreshIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className="sp-control-button">
+          <Tooltip title="Generate Maze" placement="right-start" slotProps={toolTipSlotProps}>
+            <IconButton onClick={createMaze}>
+              <AppsIcon />
             </IconButton>
           </Tooltip>
         </div>
@@ -301,6 +370,13 @@ const ShortestPathGrid = forwardRef(function (props, ref) {
 
   return (
     <div
+      draggable={false}
+      onDragStart={() => {
+        return false;
+      }}
+      onDrop={() => {
+        return false;
+      }}
       className="sp-grid"
       ref={gridRef}
       style={{

@@ -8,7 +8,7 @@ export default function ShortestPathProblem() {
       <div
         style={{
           width: "100dvw",
-          marginTop: "200px",
+          marginTop: "150px",
           textAlign: "center",
           justifyContent: "center",
         }}
