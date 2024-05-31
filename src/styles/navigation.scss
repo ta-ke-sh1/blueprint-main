@@ -22,9 +22,8 @@
 
 #logo {
   position: fixed;
-  left: 50%;
-  top: 0px;
-  transform: translateX(-50%);
+  left: 5px;
+  top: 15px;
 }
 
 .nav-item {
@@ -130,7 +129,7 @@
   }
 }
 
-.link-div{
+.link-div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -146,12 +145,12 @@
   background-color: black;
 }
 
-.mail-btn{
+.mail-btn {
   background-color: black;
   color: white;
   transition-duration: 0.3s;
-  
-  &:hover{
+
+  &:hover {
     background-color: orange;
     color: black;
   }

@@ -102,7 +102,7 @@ export default function NavigationBar() {
         <div
           id="logo"
           style={{
-            margin: "5px auto",
+            marginLeft: "5px",
           }}
         >
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import AsciiItems, { AsciiMorph } from "../components/ascii/asciiMorph";
 import { textShuffle } from "../animations/text";
 import BottomNavigation from "../components/navigation/bottomNav";
@@ -87,45 +87,20 @@ export default function Homepage() {
             <span className="primary-text">Y: {mouse.y}</span>
           </div>
         </div>
-        <div
-          className="regular absolute-container"
-          style={{
-            right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 10,
-          }}
-        >
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            <span className="primary-text">ALWAYS READY TO</span>
-            <br />
-            <span className="primary-text">MATERIALIZE YOUR VISION</span>
-          </div>
-        </div>
-        <img
-          src="./pc_overlay.png"
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%) scale(0.7)",
-            width: "780px",
-            zIndex: 10,
-            mixBlendMode: "screen",
-          }}
-        />
-        <div
-          style={{
+
+        <Box
+          item
+          sx={{
             minWidth: "900px",
-            overflowX: "hidden",
             position: "absolute",
             left: "50%",
             top: "50%",
-            transform: "translate(-50%, -65%) scale(0.7)",
+            transform: {
+              xs: "translate(-50%, -65%) scale(0.5)",
+              sm: "translate(-50%, -65%) scale(0.5)",
+              md: "translate(-50%, -65%) scale(0.9)",
+            },
+
             textAlign: "center",
           }}
         >
@@ -146,7 +121,19 @@ export default function Homepage() {
             id="asciiArt"
             ref={ascii}
           ></pre>
-        </div>
+          <img
+            src="./pc_overlay.png"
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "70%",
+              transform: "translate(-50%, -50%) scale(1)",
+              width: "780px",
+              zIndex: 10,
+              mixBlendMode: "screen",
+            }}
+          />
+        </Box>
         <Box
           className="absolute-container"
           sx={{

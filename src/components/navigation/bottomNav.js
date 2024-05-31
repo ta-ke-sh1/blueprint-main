@@ -66,9 +66,9 @@ export default function BottomNavigation(props) {
 
   return (
     <>
-      <div
+      <Box
         className="regular fixed-container"
-        style={{
+        sx={{
           left: 0,
           top: 0,
           width: "100dvw",
@@ -77,25 +77,12 @@ export default function BottomNavigation(props) {
           outlineOffset: "-15px",
           zIndex: 10,
           pointerEvents: "none",
+          opacity: {
+            xs: 0,
+            sm: 1
+          }
         }}
       >
-        <div
-          className="regular absolute-container"
-          style={{
-            left: "10px",
-            top: "10px",
-          }}
-        >
-          <div
-            style={{
-              textAlign: "left",
-            }}
-          >
-            <span className="primary-text">GOT SOMETHING</span>
-            <br />
-            <span className="primary-text">IN MIND?</span>
-          </div>
-        </div>
         <div
           className="regular absolute-container"
           style={{
@@ -113,7 +100,7 @@ export default function BottomNavigation(props) {
             <span className="primary-text">{date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true })}</span>
           </div>
         </div>
-      </div>
+      </Box>
       <Box
         className="regular fixed-container"
         sx={{
@@ -123,6 +110,10 @@ export default function BottomNavigation(props) {
           transform: "translateX(-50%)",
           bottom: "5px",
           zIndex: 900,
+          opacity: {
+            xs: 0,
+            sm: 1
+          }
         }}
         onMouseLeave={() => {
           handleMouseLeaveNavigation();
