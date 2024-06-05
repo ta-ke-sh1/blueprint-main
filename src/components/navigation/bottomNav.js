@@ -73,8 +73,6 @@ export default function BottomNavigation(props) {
           top: 0,
           width: "100dvw",
           height: "100dvh",
-          outline: "20px solid white",
-          outlineOffset: "-15px",
           zIndex: 10,
           pointerEvents: "none",
           opacity: {
@@ -108,7 +106,7 @@ export default function BottomNavigation(props) {
           alignItems: "flex-end",
           left: "50%",
           transform: "translateX(-50%)",
-          bottom: "5px",
+          bottom: "0px",
           zIndex: 900,
           opacity: {
             xs: 0,

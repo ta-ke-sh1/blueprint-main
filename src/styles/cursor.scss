@@ -1,10 +1,10 @@
 .horizontal {
-    width: 200vw;
+    width: 20px;
     height: 2px;
     background-color: rgb(253, 135, 0, 1);
     transition-timing-function: ease-out;
     position: fixed;
-    left: -100vw;
+    left: -20px;
     top: -1px;
     transform: translate(-50%, -50%);
     z-index: 1000;
@@ -13,17 +13,16 @@
 
 .vertical {
     width: 2px;
-    height: 200vh;
+    height: 20px;
     background-color: rgb(253, 135, 0, 1);
     transition-timing-function: ease-out;
     position: fixed;
     left: -1px;
-    top: -100vh;
+    top: -20px;
     transform: translate(-50%, -50%);
     z-index: 1000;
     pointer-events: none;
 }
-
 
 .noselect {
     -webkit-touch-callout: none;

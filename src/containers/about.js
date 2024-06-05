@@ -41,9 +41,9 @@ export default function AboutMe(props) {
     };
   });
 
-  function onExit() {}
+  function onExit() { }
 
-  function onMouseEnterNav() {}
+  function onMouseEnterNav() { }
 
   function mouseEnterTitle() {
     let interval;
@@ -87,20 +87,21 @@ export default function AboutMe(props) {
                 <div
                   className="display-light-italic"
                   style={{
-                    minWidth: "320px",
-                    maxWidth: "700px",
+                    minWidth: "420px",
+                    maxWidth: "900px",
                     fontSize: "calc(10px + 4vmin)",
+                    lineHeight: "calc(10px + 5vmin)"
                   }}
                 >
-                  <span className="semi-bold">DEVELOPER</span> by day,
+                  <span className="regular" style={{ marginRight: '15px', color: '#d61730', letterSpacing: '-2px' }}>+DEVELOPER</span> by day,
                   <br />
-                  <span className="semi-bold">ART SEEKER</span> by night
+                  <span className="regular" style={{ marginRight: '15px', color: '#d61730', letterSpacing: '-2px' }}>+ART SEEKER</span> by night
                 </div>
                 <div
                   className="regular"
                   style={{
                     marginTop: "20px",
-                    maxWidth: "400px",
+                    maxWidth: "500px",
                     fontSize: "calc(5px + 1vmin)",
                     lineHeight: "calc(10px + 1vmin)",
                   }}
@@ -113,7 +114,7 @@ export default function AboutMe(props) {
                     width: "fit-content",
                     padding: "5px 15px",
                     margin: "0 auto",
-                    backgroundColor: "black",
+                    backgroundColor: "#d61730",
                     color: "white",
                     marginTop: "20px",
                     fontSize: "calc(5px + 1vmin)",

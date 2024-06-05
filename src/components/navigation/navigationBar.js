@@ -15,19 +15,11 @@ export default function NavigationBar() {
   const logoRef = useRef(null);
   const burgerRef = useRef(null);
   const { height } = useDimensions(containerRef);
-  const [isOpen, setOpen] = useState(false);
 
   const navContent = useRef(null);
   const navMenu = useRef(null);
   const navBg = useRef(null);
 
-  useEffect(() => {
-    closeNav();
-    let elements = document.querySelectorAll(".logo-container");
-    elements.forEach((element) => {
-      Animations.appearAnimation(Direction.Down, element, 1.5, 3.75, "power4");
-    });
-  }, []);
 
   const openNav = () => {
     gsap.to(navMenu.current, {
@@ -106,18 +98,12 @@ export default function NavigationBar() {
           }}
         >
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
-            <div className="wrapper-hidden">
-              <div className="display-light-italic s-48 logo-container" ref={logoRef} style={{}}>
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    padding: "0 12px",
-                    paddingTop: "0px",
-                  }}
-                >
-                  Trung Ha
-                </div>
-              </div>
+            <div className="display-light-italic s-48" ref={logoRef} style={{
+              position: 'fixed',
+              left: '15px',
+              top: '5px'
+            }}>
+              Trung Ha
             </div>
           </Link>
         </div>
