@@ -100,8 +100,9 @@ export default function NavigationBar() {
           <Link onClick={handlePageChange} style={{ textDecoration: "none", position: "relative" }} className="nav-link">
             <div className="display-light-italic s-48" ref={logoRef} style={{
               position: 'fixed',
-              left: '15px',
-              top: '5px'
+              left: '50%',
+              top: '5px',
+              transform: 'translateX(-50%)'
             }}>
               Trung Ha
             </div>

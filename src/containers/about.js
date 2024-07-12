@@ -63,9 +63,24 @@ export default function AboutMe(props) {
             style={{
               margin: 0,
               width: "100dvw",
-              height: "100dvh",
+              height: "50dvh",
             }}
           >
+            {/* <div
+              className="regular"
+              style={{
+                width: "fit-content",
+                padding: "5px 15px",
+                margin: "0 auto",
+                backgroundColor: "#d61730",
+                color: "white",
+                marginTop: "20px",
+                fontSize: "calc(5px + 1vmin)",
+                lineHeight: "calc(10px + 1vmin)",
+              }}
+            >
+              SCROLL TO EXPLORE ↓
+            </div> */}
             <div
               style={{
                 position: "relative",
@@ -77,51 +92,41 @@ export default function AboutMe(props) {
                 style={{
                   position: "absolute",
                   top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
+                  left: "10%",
                   textAlign: "center",
                   color: "black",
                   zIndex: 10,
                 }}
               >
                 <div
-                  className="display-light-italic"
+                  className="regular"
                   style={{
-                    minWidth: "420px",
-                    maxWidth: "900px",
                     fontSize: "calc(10px + 4vmin)",
-                    lineHeight: "calc(10px + 5vmin)"
+                    lineHeight: "calc(10px + 5vmin)",
+                    textAlign: 'left',
+                    color: '#d61730'
                   }}
                 >
-                  <span className="regular" style={{ marginRight: '15px', color: '#d61730', letterSpacing: '-2px' }}>+DEVELOPER</span> by day,
-                  <br />
-                  <span className="regular" style={{ marginRight: '15px', color: '#d61730', letterSpacing: '-2px' }}>+ART SEEKER</span> by night
+                  A SOFTWARE DEVELOPER
+                </div>
+                <div className="display-light-italic" style={{
+                  fontSize: "calc(10px + 4vmin)",
+                  lineHeight: "calc(10px + 5vmin)",
+                  textAlign: 'left',
+                  width: '700px'
+                }}>
+                  who enjoys creating visuals
                 </div>
                 <div
                   className="regular"
                   style={{
                     marginTop: "20px",
-                    maxWidth: "500px",
+                    textAlign: 'left',
                     fontSize: "calc(5px + 1vmin)",
                     lineHeight: "calc(10px + 1vmin)",
                   }}
                 >
-                  SPECIALIZED IN VIRTUALIZATION & SIMULATION WITH A SIDE-HOBBY PASSION FOR CREATING DOPE-ASS VISUALS. CURRENTLY BASED IN HANOI, VIETNAM
-                </div>
-                <div
-                  className="regular"
-                  style={{
-                    width: "fit-content",
-                    padding: "5px 15px",
-                    margin: "0 auto",
-                    backgroundColor: "#d61730",
-                    color: "white",
-                    marginTop: "20px",
-                    fontSize: "calc(5px + 1vmin)",
-                    lineHeight: "calc(10px + 1vmin)",
-                  }}
-                >
-                  SCROLL TO EXPLORE ↓
+                  Specialized in virtualization & simulation with a side-hobby passion for creating dope-ass visuals. Currently based in Hanoi, Vietnam.
                 </div>
               </div>
             </div>
@@ -130,7 +135,6 @@ export default function AboutMe(props) {
             ref={landingImg}
             style={{
               minHeight: "100vh",
-              width: "100%",
               backgroundImage: `linear-gradient(rgb(0,0,0, 0.5), rgb(0,0,0, 0.3)), url("/banner.jpg")`,
               backgroundSize: "cover",
               backgroundPosition: "0% 0%",
@@ -154,6 +158,7 @@ export default function AboutMe(props) {
                 paddingTop: "100px",
               }}
             >
+
               <Grid item sm={12} md={6}></Grid>
               <Grid item sm={12} md={6}>
                 <div
@@ -163,7 +168,7 @@ export default function AboutMe(props) {
                     marginBottom: "4px",
                   }}
                 >
-                  ABOUT
+                  STORY
                 </div>
                 <div
                   className="regular"

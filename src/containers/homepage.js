@@ -5,11 +5,11 @@ import { textShuffle } from "../animations/text";
 import BottomNavigation from "../components/navigation/bottomNav";
 import { usePreloader } from "../hooks/usePreloader";
 import { useMouse } from "@uidotdev/usehooks";
+import MarqueTrack from "../components/marquee/marquee";
 
 export default function Homepage() {
   const { openAnimation } = usePreloader();
-
-  const instruction = useRef(null);
+  const [date, setDate] = useState(new Date());
 
   const [isExiting, setIsExiting] = useState(false);
 
@@ -18,6 +18,16 @@ export default function Homepage() {
   const ascii = useRef(null);
 
   const [mouse] = useMouse();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 30000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   useEffect(() => {
     openAnimation();
@@ -37,15 +47,6 @@ export default function Homepage() {
       AsciiMorph.morph(AsciiItems.asciis[index]);
       currIndex.current = index;
     }
-
-    let interval = null;
-    if (instruction.current) {
-      if (index === 0) {
-        textShuffle(instruction.current, "TO PLAY AROUND", interval, 40);
-      } else if (instruction.current.innerHTML !== "TO PRESS ENTER") {
-        textShuffle(instruction.current, "TO PRESS ENTER", interval, 40);
-      }
-    }
   }
 
   function onExit() {
@@ -63,6 +64,39 @@ export default function Homepage() {
           onExit();
         }}
       />
+      <Box
+        className="regular fixed-container"
+        sx={{
+          left: 0,
+          top: 0,
+          width: "100dvw",
+          height: "100dvh",
+          zIndex: 10,
+          pointerEvents: "none",
+          opacity: {
+            xs: 0,
+            sm: 1
+          }
+        }}
+      >
+        <div
+          className="regular absolute-container"
+          style={{
+            right: "10px",
+            top: "10px",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <span className="primary-text">HANOI,VIETNAM</span>
+            <br />
+            <span className="primary-text">{date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true })}</span>
+          </div>
+        </div>
+      </Box>
       <div
         className="relative-container"
         style={{
@@ -76,18 +110,34 @@ export default function Homepage() {
           className="regular absolute-container"
           style={{
             left: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
+            top: "10px",
             zIndex: 10,
           }}
         >
           <div>
             <span className="primary-text"> X: {mouse.x}</span>
-            <br />
-            <span className="primary-text">Y: {mouse.y}</span>
           </div>
         </div>
-
+        <div
+          className="regular absolute-container"
+          style={{
+            right: "10px",
+            bottom: "10px",
+            zIndex: 10,
+          }}
+        >
+          <span className="primary-text">Y: {mouse.y}</span>
+        </div>
+        <Box sx={
+          {
+            position: "absolute",
+            left: "0",
+            top: "50%",
+            transform: "translateY(-50%)"
+          }
+        }>
+          <MarqueTrack />
+        </Box>
         <Box
           item
           sx={{
@@ -96,9 +146,9 @@ export default function Homepage() {
             left: "50%",
             top: "50%",
             transform: {
-              xs: "translate(-50%, -65%) scale(0.5)",
-              sm: "translate(-50%, -65%) scale(0.5)",
-              md: "translate(-50%, -65%) scale(0.9)",
+              xs: "translate(-50%, -50%) scale(0.5)",
+              sm: "translate(-50%, -50%) scale(0.5)",
+              md: "translate(-50%, -50%) scale(0.9)",
             },
 
             textAlign: "center",
@@ -108,67 +158,24 @@ export default function Homepage() {
             style={{
               overflow: "hidden",
               margin: "0 auto",
-              fontSize: "8px",
-              letterSpacing: "calc(1px)",
-              lineHeight: "calc(10.5px)",
-              color: "black",
+              fontSize: "7px",
+              letterSpacing: "calc(7.2px)",
+              lineHeight: "calc(22.5px)",
               whiteSpace: "pre-wrap",
               fontFamily: "Medium",
               userSelect: "none",
               zIndex: -1,
-              color: "rgb(253, 135, 0)",
+              color: "white",
             }}
             id="asciiArt"
             ref={ascii}
           ></pre>
-          <img
-            src="./pc_overlay.png"
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "70%",
-              transform: "translate(-50%, -50%) scale(1)",
-              width: "780px",
-              zIndex: 10,
-              mixBlendMode: "screen",
-            }}
-          />
         </Box>
         <Box
           className="absolute-container"
           sx={{
-            right: "10px",
-            bottom: {
-              xs: "40px",
-              sm: "40px",
-              md: "10px",
-            },
-            zIndex: 10,
-          }}
-        >
-          <div
-            className="regular"
-            style={{
-              backgroundColor: "rgb(0,0,0,0)",
-              textAlign: "right",
-            }}
-          >
-            <span className="primary-text">FEEL FREE</span>
-            <br />
-            <span className="primary-text" ref={instruction}>
-              TO PLAY AROUND
-            </span>
-          </div>
-        </Box>
-        <Box
-          className="absolute-container"
-          sx={{
-            bottom: {
-              xs: "40px",
-              sm: "40px",
-              md: "10px",
-            },
-            left: "10px",
+            bottom: "10px",
+            left: "3px",
             zIndex: 100,
           }}
         >
@@ -177,7 +184,6 @@ export default function Homepage() {
               <div
                 className="display-light-italic s-48 item-container"
                 style={{
-                  backgroundColor: "white",
                   width: "fit-content",
                   padding: "3px 0px 3px 10px",
                 }}
@@ -189,7 +195,6 @@ export default function Homepage() {
               <div
                 className="display-light-italic s-48 item-container"
                 style={{
-                  backgroundColor: "white",
                   width: "fit-content",
                   padding: "0px 20px 3px 10px",
                 }}

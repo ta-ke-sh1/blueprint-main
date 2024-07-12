@@ -6,21 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function BottomNavigation(props) {
   const preloader = usePreloader();
-  const [date, setDate] = useState(new Date());
+
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (props.current) {
-      onMouseEnterNav(props.current);
-    }
-    const timer = setInterval(() => {
-      setDate(new Date());
-    }, 30000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   const routes = ["", "folio", "playground", "contact"];
 
@@ -66,39 +53,7 @@ export default function BottomNavigation(props) {
 
   return (
     <>
-      <Box
-        className="regular fixed-container"
-        sx={{
-          left: 0,
-          top: 0,
-          width: "100dvw",
-          height: "100dvh",
-          zIndex: 10,
-          pointerEvents: "none",
-          opacity: {
-            xs: 0,
-            sm: 1
-          }
-        }}
-      >
-        <div
-          className="regular absolute-container"
-          style={{
-            right: "10px",
-            top: "10px",
-          }}
-        >
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            <span className="primary-text">HANOI,VIETNAM</span>
-            <br />
-            <span className="primary-text">{date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true })}</span>
-          </div>
-        </div>
-      </Box>
+
       <Box
         className="regular fixed-container"
         sx={{
@@ -130,7 +85,6 @@ export default function BottomNavigation(props) {
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: "white",
               }}
             >
               <div className="nav--item active" onMouseEnter={() => onMouseEnterNav(0)} onClick={() => navigatePage(0)}>
